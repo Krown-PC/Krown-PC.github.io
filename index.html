@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Krown PC | Custom Gaming PCs</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #08080c;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #9b5cff;
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 8vw, 90px);
+            max-width: 1000px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #9b5cff;
+        }
+
+        .hero p {
+            color: #b5b5b5;
+            font-size: 20px;
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 28px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #9b5cff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #7d3ee0;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            border: 1px solid #444;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            border-color: #9b5cff;
+        }
+
+        .services {
+            padding: 100px 8%;
+            background: #0d0d14;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            color: #9b5cff;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: #15151f;
+            border: 1px solid #242431;
+            padding: 35px;
+            border-radius: 10px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #a5a5a5;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            border-top: 1px solid #222;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            KROWN <span>PC</span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>
+            CUSTOM <span>GAMING PCs</span>
+            BUILT FOR PERFORMANCE.
+        </h1>
+
+        <p>
+            Custom PC builds, upgrades, maintenance and optimization.
+            Built with attention to detail and tested for performance.
+        </p>
+
+        <div class="buttons">
+            <a href="#services" class="btn btn-primary">
+                OUR SERVICES
+            </a>
+
+            <a href="#contact" class="btn btn-secondary">
+                CONTACT US
+            </a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+
+        <h2 class="section-title">
+            OUR <span>SERVICES</span>
+        </h2>
+
+        <div class="service-grid">
+
+            <div class="service-card">
+                <h3>Custom PC Builds</h3>
+                <p>
+                    Custom gaming computers designed around your budget,
+                    performance requirements and preferred games.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <h3>Upgrades & Optimization</h3>
+                <p>
+                    CPU, GPU, RAM and storage upgrades, combined with
+                    performance optimization and system tuning.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <h3>Maintenance</h3>
+                <p>
+                    Professional cleaning, thermal paste replacement
+                    and preventative maintenance.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer id="contact">
+        <p>KROWN PC — Custom Gaming Systems</p>
+        <p>Contact information coming soon.</p>
+    </footer>
+
+</body>
+</html>
