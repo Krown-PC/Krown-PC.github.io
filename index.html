@@ -2,26 +2,39 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>KROWN PC's | Servicio y Personalización de PCs</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>KROWN PC's | Armado y Servicio Técnico de PCs</title>
 
     <style>
-        /* ========================================
-           KROWN PC'S — WEBSITE
-           ======================================== */
+
+        /* =========================
+           CONFIGURACIÓN GENERAL
+        ========================= */
 
         :root {
-            --bg: #08080c;
-            --bg-secondary: #0d0d14;
-            --card: #13131c;
-            --border: #262632;
-            --text: #ffffff;
-            --text-muted: #a4a4af;
-            --purple: #8b3dff;
-            --purple-light: #a855f7;
-            --purple-dark: #5f20c9;
+            --fondo: #090b12;
+            --fondo-secundario: #10141e;
+            --tarjeta: #151b27;
+            --tarjeta-hover: #1b2231;
+
+            --blanco: #f5f5f7;
+            --gris: #a7afbf;
+            --gris-oscuro: #657083;
+
+            --morado: #7c3aed;
+            --morado-claro: #9b6cff;
+            --morado-oscuro: #5222a5;
+
+            --borde: #293142;
+
+            --ancho: 1250px;
         }
+
 
         * {
             margin: 0;
@@ -29,634 +42,925 @@
             box-sizing: border-box;
         }
 
+
         html {
             scroll-behavior: smooth;
         }
 
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 75% 25%,
+                    rgba(124, 58, 237, 0.10),
+                    transparent 25%
+                ),
+                var(--fondo);
+
+            color: var(--blanco);
+
+            line-height: 1.6;
         }
+
 
         a {
-            text-decoration: none;
             color: inherit;
+            text-decoration: none;
         }
 
-        /* ========================================
-           NAVIGATION
-           ======================================== */
+
+        .contenedor {
+            width: 90%;
+            max-width: var(--ancho);
+            margin: auto;
+        }
+
+
+        /* =========================
+           BARRA SUPERIOR
+        ========================= */
+
+        .barra-superior {
+            background: #171d28;
+            border-bottom: 1px solid #252d3a;
+        }
+
+
+        .barra-info {
+            min-height: 32px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+
+            color: var(--gris);
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0.3px;
+        }
+
+
+        /* =========================
+           NAVEGACIÓN
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background:
+                rgba(9, 11, 18, 0.95);
+
+            backdrop-filter: blur(12px);
+
+            border-bottom:
+                1px solid var(--borde);
+        }
+
 
         nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 74px;
+            min-height: 80px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            padding: 0 7%;
-
-            background: rgba(8, 8, 12, 0.94);
-            backdrop-filter: blur(14px);
-
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-
-            z-index: 1000;
+            gap: 30px;
         }
+
+
+        /* =========================
+           LOGO PLACEHOLDER
+        ========================= */
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
 
-            font-size: 21px;
+            font-size: 22px;
             font-weight: 900;
-            letter-spacing: 2px;
-        }
-
-        .logo-accent {
-            color: var(--purple-light);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-size: 12px;
-            font-weight: 700;
             letter-spacing: 1px;
-            color: #b7b7c2;
-            transition: 0.25s;
         }
 
-        .nav-links a:hover {
-            color: var(--purple-light);
-        }
 
-        /* ========================================
-           HERO
-           ======================================== */
-
-        .hero {
-            position: relative;
-
-            min-height: 100vh;
+        .logo-icono {
+            width: 42px;
+            height: 42px;
 
             display: flex;
             justify-content: center;
             align-items: center;
 
-            text-align: center;
+            border:
+                1px solid var(--morado);
 
-            padding: 140px 20px 90px;
-
-            overflow: hidden;
-        }
-
-        /* Purple central glow */
-
-        .hero::before {
-            content: "";
-
-            position: absolute;
-
-            width: 900px;
-            height: 900px;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(139, 61, 255, 0.16),
-                    rgba(139, 61, 255, 0.05) 35%,
-                    transparent 70%
-                );
-
-            top: 50%;
-            left: 50%;
-
-            transform: translate(-50%, -50%);
-
-            pointer-events: none;
-        }
-
-        /* Technical corner decorations */
-
-        .hero::after {
-            content: "";
-
-            position: absolute;
-
-            width: 300px;
-            height: 300px;
-
-            top: 90px;
-            left: -100px;
-
-            border-top: 2px solid var(--purple);
-            border-left: 2px solid var(--purple);
-
-            transform: rotate(45deg);
-
-            opacity: 0.45;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-
-            max-width: 1100px;
-        }
-
-        .hero-label {
-            display: inline-block;
-
-            color: var(--purple-light);
-
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 4px;
-
-            margin-bottom: 28px;
-        }
-
-        .hero h1 {
-            font-size: clamp(54px, 8vw, 110px);
-
-            line-height: 0.95;
-
-            letter-spacing: -3px;
-
-            margin-bottom: 30px;
-        }
-
-        .gradient-text {
-            background:
-                linear-gradient(
-                    90deg,
-                    #6d28d9,
-                    #a855f7,
-                    #c084fc,
-                    #7c3aed
-                );
-
-            -webkit-background-clip: text;
-            background-clip: text;
-
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            max-width: 720px;
-
-            margin: 0 auto 42px;
-
-            color: var(--text-muted);
-
-            font-size: 18px;
-
-            line-height: 1.7;
-        }
-
-        /* ========================================
-           BUTTONS
-           ======================================== */
-
-        .buttons {
-            display: flex;
-
-            justify-content: center;
-
-            gap: 15px;
-
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-
-            align-items: center;
-            justify-content: center;
-
-            min-height: 54px;
-
-            padding: 15px 28px;
-
-            border-radius: 7px;
-
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 0.6px;
-
-            transition: 0.25s;
-        }
-
-        .btn-primary {
-            color: white;
+            border-radius: 10px;
 
             background:
                 linear-gradient(
                     135deg,
-                    var(--purple-dark),
-                    var(--purple-light)
+                    rgba(124, 58, 237, 0.25),
+                    rgba(255,255,255,0.03)
+                );
+
+            color: var(--morado-claro);
+
+            font-weight: 900;
+            font-size: 22px;
+        }
+
+
+        .logo span {
+            color: var(--morado-claro);
+        }
+
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+
+        .menu a {
+            color: var(--gris);
+
+            font-size: 14px;
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+
+        .menu a:hover {
+            color: var(--blanco);
+        }
+
+
+        .boton {
+            display: inline-flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 14px 24px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s,
+                background 0.2s;
+        }
+
+
+        .boton:hover {
+            transform:
+                translateY(-2px);
+        }
+
+
+        .boton-principal {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--morado),
+                    #5b73d6
                 );
 
             box-shadow:
-                0 12px 35px
-                rgba(124, 58, 237, 0.28);
+                0 8px 30px
+                rgba(124, 58, 237, 0.25);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
 
+        .boton-principal:hover {
             box-shadow:
-                0 18px 45px
-                rgba(124, 58, 237, 0.42);
+                0 12px 40px
+                rgba(124, 58, 237, 0.4);
         }
 
-        .btn-secondary {
-            color: white;
 
-            border: 1px solid #3b3b48;
-        }
+        .boton-secundario {
+            border:
+                1px solid var(--borde);
 
-        .btn-secondary:hover {
-            border-color: var(--purple);
+            color: var(--blanco);
 
             background:
-                rgba(139, 61, 255, 0.08);
+                rgba(255,255,255,0.02);
         }
 
-        /* ========================================
-           GENERAL SECTIONS
-           ======================================== */
 
-        section {
-            padding: 110px 8%;
+        .boton-secundario:hover {
+            background:
+                rgba(255,255,255,0.05);
         }
 
-        .section-header {
-            max-width: 760px;
 
-            margin-bottom: 60px;
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 720px;
+
+            display: flex;
+            align-items: center;
+
+            padding:
+                80px 0;
         }
 
-        .section-label {
-            color: var(--purple-light);
+
+        .hero-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 460px;
+
+            gap: 80px;
+
+            align-items: center;
+        }
+
+
+        .etiqueta {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                7px 14px;
+
+            border:
+                1px solid
+                rgba(124, 58, 237, 0.45);
+
+            border-radius: 30px;
+
+            background:
+                rgba(124, 58, 237, 0.08);
+
+            color:
+                var(--morado-claro);
 
             font-size: 12px;
-            font-weight: 800;
+            font-weight: bold;
 
-            letter-spacing: 3px;
-
-            margin-bottom: 16px;
-        }
-
-        .section-title {
-            font-size:
-                clamp(38px, 5vw, 62px);
-
-            line-height: 1.05;
+            letter-spacing: 0.5px;
 
             margin-bottom: 22px;
         }
 
-        .section-description {
-            color: var(--text-muted);
 
-            font-size: 17px;
+        .hero h1 {
+            font-size:
+                clamp(
+                    52px,
+                    6vw,
+                    88px
+                );
 
-            line-height: 1.7;
+            line-height: 0.98;
+
+            letter-spacing:
+                -3px;
+
+            margin-bottom: 28px;
         }
 
-        /* ========================================
-           SERVICES
-           ======================================== */
 
-        .services {
-            background: var(--bg-secondary);
-
-            border-top:
-                1px solid var(--border);
-
-            border-bottom:
-                1px solid var(--border);
-        }
-
-        .service-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(240px, 1fr));
-
-            gap: 20px;
-        }
-
-        .service-card {
-            position: relative;
-
-            padding: 34px;
-
-            background: var(--card);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 12px;
-
-            transition: 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-6px);
-
-            border-color:
-                var(--purple);
-        }
-
-        .service-number {
-            color: var(--purple-light);
-
-            font-size: 13px;
-            font-weight: 800;
-
-            margin-bottom: 30px;
-        }
-
-        .service-card h3 {
-            font-size: 22px;
-
-            margin-bottom: 14px;
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-
-            line-height: 1.7;
-
-            font-size: 15px;
-        }
-
-        /* ========================================
-           VALUES
-           ======================================== */
-
-        .values {
-            position: relative;
-
-            background: var(--bg);
-        }
-
-        .value-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(200px, 1fr));
-
-            gap: 16px;
-        }
-
-        .value-card {
-            padding: 28px;
-
-            border-left:
-                2px solid var(--purple);
-
+        .texto-gradiente {
             background:
                 linear-gradient(
                     90deg,
-                    rgba(139, 61, 255, 0.08),
-                    transparent
+                    #8067ff,
+                    #c3c8ff,
+                    #6ee7ff
                 );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .value-card h3 {
-            font-size: 17px;
 
-            letter-spacing: 1px;
+        .hero p {
+            max-width: 650px;
 
-            margin-bottom: 12px;
-        }
-
-        .value-card p {
-            color: var(--text-muted);
-
-            font-size: 14px;
-
-            line-height: 1.7;
-        }
-
-        /* ========================================
-           BUILDS
-           ======================================== */
-
-        .builds {
-            background: var(--bg-secondary);
-
-            border-top:
-                1px solid var(--border);
-        }
-
-        .build-placeholder {
-            padding: 80px 30px;
-
-            text-align: center;
-
-            border:
-                1px dashed #3a3a48;
-
-            border-radius: 12px;
-
-            color: #777784;
-        }
-
-        .build-placeholder h3 {
-            color: white;
-
-            font-size: 24px;
-
-            margin-bottom: 12px;
-        }
-
-        /* ========================================
-           PORTFOLIO
-           ======================================== */
-
-        .portfolio {
-            background: var(--bg);
-        }
-
-        .portfolio-placeholder {
-            padding: 80px 30px;
-
-            text-align: center;
-
-            border:
-                1px dashed #3a3a48;
-
-            border-radius: 12px;
-
-            color: #777784;
-        }
-
-        /* ========================================
-           CONTACT
-           ======================================== */
-
-        .contact {
-            text-align: center;
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(124, 58, 237, 0.20),
-                    transparent 58%
-                ),
-                var(--bg-secondary);
-
-            border-top:
-                1px solid var(--border);
-        }
-
-        .contact-content {
-            max-width: 760px;
-
-            margin: auto;
-        }
-
-        .contact h2 {
-            font-size:
-                clamp(42px, 6vw, 76px);
-
-            line-height: 1;
-
-            margin-bottom: 25px;
-        }
-
-        .contact p {
-            color: var(--text-muted);
+            color: var(--gris);
 
             font-size: 18px;
 
-            line-height: 1.7;
-
-            margin-bottom: 35px;
+            margin-bottom: 32px;
         }
 
-        /* ========================================
-           FLOATING WHATSAPP
-           ======================================== */
 
-        .whatsapp-float {
-            position: fixed;
-
-            right: 24px;
-            bottom: 24px;
-
-            width: 58px;
-            height: 58px;
-
+        .hero-botones {
             display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            background: #25D366;
-
-            color: white;
-
-            border-radius: 50%;
-
-            font-size: 28px;
-
-            box-shadow:
-                0 10px 30px
-                rgba(0,0,0,0.4);
-
-            z-index: 1001;
-
-            transition: 0.25s;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        /* ========================================
-           FOOTER
-           ======================================== */
-
-        footer {
-            padding: 30px 8%;
-
-            display: flex;
-
-            justify-content: space-between;
-
             flex-wrap: wrap;
 
             gap: 15px;
 
-            border-top:
-                1px solid var(--border);
+            margin-bottom: 38px;
+        }
 
-            color: #777784;
+
+        /* =========================
+           MARCAS / CONFIANZA
+        ========================= */
+
+        .confianza {
+            border-top:
+                1px solid var(--borde);
+
+            padding-top: 22px;
+        }
+
+
+        .confianza-titulo {
+            font-size: 11px;
+
+            color: var(--gris-oscuro);
+
+            letter-spacing: 2px;
+
+            margin-bottom: 14px;
+        }
+
+
+        .valores-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+
+        .valor-mini {
+            padding:
+                7px 12px;
+
+            border:
+                1px solid var(--borde);
+
+            border-radius: 6px;
+
+            color: var(--gris);
+
+            font-size: 12px;
+
+            background:
+                rgba(255,255,255,0.02);
+        }
+
+
+        /* =========================
+           TARJETA BUILD
+        ========================= */
+
+        .build-card {
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #151a26,
+                    #10141d
+                );
+
+            border:
+                1px solid
+                rgba(124, 58, 237, 0.4);
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 30px 80px
+                rgba(0,0,0,0.45);
+        }
+
+
+        .build-imagen {
+            height: 270px;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1c1134,
+                    #111722,
+                    #0d1018
+                );
+
+            overflow: hidden;
+        }
+
+
+        /*
+        =====================================
+        PLACEHOLDER PARA IMAGEN DE PC
+
+        AQUÍ PODREMOS PONER:
+
+        <img src="tu-imagen.jpg">
+
+        Más adelante.
+        =====================================
+        */
+
+
+        .placeholder-build {
+            text-align: center;
+
+            color: var(--gris);
+        }
+
+
+        .placeholder-pc {
+            width: 180px;
+            height: 200px;
+
+            margin: auto;
+
+            border:
+                2px solid var(--morado);
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(124,58,237,0.3),
+                    rgba(0,0,0,0.5)
+                );
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            font-size: 60px;
+
+            box-shadow:
+                0 0 60px
+                rgba(124,58,237,0.3);
+        }
+
+
+        .estado-build {
+            position: absolute;
+
+            top: 18px;
+            left: 18px;
+
+            padding:
+                7px 11px;
+
+            background:
+                var(--morado);
+
+            border-radius: 6px;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            letter-spacing: 0.6px;
+        }
+
+
+        .build-contenido {
+            padding: 25px;
+        }
+
+
+        .build-contenido h3 {
+            font-size: 21px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .tipo-build {
+            color:
+                var(--morado-claro);
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .specs {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 18px;
+
+            padding:
+                20px 0;
+
+            border-top:
+                1px solid var(--borde);
+
+            border-bottom:
+                1px solid var(--borde);
+        }
+
+
+        .spec small {
+            display: block;
+
+            color:
+                var(--gris-oscuro);
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .spec strong {
+            font-size: 13px;
+        }
+
+
+        .build-footer {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding-top: 20px;
+        }
+
+
+        .precio small {
+            display: block;
+
+            color:
+                var(--gris-oscuro);
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .precio strong {
+            font-size: 22px;
+        }
+
+
+        /* =========================
+           SECCIÓN SERVICIOS
+        ========================= */
+
+        .seccion {
+            padding:
+                120px 0;
+        }
+
+
+        .seccion-oscura {
+            background:
+                var(--fondo-secundario);
+
+            border-top:
+                1px solid var(--borde);
+
+            border-bottom:
+                1px solid var(--borde);
+        }
+
+
+        .seccion-titulo {
+            max-width: 700px;
+
+            margin-bottom: 60px;
+        }
+
+
+        .seccion-titulo span {
+            color:
+                var(--morado-claro);
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+
+        .seccion-titulo h2 {
+            font-size:
+                clamp(
+                    38px,
+                    5vw,
+                    60px
+                );
+
+            line-height: 1;
+
+            margin:
+                15px 0 20px;
+        }
+
+
+        .seccion-titulo p {
+            color:
+                var(--gris);
+
+            font-size: 17px;
+        }
+
+
+        .servicios-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .servicio {
+            padding: 30px;
+
+            background:
+                var(--tarjeta);
+
+            border:
+                1px solid var(--borde);
+
+            border-radius: 14px;
+
+            transition:
+                transform 0.25s,
+                border-color 0.25s;
+        }
+
+
+        .servicio:hover {
+            transform:
+                translateY(-5px);
+
+            border-color:
+                var(--morado);
+        }
+
+
+        .servicio-icono {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 10px;
+
+            margin-bottom: 22px;
+
+            background:
+                rgba(124,58,237,0.15);
+
+            color:
+                var(--morado-claro);
+
+            font-size: 22px;
+        }
+
+
+        .servicio h3 {
+            margin-bottom: 12px;
+
+            font-size: 19px;
+        }
+
+
+        .servicio p {
+            color:
+                var(--gris);
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           VALORES
+        ========================= */
+
+        .valores-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .valor {
+            padding: 25px;
+
+            text-align: center;
+
+            border:
+                1px solid var(--borde);
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,0.02);
+        }
+
+
+        .valor-numero {
+            color:
+                var(--morado-claro);
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+        }
+
+
+        .valor h3 {
+            margin-bottom: 10px;
+
+            font-size: 17px;
+        }
+
+
+        .valor p {
+            color:
+                var(--gris);
 
             font-size: 13px;
         }
 
-        /* ========================================
-           MOBILE
-           ======================================== */
 
-        @media (max-width: 700px) {
+        /* =========================
+           CONTACTO
+        ========================= */
 
-            nav {
-                padding: 0 5%;
+        .contacto {
+            text-align: center;
+
+            padding:
+                130px 0;
+        }
+
+
+        .contacto h2 {
+            font-size:
+                clamp(
+                    42px,
+                    6vw,
+                    75px
+                );
+
+            margin-bottom: 20px;
+        }
+
+
+        .contacto p {
+            color:
+                var(--gris);
+
+            max-width: 650px;
+
+            margin:
+                0 auto 35px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding:
+                40px 0;
+
+            border-top:
+                1px solid var(--borde);
+
+            color:
+                var(--gris-oscuro);
+
+            font-size: 13px;
+        }
+
+
+        .footer-contenido {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .hero-grid {
+                grid-template-columns: 1fr;
             }
 
-            .logo {
-                font-size: 16px;
+            .build-card {
+                max-width: 520px;
             }
 
-            .nav-links {
-                gap: 13px;
+            .servicios-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
 
-            .nav-links a {
-                font-size: 10px;
+            .valores-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
 
-            section {
-                padding: 85px 7%;
+            .menu {
+                display: none;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .barra-info {
+                gap: 15px;
+
+                font-size: 9px;
+
+                padding:
+                    8px 15px;
+
+                text-align: center;
             }
 
             .hero {
-                padding-top: 120px;
+                padding:
+                    70px 0;
             }
 
             .hero h1 {
-                letter-spacing: -1px;
+                letter-spacing:
+                    -1px;
             }
 
-            .hero p {
-                font-size: 16px;
+            .servicios-grid {
+                grid-template-columns: 1fr;
             }
 
-            .whatsapp-float {
-                width: 54px;
-                height: 54px;
+            .valores-grid {
+                grid-template-columns: 1fr;
+            }
 
-                right: 18px;
-                bottom: 18px;
+            .footer-contenido {
+                flex-direction: column;
             }
 
         }
@@ -667,419 +971,792 @@
 
 <body>
 
-    <!-- =====================================
-         NAVIGATION
-    ====================================== -->
 
-    <nav>
+    <!-- =========================
+         BARRA SUPERIOR
+    ========================== -->
 
-        <a href="#inicio" class="logo">
-            KROWN
-            <span class="logo-accent">PC's</span>
-        </a>
+    <div class="barra-superior">
 
-        <ul class="nav-links">
-            <li><a href="#inicio">INICIO</a></li>
-            <li><a href="#servicios">SERVICIOS</a></li>
-            <li><a href="#equipos">EQUIPOS</a></li>
-            <li><a href="#portafolio">PORTAFOLIO</a></li>
-        </ul>
+        <div class="contenedor barra-info">
 
-    </nav>
+            <span>✓ Diagnóstico y comunicación transparente</span>
+
+            <span>✓ Trabajo profesional y detallado</span>
+
+            <span>✓ Atención directa y personalizada</span>
+
+        </div>
+
+    </div>
 
 
-    <!-- =====================================
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <div class="contenedor">
+
+            <nav>
+
+
+                <!-- =========================
+                     PLACEHOLDER PARA LOGO
+
+                     MÁS ADELANTE PONDREMOS
+                     AQUÍ TU LOGO OFICIAL
+                ========================== -->
+
+                <a href="#inicio" class="logo">
+
+                    <div class="logo-icono">
+                        K
+                    </div>
+
+                    KROWN <span>PC's</span>
+
+                </a>
+
+
+
+                <div class="menu">
+
+                    <a href="#inicio">Inicio</a>
+
+                    <a href="#servicios">Servicios</a>
+
+                    <a href="#builds">Builds</a>
+
+                    <a href="#portafolio">Portafolio</a>
+
+                    <a href="#valores">Nosotros</a>
+
+                </div>
+
+
+                <a
+                    href="#contacto"
+                    class="boton boton-principal"
+                >
+                    Contactar
+                </a>
+
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
          HERO
-    ====================================== -->
+    ========================== -->
 
-    <section class="hero" id="inicio">
+    <main id="inicio">
 
-        <div class="hero-content">
+        <section class="hero">
 
-            <div class="hero-label">
-                SERVICIO Y PERSONALIZACIÓN DE PCs
+            <div class="contenedor">
+
+                <div class="hero-grid">
+
+
+                    <!-- TEXTO -->
+
+                    <div>
+
+                        <div class="etiqueta">
+
+                            KROWN PC's · SERVICIO Y PERSONALIZACIÓN DE PCs
+
+                        </div>
+
+
+                        <h1>
+
+                            PCs construidos para
+
+                            <span class="texto-gradiente">
+                                rendir de verdad.
+                            </span>
+
+                        </h1>
+
+
+                        <p>
+
+                            Armado, mantenimiento, optimización y
+                            personalización de computadores.
+                            Cada equipo es tratado con atención al detalle,
+                            comunicación clara y un proceso transparente.
+
+                        </p>
+
+
+                        <div class="hero-botones">
+
+                            <a
+                                href="#builds"
+                                class="boton boton-principal"
+                            >
+                                Ver builds disponibles →
+                            </a>
+
+
+                            <a
+                                href="#contacto"
+                                class="boton boton-secundario"
+                            >
+                                Solicitar asesoría
+                            </a>
+
+                        </div>
+
+
+                        <div class="confianza">
+
+                            <div class="confianza-titulo">
+
+                                LA FORMA EN QUE TRABAJAMOS
+
+                            </div>
+
+
+                            <div class="valores-mini">
+
+                                <div class="valor-mini">
+                                    Honestidad
+                                </div>
+
+                                <div class="valor-mini">
+                                    Transparencia
+                                </div>
+
+                                <div class="valor-mini">
+                                    Profesionalismo
+                                </div>
+
+                                <div class="valor-mini">
+                                    Claridad
+                                </div>
+
+                                <div class="valor-mini">
+                                    Eficiencia
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- BUILD DESTACADO -->
+
+                    <div id="builds">
+
+                        <div class="build-card">
+
+
+                            <div class="build-imagen">
+
+                                <div class="estado-build">
+                                    BUILD DESTACADO
+                                </div>
+
+
+                                <!--
+                                =====================================
+                                PLACEHOLDER
+
+                                REEMPLAZAR POR FOTO REAL DE UNA PC
+                                CUANDO ESTÉ DISPONIBLE.
+
+                                EJEMPLO:
+
+                                <img src="build1.jpg">
+                                =====================================
+                                -->
+
+                                <div class="placeholder-build">
+
+                                    <div class="placeholder-pc">
+                                        🖥
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="build-contenido">
+
+
+                                <!-- PLACEHOLDER NOMBRE BUILD -->
+
+                                <h3>
+                                    KROWN Performance Build
+                                </h3>
+
+
+                                <div class="tipo-build">
+                                    GAMING / PERSONALIZADO
+                                </div>
+
+
+
+                                <div class="specs">
+
+
+                                    <div class="spec">
+
+                                        <small>CPU</small>
+
+                                        <!-- PLACEHOLDER CPU -->
+
+                                        <strong>
+                                            Próximamente
+                                        </strong>
+
+                                    </div>
+
+
+
+                                    <div class="spec">
+
+                                        <small>GPU</small>
+
+                                        <!-- PLACEHOLDER GPU -->
+
+                                        <strong>
+                                            Próximamente
+                                        </strong>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <div class="build-footer">
+
+
+                                    <div class="precio">
+
+                                        <small>
+                                            PRECIO
+                                        </small>
+
+                                        <!-- PLACEHOLDER PRECIO -->
+
+                                        <strong>
+                                            Consultar
+                                        </strong>
+
+                                    </div>
+
+
+                                    <a
+                                        href="#contacto"
+                                        class="boton boton-principal"
+                                    >
+                                        Ver PC →
+                                    </a>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
             </div>
 
-            <h1>
-                CONSTRUIDAS PARA<br>
-                <span class="gradient-text">
-                    RENDIR.
-                </span>
-            </h1>
+        </section>
 
-            <p>
-                PCs personalizadas, mantenimiento, actualizaciones,
-                diagnóstico y optimización. Soluciones claras,
-                transparentes y adaptadas a lo que realmente necesitas.
-            </p>
 
-            <div class="buttons">
 
-                <a href="#equipos"
-                   class="btn btn-primary">
+        <!-- =========================
+             SERVICIOS
+        ========================== -->
 
-                    VER EQUIPOS DISPONIBLES
+        <section
+            id="servicios"
+            class="seccion seccion-oscura"
+        >
+
+            <div class="contenedor">
+
+
+                <div class="seccion-titulo">
+
+                    <span>
+                        SERVICIOS
+                    </span>
+
+
+                    <h2>
+                        Más que vender un PC.
+                    </h2>
+
+
+                    <p>
+
+                        El objetivo es que cada equipo funcione
+                        correctamente, esté optimizado para su uso
+                        y que el cliente entienda claramente qué
+                        se hizo y por qué.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="servicios-grid">
+
+
+                    <div class="servicio">
+
+                        <div class="servicio-icono">
+                            ⚙
+                        </div>
+
+                        <h3>
+                            Armado de PCs
+                        </h3>
+
+                        <p>
+                            Equipos construidos según tu presupuesto,
+                            necesidades y objetivos de rendimiento.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="servicio">
+
+                        <div class="servicio-icono">
+                            🔧
+                        </div>
+
+                        <h3>
+                            Mantenimiento
+                        </h3>
+
+                        <p>
+                            Limpieza, revisión y mantenimiento
+                            preventivo para mantener tu equipo
+                            funcionando correctamente.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="servicio">
+
+                        <div class="servicio-icono">
+                            ↑
+                        </div>
+
+                        <h3>
+                            Upgrades
+                        </h3>
+
+                        <p>
+                            Actualización de componentes y
+                            recomendaciones para mejorar el
+                            rendimiento de tu PC.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="servicio">
+
+                        <div class="servicio-icono">
+                            ⚡
+                        </div>
+
+                        <h3>
+                            Optimización
+                        </h3>
+
+                        <p>
+                            Ajustes y configuración orientados
+                            a mejorar la experiencia y el
+                            rendimiento del equipo.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="servicio">
+
+                        <div class="servicio-icono">
+                            ◈
+                        </div>
+
+                        <h3>
+                            Personalización
+                        </h3>
+
+                        <p>
+                            Configuraciones visuales,
+                            componentes y detalles para hacer
+                            que tu PC sea realmente tuyo.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="servicio">
+
+                        <div class="servicio-icono">
+                            ✓
+                        </div>
+
+                        <h3>
+                            Asesoría
+                        </h3>
+
+                        <p>
+                            Te ayudamos a entender tus opciones
+                            antes de invertir en componentes
+                            o en un equipo completo.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PORTAFOLIO
+        ========================== -->
+
+        <section
+            id="portafolio"
+            class="seccion"
+        >
+
+            <div class="contenedor">
+
+
+                <div class="seccion-titulo">
+
+                    <span>
+                        PORTAFOLIO
+                    </span>
+
+                    <h2>
+                        Trabajo real. Resultados reales.
+                    </h2>
+
+                    <p>
+
+                        Esta sección estará dedicada a mostrar
+                        equipos armados, mantenimientos,
+                        personalizaciones y proyectos realizados
+                        por KROWN PC's.
+
+                    </p>
+
+                </div>
+
+
+
+                <!--
+                =====================================
+                PLACEHOLDER PORTAFOLIO
+
+                AQUÍ AGREGAREMOS FOTOS REALES
+                DE TUS TRABAJOS.
+                =====================================
+                -->
+
+                <div
+                    style="
+                        min-height:300px;
+                        border:1px dashed #3a4355;
+                        border-radius:15px;
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                        color:#657083;
+                        text-align:center;
+                        padding:30px;
+                    "
+                >
+
+                    [ PRÓXIMAMENTE: FOTOGRAFÍAS DE BUILDS Y SERVICIOS REALES ]
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             VALORES
+        ========================== -->
+
+        <section
+            id="valores"
+            class="seccion seccion-oscura"
+        >
+
+            <div class="contenedor">
+
+
+                <div class="seccion-titulo">
+
+                    <span>
+                        KROWN PC's
+                    </span>
+
+                    <h2>
+                        La tecnología es importante.
+                        La confianza también.
+                    </h2>
+
+                    <p>
+
+                        La marca está construida alrededor de
+                        cinco principios que deben estar presentes
+                        en cada servicio y en cada equipo.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="valores-grid">
+
+
+                    <div class="valor">
+
+                        <div class="valor-numero">
+                            01
+                        </div>
+
+                        <h3>
+                            Honestidad
+                        </h3>
+
+                        <p>
+                            Recomendaciones basadas en lo que
+                            realmente necesitas.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="valor">
+
+                        <div class="valor-numero">
+                            02
+                        </div>
+
+                        <h3>
+                            Transparencia
+                        </h3>
+
+                        <p>
+                            Procesos claros y comunicación
+                            durante el trabajo.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="valor">
+
+                        <div class="valor-numero">
+                            03
+                        </div>
+
+                        <h3>
+                            Profesionalismo
+                        </h3>
+
+                        <p>
+                            Cuidado y respeto por cada equipo
+                            que llega a nuestras manos.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="valor">
+
+                        <div class="valor-numero">
+                            04
+                        </div>
+
+                        <h3>
+                            Claridad
+                        </h3>
+
+                        <p>
+                            Explicaciones comprensibles,
+                            sin información innecesariamente
+                            complicada.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="valor">
+
+                        <div class="valor-numero">
+                            05
+                        </div>
+
+                        <h3>
+                            Eficiencia
+                        </h3>
+
+                        <p>
+                            Soluciones prácticas enfocadas
+                            en obtener buenos resultados.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CONTACTO
+        ========================== -->
+
+        <section
+            id="contacto"
+            class="contacto"
+        >
+
+            <div class="contenedor">
+
+
+                <div class="etiqueta">
+                    ¿TIENES UN PROYECTO EN MENTE?
+                </div>
+
+
+                <h2>
+
+                    Construyamos tu próximo
+
+                    <span class="texto-gradiente">
+                        PC.
+                    </span>
+
+                </h2>
+
+
+                <p>
+
+                    Cuéntanos qué necesitas. Ya sea un equipo
+                    completamente nuevo, una mejora, mantenimiento
+                    o asesoría, podemos revisar tu caso.
+
+                </p>
+
+
+
+                <!--
+                =====================================
+                PLACEHOLDER WHATSAPP
+
+                MÁS ADELANTE CAMBIAREMOS:
+
+                href="#"
+
+                POR TU LINK REAL DE WHATSAPP.
+                =====================================
+                -->
+
+                <a
+                    href="#"
+                    class="boton boton-principal"
+                >
+
+                    Contactar por WhatsApp →
 
                 </a>
 
 
-                <!-- WHATSAPP PLACEHOLDER -->
-
-                <a href="https://wa.me/YOUR_WHATSAPP_NUMBER_HERE"
-                   class="btn btn-secondary"
-                   target="_blank">
-
-                    CONTÁCTANOS
-
-                </a>
-
             </div>
 
-        </div>
+        </section>
 
-    </section>
 
+    </main>
 
-    <!-- =====================================
-         SERVICES
-    ====================================== -->
 
-    <section
-        class="services"
-        id="servicios">
 
-        <div class="section-header">
-
-            <div class="section-label">
-                NUESTROS SERVICIOS
-            </div>
-
-            <h2 class="section-title">
-                SOLUCIONES PARA TU PC.
-            </h2>
-
-            <p class="section-description">
-                Desde la creación de un equipo completo hasta
-                mantenimiento y optimización, trabajamos para ofrecer
-                soluciones claras y adecuadas para cada necesidad.
-            </p>
-
-        </div>
-
-
-        <div class="service-grid">
-
-
-            <div class="service-card">
-
-                <div class="service-number">
-                    01
-                </div>
-
-                <h3>
-                    PCs Personalizadas
-                </h3>
-
-                <p>
-                    Equipos construidos de acuerdo con tu presupuesto,
-                    necesidades y objetivos de rendimiento.
-                </p>
-
-            </div>
-
-
-            <div class="service-card">
-
-                <div class="service-number">
-                    02
-                </div>
-
-                <h3>
-                    Actualizaciones
-                </h3>
-
-                <p>
-                    Mejoras de hardware para aumentar el rendimiento,
-                    almacenamiento o capacidad de tu equipo.
-                </p>
-
-            </div>
-
-
-            <div class="service-card">
-
-                <div class="service-number">
-                    03
-                </div>
-
-                <h3>
-                    Mantenimiento
-                </h3>
-
-                <p>
-                    Limpieza, cambio de pasta térmica y mantenimiento
-                    preventivo para mantener tu PC funcionando
-                    correctamente.
-                </p>
-
-            </div>
-
-
-            <div class="service-card">
-
-                <div class="service-number">
-                    04
-                </div>
-
-                <h3>
-                    Diagnóstico y Optimización
-                </h3>
-
-                <p>
-                    Identificación de problemas y optimización del
-                    sistema para mejorar su funcionamiento.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================
-         VALUES
-    ====================================== -->
-
-    <section class="values">
-
-        <div class="section-header">
-
-            <div class="section-label">
-                NUESTRA FORMA DE TRABAJAR
-            </div>
-
-            <h2 class="section-title">
-                ¿POR QUÉ KROWN PC's?
-            </h2>
-
-            <p class="section-description">
-                Nuestro trabajo se basa en cinco principios que definen
-                cómo tratamos cada equipo y cada cliente.
-            </p>
-
-        </div>
-
-
-        <div class="value-grid">
-
-
-            <div class="value-card">
-
-                <h3>HONESTIDAD</h3>
-
-                <p>
-                    Recomendaciones basadas en lo que tu equipo
-                    realmente necesita, sin vender mejoras innecesarias.
-                </p>
-
-            </div>
-
-
-            <div class="value-card">
-
-                <h3>TRANSPARENCIA</h3>
-
-                <p>
-                    Información clara sobre los componentes utilizados,
-                    el trabajo realizado y el estado de tu equipo.
-                </p>
-
-            </div>
-
-
-            <div class="value-card">
-
-                <h3>PROFESIONALISMO</h3>
-
-                <p>
-                    Trabajo cuidadoso, procesos ordenados y pruebas
-                    antes de entregar cada equipo.
-                </p>
-
-            </div>
-
-
-            <div class="value-card">
-
-                <h3>CLARIDAD</h3>
-
-                <p>
-                    Explicaciones simples y comprensibles para que
-                    puedas tomar decisiones con confianza.
-                </p>
-
-            </div>
-
-
-            <div class="value-card">
-
-                <h3>EFICIENCIA</h3>
-
-                <p>
-                    Soluciones prácticas enfocadas en resolver el
-                    problema de forma efectiva.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================
-         AVAILABLE EQUIPMENT
-    ====================================== -->
-
-    <section
-        class="builds"
-        id="equipos">
-
-        <div class="section-header">
-
-            <div class="section-label">
-                EQUIPOS DISPONIBLES
-            </div>
-
-            <h2 class="section-title">
-                LISTOS PARA SU PRÓXIMO DUEÑO.
-            </h2>
-
-            <p class="section-description">
-                Aquí encontrarás los equipos disponibles actualmente
-                para compra.
-            </p>
-
-        </div>
-
-
-        <div class="build-placeholder">
-
-            <h3>
-                PRÓXIMAMENTE
-            </h3>
-
-            <p>
-                Los equipos disponibles aparecerán aquí.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================
-         PORTFOLIO
-    ====================================== -->
-
-    <section
-        class="portfolio"
-        id="portafolio">
-
-        <div class="section-header">
-
-            <div class="section-label">
-                NUESTRO TRABAJO
-            </div>
-
-            <h2 class="section-title">
-                ATENCIÓN A CADA DETALLE.
-            </h2>
-
-            <p class="section-description">
-                Próximamente podrás ver equipos construidos,
-                actualizados y personalizados por KROWN PC's.
-            </p>
-
-        </div>
-
-
-        <div class="portfolio-placeholder">
-
-            PORTAFOLIO PRÓXIMAMENTE
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================
-         CONTACT
-    ====================================== -->
-
-    <section
-        class="contact"
-        id="contacto">
-
-        <div class="contact-content">
-
-            <h2>
-                HABLEMOS DE TU PRÓXIMO PC.
-            </h2>
-
-            <p>
-                ¿Buscas un PC personalizado, una actualización o
-                necesitas ayuda con tu equipo? Escríbenos y cuéntanos
-                qué necesitas.
-            </p>
-
-
-            <!-- WHATSAPP PLACEHOLDER -->
-
-            <a href="https://wa.me/YOUR_WHATSAPP_NUMBER_HERE"
-               class="btn btn-primary"
-               target="_blank">
-
-                CONTACTAR POR WHATSAPP
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================
-         FLOATING WHATSAPP BUTTON
-    ====================================== -->
-
-    <!-- WHATSAPP PLACEHOLDER -->
-
-    <a href="https://wa.me/YOUR_WHATSAPP_NUMBER_HERE"
-       class="whatsapp-float"
-       target="_blank"
-       aria-label="Contactar por WhatsApp">
-
-        ☎
-
-    </a>
-
-
-    <!-- =====================================
+    <!-- =========================
          FOOTER
-    ====================================== -->
+    ========================== -->
 
     <footer>
 
-        <div>
-            © 2026 KROWN PC's
-        </div>
+        <div
+            class="
+                contenedor
+                footer-contenido
+            "
+        >
 
-        <div>
-            SERVICIO Y PERSONALIZACIÓN DE PCs
+            <span>
+                © 2026 KROWN PC's.
+            </span>
+
+
+            <span>
+                Armado · Optimización · Mantenimiento · Personalización
+            </span>
+
+
         </div>
 
     </footer>
