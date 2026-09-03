@@ -13,6 +13,20 @@
         KROWN PC'S | Armado, Mantención y Personalización de PCs
     </title>
 
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="assets/img/favicon-32.png"
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="512x512"
+        href="assets/img/favicon.png"
+    >
+
 
     <!-- =====================================================
          FUENTES GRATUITAS
@@ -288,8 +302,7 @@
 
         .brand-logo {
 
-            width: 42px;
-            height: 42px;
+            height: 46px;
 
             display: flex;
 
@@ -297,29 +310,15 @@
 
             justify-content: center;
 
-            border-radius: 11px;
-
-            border:
-                1px solid
-                rgba(155, 92, 255, 0.45);
-
-            background:
-
-                linear-gradient(
-                    135deg,
-                    rgba(124, 58, 237, 0.16),
-                    rgba(124, 58, 237, 0.03)
-                );
-
-            overflow: hidden;
-
         }
 
 
-        .brand-logo svg {
+        .brand-logo img {
 
-            width: 30px;
-            height: 30px;
+            height: 100%;
+            width: auto;
+
+            display: block;
 
         }
 
@@ -801,6 +800,33 @@
 
             margin-bottom:
                 12px;
+
+        }
+
+
+        /* =====================================================
+           FOTO REAL DE BUILD
+           ===================================================== */
+
+        .build-photo {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+
+            object-position:
+                center;
+
+            border-radius:
+                18px;
+
+            display:
+                block;
 
         }
 
@@ -1342,7 +1368,7 @@
                 grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(auto-fit, minmax(280px, 1fr));
 
             gap:
                 18px;
@@ -1363,34 +1389,42 @@
 
             border:
 
-                1px dashed
-                rgba(155, 92, 255, 0.35);
+                1px solid
+                var(--border);
 
-            background:
+            overflow:
+                hidden;
 
-                linear-gradient(
-                    135deg,
-                    #10131c,
-                    #0a0b10
-                );
+            position:
+                relative;
+
+        }
+
+
+        .portfolio-item img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
 
             display:
-                flex;
+                block;
 
-            align-items:
-                center;
+            transition:
+                0.35s ease;
 
-            justify-content:
-                center;
+        }
 
-            color:
-                var(--muted);
 
-            text-align:
-                center;
+        .portfolio-item:hover img {
 
-            padding:
-                25px;
+            transform:
+                scale(1.05);
 
         }
 
@@ -1687,11 +1721,8 @@
 
             .brand-logo {
 
-                width:
-                    36px;
-
                 height:
-                    36px;
+                    38px;
 
             }
 
@@ -1764,57 +1795,15 @@
 
 
                 <!-- =================================================
-                     LOGO SVG TEMPORAL KROWN
-                     K geométrica con referencia a corona.
+                     LOGO KROWN PC'S
                      ================================================= -->
 
                 <div class="brand-logo">
 
-                    <svg
-                        viewBox="0 0 64 64"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                    <img
+                        src="assets/img/logo.png"
+                        alt="KROWN PC'S"
                     >
-
-                        <!-- CORONA MINIMALISTA -->
-
-                        <path
-                            d="M14 22
-                               L22 30
-                               L32 17
-                               L42 30
-                               L50 22
-                               L47 42
-                               H17
-                               L14 22Z"
-
-                            stroke="#9B5CFF"
-
-                            stroke-width="4"
-
-                            stroke-linejoin="round"
-                        />
-
-                        <!-- LETRA K -->
-
-                        <path
-                            d="M26 29
-                               V39
-                               M26 34
-                               L36 29
-                               M26 34
-                               L37 40"
-
-                            stroke="#F5F5F7"
-
-                            stroke-width="4"
-
-                            stroke-linecap="round"
-
-                            stroke-linejoin="round"
-                        />
-
-                    </svg>
 
                 </div>
 
@@ -1973,32 +1962,11 @@
                     <div class="build-frame">
 
 
-                        <!--
-                        =================================================
-                        PLACEHOLDER PARA FOTO REAL DE KROWN PC'S
-
-                        FUTURO:
-                        Reemplazar este bloque por una fotografía de
-                        un PC real armado por KROWN PC'S.
-                        =================================================
-                        -->
-
-                        <div class="build-placeholder">
-
-                            <strong>
-
-                                FOTOGRAFÍA DE BUILD KROWN
-
-                            </strong>
-
-                            <span>
-
-                                Espacio reservado para una fotografía
-                                real de uno de tus equipos.
-
-                            </span>
-
-                        </div>
+                        <img
+                            class="build-photo"
+                            src="assets/img/builds/build-a-hero.jpg"
+                            alt="PC armada por KROWN PC'S con Ryzen 5 5500 y RTX 4060"
+                        >
 
 
                     </div>
@@ -2026,19 +1994,19 @@
                         <div class="build-specs">
 
                             <span>
-                                CPU · [PLACEHOLDER]
+                                CPU · Ryzen 5 5500
                             </span>
 
                             <span>
-                                GPU · [PLACEHOLDER]
+                                GPU · Galax RTX 4060
                             </span>
 
                             <span>
-                                RAM · [PLACEHOLDER]
+                                RAM · 16GB Hiksemi DDR4
                             </span>
 
                             <span>
-                                SSD · [PLACEHOLDER]
+                                SSD · Kingston KC600 1TB
                             </span>
 
                         </div>
@@ -2259,23 +2227,11 @@
 
                 <div class="build-frame">
 
-                    <div class="build-placeholder">
-
-                        <strong>
-
-                            FOTO DEL BUILD DESTACADO
-
-                        </strong>
-
-
-                        <span>
-
-                            [ PLACEHOLDER PARA FOTOGRAFÍA REAL ]
-
-                        </span>
-
-
-                    </div>
+                    <img
+                        class="build-photo"
+                        src="assets/img/builds/build-a-detail.jpg"
+                        alt="Detalle interno de PC armada por KROWN PC'S: Ryzen 5 5500, RTX 4060, RAM Hiksemi"
+                    >
 
                 </div>
 
@@ -2329,7 +2285,7 @@
 
                             <strong>
 
-                                [ PLACEHOLDER CPU ]
+                                AMD Ryzen 5 5500
 
                             </strong>
 
@@ -2348,7 +2304,7 @@
 
                             <strong>
 
-                                [ PLACEHOLDER GPU ]
+                                Galax GeForce RTX 4060
 
                             </strong>
 
@@ -2367,7 +2323,7 @@
 
                             <strong>
 
-                                [ PLACEHOLDER RAM ]
+                                16GB Hiksemi DDR4
 
                             </strong>
 
@@ -2386,7 +2342,7 @@
 
                             <strong>
 
-                                [ PLACEHOLDER SSD ]
+                                Kingston KC600 1TB + 512GB NVMe
 
                             </strong>
 
@@ -2747,31 +2703,27 @@
                 <div class="portfolio-grid">
 
 
-                    <!-- FOTO FUTURA 01 -->
-
                     <div class="portfolio-item">
 
-                        [ FOTO BUILD KROWN 01 ]
+                        <img
+                            src="assets/img/builds/build-b-full.jpg"
+                            alt="PC armada por KROWN PC'S con Intel i7-6700 y Zotac GTX 1060"
+                        >
 
                     </div>
 
 
-                    <!-- FOTO FUTURA 02 -->
-
                     <div class="portfolio-item">
 
-                        [ FOTO BUILD KROWN 02 ]
+                        <img
+                            src="assets/img/builds/build-b-detail.jpg"
+                            alt="Detalle interno de PC armada por KROWN PC'S: Zotac GTX 1060, disipador Thermaltake"
+                        >
 
                     </div>
 
 
-                    <!-- FOTO FUTURA 03 -->
-
-                    <div class="portfolio-item">
-
-                        [ FOTO BUILD KROWN 03 ]
-
-                    </div>
+                    <!-- FOTO FUTURA 03: agrega más builds aquí a medida que tengas fotos -->
 
 
                 </div>
