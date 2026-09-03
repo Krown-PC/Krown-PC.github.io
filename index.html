@@ -1,15 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>KROWN PC's | Custom Gaming PCs</title>
+    <title>KROWN PC's | Servicio y Personalización de PCs</title>
 
     <style>
-        /* =========================
-           GLOBAL SETTINGS
-        ========================== */
+        /* ========================================
+           KROWN PC'S — WEBSITE
+           ======================================== */
+
+        :root {
+            --bg: #08080c;
+            --bg-secondary: #0d0d14;
+            --card: #13131c;
+            --border: #262632;
+            --text: #ffffff;
+            --text-muted: #a4a4af;
+            --purple: #8b3dff;
+            --purple-light: #a855f7;
+            --purple-dark: #5f20c9;
+        }
 
         * {
             margin: 0;
@@ -23,8 +35,8 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #08080c;
-            color: #ffffff;
+            background: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
         }
 
@@ -33,34 +45,43 @@
             color: inherit;
         }
 
-        /* =========================
+        /* ========================================
            NAVIGATION
-        ========================== */
+           ======================================== */
 
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
+            height: 74px;
+
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
-            background: rgba(8, 8, 12, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #20202a;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            background: rgba(8, 8, 12, 0.94);
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+
             z-index: 1000;
         }
 
         .logo {
-            font-size: 22px;
-            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 21px;
+            font-weight: 900;
             letter-spacing: 2px;
-            white-space: nowrap;
         }
 
-        .logo span {
-            color: #8b5cf6;
+        .logo-accent {
+            color: var(--purple-light);
         }
 
         .nav-links {
@@ -70,325 +91,556 @@
         }
 
         .nav-links a {
-            color: #b8b8c2;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #b7b7c2;
             transition: 0.25s;
         }
 
         .nav-links a:hover {
-            color: #a855f7;
+            color: var(--purple-light);
         }
 
-        /* =========================
+        /* ========================================
            HERO
-        ========================== */
+           ======================================== */
 
         .hero {
             position: relative;
+
             min-height: 100vh;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             text-align: center;
-            padding: 120px 20px 80px;
+
+            padding: 140px 20px 90px;
+
             overflow: hidden;
         }
 
+        /* Purple central glow */
+
         .hero::before {
             content: "";
+
             position: absolute;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(
-                circle,
-                rgba(139, 92, 246, 0.22),
-                transparent 65%
-            );
+
+            width: 900px;
+            height: 900px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(139, 61, 255, 0.16),
+                    rgba(139, 61, 255, 0.05) 35%,
+                    transparent 70%
+                );
+
             top: 50%;
             left: 50%;
+
             transform: translate(-50%, -50%);
+
             pointer-events: none;
+        }
+
+        /* Technical corner decorations */
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            top: 90px;
+            left: -100px;
+
+            border-top: 2px solid var(--purple);
+            border-left: 2px solid var(--purple);
+
+            transform: rotate(45deg);
+
+            opacity: 0.45;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
+
             max-width: 1100px;
         }
 
-        .eyebrow {
+        .hero-label {
             display: inline-block;
-            color: #a855f7;
+
+            color: var(--purple-light);
+
             font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
+            font-weight: 800;
+            letter-spacing: 4px;
+
+            margin-bottom: 28px;
         }
 
         .hero h1 {
-            font-size: clamp(48px, 8vw, 110px);
+            font-size: clamp(54px, 8vw, 110px);
+
             line-height: 0.95;
+
             letter-spacing: -3px;
+
             margin-bottom: 30px;
         }
 
         .gradient-text {
-            background: linear-gradient(
-                90deg,
-                #8b5cf6,
-                #c084fc,
-                #7c3aed
-            );
+            background:
+                linear-gradient(
+                    90deg,
+                    #6d28d9,
+                    #a855f7,
+                    #c084fc,
+                    #7c3aed
+                );
+
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            max-width: 650px;
-            margin: 0 auto 40px;
-            color: #a8a8b3;
-            font-size: 19px;
+            max-width: 720px;
+
+            margin: 0 auto 42px;
+
+            color: var(--text-muted);
+
+            font-size: 18px;
+
             line-height: 1.7;
         }
 
+        /* ========================================
+           BUTTONS
+           ======================================== */
+
         .buttons {
             display: flex;
+
             justify-content: center;
+
             gap: 15px;
+
             flex-wrap: wrap;
         }
 
         .btn {
-            display: inline-block;
-            padding: 16px 30px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 54px;
+
+            padding: 15px 28px;
+
+            border-radius: 7px;
+
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+
             transition: 0.25s;
         }
 
         .btn-primary {
-            background: linear-gradient(
-                135deg,
-                #7c3aed,
-                #a855f7
-            );
             color: white;
-            box-shadow: 0 10px 35px rgba(124, 58, 237, 0.3);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--purple-dark),
+                    var(--purple-light)
+                );
+
+            box-shadow:
+                0 12px 35px
+                rgba(124, 58, 237, 0.28);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.45);
+
+            box-shadow:
+                0 18px 45px
+                rgba(124, 58, 237, 0.42);
         }
 
         .btn-secondary {
-            border: 1px solid #3a3a46;
-            color: #ffffff;
+            color: white;
+
+            border: 1px solid #3b3b48;
         }
 
         .btn-secondary:hover {
-            border-color: #8b5cf6;
-            background: rgba(139, 92, 246, 0.08);
+            border-color: var(--purple);
+
+            background:
+                rgba(139, 61, 255, 0.08);
         }
 
-        /* =========================
-           SECTIONS
-        ========================== */
+        /* ========================================
+           GENERAL SECTIONS
+           ======================================== */
 
         section {
             padding: 110px 8%;
         }
 
         .section-header {
-            max-width: 700px;
+            max-width: 760px;
+
             margin-bottom: 60px;
         }
 
         .section-label {
-            color: #a855f7;
-            font-size: 13px;
-            font-weight: 700;
+            color: var(--purple-light);
+
+            font-size: 12px;
+            font-weight: 800;
+
             letter-spacing: 3px;
-            margin-bottom: 15px;
+
+            margin-bottom: 16px;
         }
 
         .section-title {
-            font-size: clamp(38px, 5vw, 60px);
-            margin-bottom: 20px;
+            font-size:
+                clamp(38px, 5vw, 62px);
+
+            line-height: 1.05;
+
+            margin-bottom: 22px;
         }
 
         .section-description {
-            color: #9b9ba6;
+            color: var(--text-muted);
+
             font-size: 17px;
+
             line-height: 1.7;
         }
 
-        /* =========================
+        /* ========================================
            SERVICES
-        ========================== */
+           ======================================== */
 
         .services {
-            background: #0d0d14;
-            border-top: 1px solid #1d1d27;
-            border-bottom: 1px solid #1d1d27;
+            background: var(--bg-secondary);
+
+            border-top:
+                1px solid var(--border);
+
+            border-bottom:
+                1px solid var(--border);
         }
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(240px, 1fr));
+
             gap: 20px;
         }
 
         .service-card {
             position: relative;
-            padding: 35px;
-            background: #13131c;
-            border: 1px solid #242432;
+
+            padding: 34px;
+
+            background: var(--card);
+
+            border:
+                1px solid var(--border);
+
             border-radius: 12px;
+
             transition: 0.3s;
         }
 
         .service-card:hover {
             transform: translateY(-6px);
-            border-color: #7c3aed;
+
+            border-color:
+                var(--purple);
         }
 
         .service-number {
-            color: #8b5cf6;
+            color: var(--purple-light);
+
             font-size: 13px;
-            font-weight: 700;
+            font-weight: 800;
+
             margin-bottom: 30px;
         }
 
         .service-card h3 {
             font-size: 22px;
-            margin-bottom: 15px;
+
+            margin-bottom: 14px;
         }
 
         .service-card p {
-            color: #9b9ba6;
+            color: var(--text-muted);
+
             line-height: 1.7;
+
             font-size: 15px;
         }
 
-        /* =========================
+        /* ========================================
+           VALUES
+           ======================================== */
+
+        .values {
+            position: relative;
+
+            background: var(--bg);
+        }
+
+        .value-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(200px, 1fr));
+
+            gap: 16px;
+        }
+
+        .value-card {
+            padding: 28px;
+
+            border-left:
+                2px solid var(--purple);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(139, 61, 255, 0.08),
+                    transparent
+                );
+        }
+
+        .value-card h3 {
+            font-size: 17px;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            color: var(--text-muted);
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+        /* ========================================
            BUILDS
-        ========================== */
+           ======================================== */
 
         .builds {
-            background: #08080c;
+            background: var(--bg-secondary);
+
+            border-top:
+                1px solid var(--border);
         }
 
         .build-placeholder {
             padding: 80px 30px;
+
             text-align: center;
-            border: 1px dashed #343440;
+
+            border:
+                1px dashed #3a3a48;
+
             border-radius: 12px;
+
             color: #777784;
         }
 
         .build-placeholder h3 {
-            color: #ffffff;
-            margin-bottom: 12px;
+            color: white;
+
             font-size: 24px;
+
+            margin-bottom: 12px;
         }
 
-        /* =========================
+        /* ========================================
            PORTFOLIO
-        ========================== */
+           ======================================== */
 
         .portfolio {
-            background: #0d0d14;
-            border-top: 1px solid #1d1d27;
+            background: var(--bg);
         }
 
         .portfolio-placeholder {
             padding: 80px 30px;
+
             text-align: center;
-            border: 1px dashed #343440;
+
+            border:
+                1px dashed #3a3a48;
+
             border-radius: 12px;
+
             color: #777784;
         }
 
-        /* =========================
+        /* ========================================
            CONTACT
-        ========================== */
+           ======================================== */
 
         .contact {
             text-align: center;
+
             background:
                 radial-gradient(
                     circle at center,
-                    rgba(124, 58, 237, 0.18),
-                    transparent 55%
+                    rgba(124, 58, 237, 0.20),
+                    transparent 58%
                 ),
-                #08080c;
+                var(--bg-secondary);
+
+            border-top:
+                1px solid var(--border);
         }
 
         .contact-content {
-            max-width: 750px;
+            max-width: 760px;
+
             margin: auto;
         }
 
         .contact h2 {
-            font-size: clamp(42px, 6vw, 75px);
+            font-size:
+                clamp(42px, 6vw, 76px);
+
+            line-height: 1;
+
             margin-bottom: 25px;
         }
 
         .contact p {
-            color: #a5a5b0;
+            color: var(--text-muted);
+
             font-size: 18px;
+
             line-height: 1.7;
+
             margin-bottom: 35px;
         }
 
-        /* =========================
+        /* ========================================
+           FLOATING WHATSAPP
+           ======================================== */
+
+        .whatsapp-float {
+            position: fixed;
+
+            right: 24px;
+            bottom: 24px;
+
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #25D366;
+
+            color: white;
+
+            border-radius: 50%;
+
+            font-size: 28px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,0.4);
+
+            z-index: 1001;
+
+            transition: 0.25s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* ========================================
            FOOTER
-        ========================== */
+           ======================================== */
 
         footer {
             padding: 30px 8%;
+
             display: flex;
+
             justify-content: space-between;
-            gap: 20px;
+
             flex-wrap: wrap;
-            border-top: 1px solid #20202a;
+
+            gap: 15px;
+
+            border-top:
+                1px solid var(--border);
+
             color: #777784;
+
             font-size: 13px;
         }
 
-        /* =========================
+        /* ========================================
            MOBILE
-        ========================== */
+           ======================================== */
 
         @media (max-width: 700px) {
 
             nav {
-                padding: 18px 6%;
-            }
-
-            .nav-links {
-                gap: 15px;
-            }
-
-            .nav-links a {
-                font-size: 11px;
+                padding: 0 5%;
             }
 
             .logo {
                 font-size: 16px;
             }
 
+            .nav-links {
+                gap: 13px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+            }
+
             section {
-                padding: 80px 7%;
+                padding: 85px 7%;
             }
 
             .hero {
-                padding-top: 110px;
+                padding-top: 120px;
             }
 
             .hero h1 {
@@ -399,60 +651,86 @@
                 font-size: 16px;
             }
 
+            .whatsapp-float {
+                width: 54px;
+                height: 54px;
+
+                right: 18px;
+                bottom: 18px;
+            }
+
         }
 
     </style>
 </head>
 
+
 <body>
 
-    <!-- NAVIGATION -->
+    <!-- =====================================
+         NAVIGATION
+    ====================================== -->
 
     <nav>
 
-        <a href="#home" class="logo">
-            KROWN <span>PC's</span>
+        <a href="#inicio" class="logo">
+            KROWN
+            <span class="logo-accent">PC's</span>
         </a>
 
         <ul class="nav-links">
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#services">SERVICES</a></li>
-            <li><a href="#builds">BUILDS</a></li>
-            <li><a href="#portfolio">PORTFOLIO</a></li>
+            <li><a href="#inicio">INICIO</a></li>
+            <li><a href="#servicios">SERVICIOS</a></li>
+            <li><a href="#equipos">EQUIPOS</a></li>
+            <li><a href="#portafolio">PORTAFOLIO</a></li>
         </ul>
 
     </nav>
 
 
-    <!-- HERO -->
+    <!-- =====================================
+         HERO
+    ====================================== -->
 
-    <section class="hero" id="home">
+    <section class="hero" id="inicio">
 
         <div class="hero-content">
 
-            <div class="eyebrow">
-                CUSTOM GAMING SYSTEMS
+            <div class="hero-label">
+                SERVICIO Y PERSONALIZACIÓN DE PCs
             </div>
 
             <h1>
-                BUILT FOR<br>
-                <span class="gradient-text">PERFORMANCE.</span>
+                CONSTRUIDAS PARA<br>
+                <span class="gradient-text">
+                    RENDIR.
+                </span>
             </h1>
 
             <p>
-                Custom gaming PCs, upgrades, maintenance and performance
-                optimization. Built with attention to detail and tested
-                before delivery.
+                PCs personalizadas, mantenimiento, actualizaciones,
+                diagnóstico y optimización. Soluciones claras,
+                transparentes y adaptadas a lo que realmente necesitas.
             </p>
 
             <div class="buttons">
 
-                <a href="#builds" class="btn btn-primary">
-                    VIEW AVAILABLE BUILDS
+                <a href="#equipos"
+                   class="btn btn-primary">
+
+                    VER EQUIPOS DISPONIBLES
+
                 </a>
 
-                <a href="#contact" class="btn btn-secondary">
-                    CONTACT US
+
+                <!-- WHATSAPP PLACEHOLDER -->
+
+                <a href="https://wa.me/YOUR_WHATSAPP_NUMBER_HERE"
+                   class="btn btn-secondary"
+                   target="_blank">
+
+                    CONTÁCTANOS
+
                 </a>
 
             </div>
@@ -462,24 +740,28 @@
     </section>
 
 
-    <!-- SERVICES -->
+    <!-- =====================================
+         SERVICES
+    ====================================== -->
 
-    <section class="services" id="services">
+    <section
+        class="services"
+        id="servicios">
 
         <div class="section-header">
 
             <div class="section-label">
-                WHAT WE DO
+                NUESTROS SERVICIOS
             </div>
 
             <h2 class="section-title">
-                PC SERVICES BUILT AROUND YOU.
+                SOLUCIONES PARA TU PC.
             </h2>
 
             <p class="section-description">
-                From complete gaming systems to maintenance and hardware
-                upgrades, KROWN PC's provides practical solutions for
-                gamers and PC users.
+                Desde la creación de un equipo completo hasta
+                mantenimiento y optimización, trabajamos para ofrecer
+                soluciones claras y adecuadas para cada necesidad.
             </p>
 
         </div>
@@ -487,15 +769,20 @@
 
         <div class="service-grid">
 
+
             <div class="service-card">
 
-                <div class="service-number">01</div>
+                <div class="service-number">
+                    01
+                </div>
 
-                <h3>Custom PC Builds</h3>
+                <h3>
+                    PCs Personalizadas
+                </h3>
 
                 <p>
-                    Gaming PCs built around your budget, performance
-                    requirements and preferred games.
+                    Equipos construidos de acuerdo con tu presupuesto,
+                    necesidades y objetivos de rendimiento.
                 </p>
 
             </div>
@@ -503,13 +790,17 @@
 
             <div class="service-card">
 
-                <div class="service-number">02</div>
+                <div class="service-number">
+                    02
+                </div>
 
-                <h3>Upgrades & Optimization</h3>
+                <h3>
+                    Actualizaciones
+                </h3>
 
                 <p>
-                    Hardware upgrades and system optimization designed
-                    to improve performance and reliability.
+                    Mejoras de hardware para aumentar el rendimiento,
+                    almacenamiento o capacidad de tu equipo.
                 </p>
 
             </div>
@@ -517,13 +808,18 @@
 
             <div class="service-card">
 
-                <div class="service-number">03</div>
+                <div class="service-number">
+                    03
+                </div>
 
-                <h3>Maintenance</h3>
+                <h3>
+                    Mantenimiento
+                </h3>
 
                 <p>
-                    Cleaning, thermal paste replacement and preventative
-                    maintenance to keep your system running properly.
+                    Limpieza, cambio de pasta térmica y mantenimiento
+                    preventivo para mantener tu PC funcionando
+                    correctamente.
                 </p>
 
             </div>
@@ -531,39 +827,140 @@
 
             <div class="service-card">
 
-                <div class="service-number">04</div>
+                <div class="service-number">
+                    04
+                </div>
 
-                <h3>Diagnostics</h3>
+                <h3>
+                    Diagnóstico y Optimización
+                </h3>
 
                 <p>
-                    Troubleshooting and diagnostics to identify hardware
-                    and software problems.
+                    Identificación de problemas y optimización del
+                    sistema para mejorar su funcionamiento.
                 </p>
 
             </div>
+
 
         </div>
 
     </section>
 
 
-    <!-- AVAILABLE BUILDS -->
+    <!-- =====================================
+         VALUES
+    ====================================== -->
 
-    <section class="builds" id="builds">
+    <section class="values">
 
         <div class="section-header">
 
             <div class="section-label">
-                AVAILABLE SYSTEMS
+                NUESTRA FORMA DE TRABAJAR
             </div>
 
             <h2 class="section-title">
-                READY TO PLAY.
+                ¿POR QUÉ KROWN PC's?
             </h2>
 
             <p class="section-description">
-                Gaming systems currently available for purchase will
-                appear here.
+                Nuestro trabajo se basa en cinco principios que definen
+                cómo tratamos cada equipo y cada cliente.
+            </p>
+
+        </div>
+
+
+        <div class="value-grid">
+
+
+            <div class="value-card">
+
+                <h3>HONESTIDAD</h3>
+
+                <p>
+                    Recomendaciones basadas en lo que tu equipo
+                    realmente necesita, sin vender mejoras innecesarias.
+                </p>
+
+            </div>
+
+
+            <div class="value-card">
+
+                <h3>TRANSPARENCIA</h3>
+
+                <p>
+                    Información clara sobre los componentes utilizados,
+                    el trabajo realizado y el estado de tu equipo.
+                </p>
+
+            </div>
+
+
+            <div class="value-card">
+
+                <h3>PROFESIONALISMO</h3>
+
+                <p>
+                    Trabajo cuidadoso, procesos ordenados y pruebas
+                    antes de entregar cada equipo.
+                </p>
+
+            </div>
+
+
+            <div class="value-card">
+
+                <h3>CLARIDAD</h3>
+
+                <p>
+                    Explicaciones simples y comprensibles para que
+                    puedas tomar decisiones con confianza.
+                </p>
+
+            </div>
+
+
+            <div class="value-card">
+
+                <h3>EFICIENCIA</h3>
+
+                <p>
+                    Soluciones prácticas enfocadas en resolver el
+                    problema de forma efectiva.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         AVAILABLE EQUIPMENT
+    ====================================== -->
+
+    <section
+        class="builds"
+        id="equipos">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                EQUIPOS DISPONIBLES
+            </div>
+
+            <h2 class="section-title">
+                LISTOS PARA SU PRÓXIMO DUEÑO.
+            </h2>
+
+            <p class="section-description">
+                Aquí encontrarás los equipos disponibles actualmente
+                para compra.
             </p>
 
         </div>
@@ -571,10 +968,12 @@
 
         <div class="build-placeholder">
 
-            <h3>AVAILABLE BUILDS COMING SOON</h3>
+            <h3>
+                PRÓXIMAMENTE
+            </h3>
 
             <p>
-                Our current gaming PC inventory will be displayed here.
+                Los equipos disponibles aparecerán aquí.
             </p>
 
         </div>
@@ -582,23 +981,27 @@
     </section>
 
 
-    <!-- PORTFOLIO -->
+    <!-- =====================================
+         PORTFOLIO
+    ====================================== -->
 
-    <section class="portfolio" id="portfolio">
+    <section
+        class="portfolio"
+        id="portafolio">
 
         <div class="section-header">
 
             <div class="section-label">
-                OUR WORK
+                NUESTRO TRABAJO
             </div>
 
             <h2 class="section-title">
-                BUILT WITH ATTENTION TO DETAIL.
+                ATENCIÓN A CADA DETALLE.
             </h2>
 
             <p class="section-description">
-                Photos of completed builds, upgrades and PC projects
-                will be added here.
+                Próximamente podrás ver equipos construidos,
+                actualizados y personalizados por KROWN PC's.
             </p>
 
         </div>
@@ -606,30 +1009,42 @@
 
         <div class="portfolio-placeholder">
 
-            PORTFOLIO COMING SOON
+            PORTAFOLIO PRÓXIMAMENTE
 
         </div>
 
     </section>
 
 
-    <!-- CONTACT -->
+    <!-- =====================================
+         CONTACT
+    ====================================== -->
 
-    <section class="contact" id="contact">
+    <section
+        class="contact"
+        id="contacto">
 
         <div class="contact-content">
 
             <h2>
-                LET'S BUILD YOUR NEXT PC.
+                HABLEMOS DE TU PRÓXIMO PC.
             </h2>
 
             <p>
-                Looking for a custom gaming PC, an upgrade or technical
-                service? Get in touch and tell us what you need.
+                ¿Buscas un PC personalizado, una actualización o
+                necesitas ayuda con tu equipo? Escríbenos y cuéntanos
+                qué necesitas.
             </p>
 
-            <a href="#" class="btn btn-primary">
-                CONTACT KROWN PC's
+
+            <!-- WHATSAPP PLACEHOLDER -->
+
+            <a href="https://wa.me/YOUR_WHATSAPP_NUMBER_HERE"
+               class="btn btn-primary"
+               target="_blank">
+
+                CONTACTAR POR WHATSAPP
+
             </a>
 
         </div>
@@ -637,7 +1052,25 @@
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- =====================================
+         FLOATING WHATSAPP BUTTON
+    ====================================== -->
+
+    <!-- WHATSAPP PLACEHOLDER -->
+
+    <a href="https://wa.me/YOUR_WHATSAPP_NUMBER_HERE"
+       class="whatsapp-float"
+       target="_blank"
+       aria-label="Contactar por WhatsApp">
+
+        ☎
+
+    </a>
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
 
     <footer>
 
@@ -646,10 +1079,11 @@
         </div>
 
         <div>
-            CUSTOM GAMING SYSTEMS & PC SERVICES
+            SERVICIO Y PERSONALIZACIÓN DE PCs
         </div>
 
     </footer>
+
 
 </body>
 </html>
