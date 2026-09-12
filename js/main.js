@@ -1,7 +1,7 @@
 /* Krown PC's — contenido editable */
 const SITE_CONFIG = {
   // Reemplaza este placeholder por el número real, sin +, espacios ni guiones.
-  whatsappNumber: "569XXXXXXXX",
+  whatsappNumber: "56957374233",
 };
 
 const SERVICES = [
