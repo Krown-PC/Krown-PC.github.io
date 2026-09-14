@@ -17,7 +17,7 @@ const CATEGORIES = [
 
 const SITE_CONFIG = {
   // Mantén este número sincronizado con js/main.js.
-  whatsappNumber: "569XXXXXXXX",
+  whatsappNumber: "56957374233",
 };
 
 function whatsappUrl(message) {
