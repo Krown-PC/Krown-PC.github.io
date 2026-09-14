@@ -1,4 +1,53 @@
-const WORKS = [
+const WORKS = [const WORKS = [
+  {
+    id: "001",
+    type: "build",
+    category: "armado",
+
+    title: "KROWN BUILD #001",
+
+    service: "Armado de PC",
+
+    description: "PC gaming armado desde cero, configurado y probado antes de la entrega.",
+
+    images: [
+      "assets/trabajos/trabajo-001/principal.jpg",
+      "assets/trabajos/trabajo-001/vista-01.jpg",
+      "assets/trabajos/trabajo-001/vista-02.jpg",
+      "assets/trabajos/trabajo-001/interior.jpg",
+      "assets/trabajos/trabajo-001/detalle.jpg",
+      "assets/trabajos/trabajo-001/trasera.jpg",
+      "assets/trabajos/trabajo-001/cajas.jpg"
+    ],
+
+    components: [
+      "CPU · Ryzen 5 5500",
+      "GPU · Galax RTX 4060",
+      "Motherboard · MSI A520M Pro",
+      "RAM · 8x2 Hiksemi Future 3200Mhz",
+      "Storage · Samsung PM9A1 512GB | Kingston KC600 1TB",
+      "PSU · MSI MAG A650BN 650W",
+      "Case · Gamdias Atlas M3M"
+    ],
+
+    process: [
+      "Selección y compatibilidad de componentes",
+      "Armado del equipo",
+      "Cable management",
+      "Configuración del sistema",
+      "Pruebas de estabilidad y temperaturas"
+    ],
+
+    testing: [
+      "OCCT",
+      "Cinebench",
+      "FurMark",
+      "HWiNFO"
+    ],
+
+    result: "Equipo terminado, configurado y probado antes de la entrega."
+  }
+];
   // Agrega aquí trabajos reales. No inventes fotografías, resultados ni datos.
   // {
   //   id: "001",
