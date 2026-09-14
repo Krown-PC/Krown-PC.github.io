@@ -139,8 +139,10 @@ function renderFAQ() {
 
 function initHeroVideo() {
   const video = document.querySelector(".hero-video");
-  if (!video || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  video.pause();
+  if (!video) return;
+  // Autoplay is intentionally muted and inline so the Hero video works on modern browsers.
+  // Do not disable it for prefers-reduced-motion: the video is part of the visual Hero.
+  video.play().catch(() => {});
 }
 
 function initNavigation() {

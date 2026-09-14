@@ -221,7 +221,7 @@ h3 { font-size:1.1rem; margin-bottom:8px; }
   .floating-whatsapp { width:52px; height:52px; right:14px; bottom:14px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-video { visibility:hidden; }
+  .hero-video { visibility:visible; }
   .hero-video-wrap { background:url("../assets/backgrounds/krown-hero-poster.webp") center/cover no-repeat; }
   html { scroll-behavior:auto; }
   *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
