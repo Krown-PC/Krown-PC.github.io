@@ -1,6 +1,5 @@
 /* Krown PC's — contenido editable */
 const SITE_CONFIG = {
-  // Reemplaza este placeholder por el número real, sin +, espacios ni guiones.
   whatsappNumber: "56957374233",
 };
 
@@ -115,7 +114,7 @@ function renderFeaturedWork() {
         <p class="eyebrow">PROYECTO DESTACADO / BUILD #001</p>
         <h3>Krown Build #001</h3>
         <p>PC gaming armado desde cero, configurado y documentado como parte del portafolio de Krown PC's.</p>
-        <div class="work-tags"><span>RYZEN 5 5500</span><span>RTX 4060</span><span>16 GB</span><span>TESTING</span></div>
+        <div class="work-tags"><span>RYZEN 5 5500</span><span>RTX 4060</span><span>16 GB</span><span>OCCT / CINEBENCH / FURMARK</span></div>
         <a class="text-link" href="trabajos.html">Ver proyecto completo <span>→</span></a>
       </div>
     </article>`;

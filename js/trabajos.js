@@ -1,5 +1,5 @@
 /* Krown PC's — Portfolio / trabajos reales
-   Edita únicamente WORKS para agregar nuevos proyectos.
+   Para agregar un proyecto, edita únicamente WORKS.
 */
 
 const WORKS = [
@@ -43,15 +43,18 @@ const WORKS = [
 
 const CATEGORIES = [
   ["all", "Todos"],
-  ["armado", "Armado"],
+  ["armado", "Armados"],
   ["mantenimiento", "Mantenimiento"],
   ["optimizacion", "Optimización"],
   ["diagnostico", "Diagnóstico"],
   ["personalizacion", "Personalización"],
-  ["upgrade", "Upgrade"]
+  ["upgrade", "Upgrades"]
 ];
 
 const SITE_CONFIG = { whatsappNumber: "56957374233" };
+let activeWork = null;
+let activeImage = 0;
+let lastFocusedElement = null;
 
 function escapeHTML(value = "") {
   return String(value).replace(/[&<>'"]/g, char => ({
@@ -66,9 +69,9 @@ function whatsappUrl(message) {
 function typeLabel(work) {
   return {
     build: "BUILD / ARMADO",
-    maintenance: "CASO / MANTENIMIENTO",
-    upgrade: "UPGRADE / MEJORA",
-    diagnostic: "CASO / DIAGNÓSTICO"
+    maintenance: "MANTENIMIENTO",
+    upgrade: "UPGRADE",
+    diagnostic: "DIAGNÓSTICO"
   }[work.type] || "PROYECTO";
 }
 
@@ -78,66 +81,110 @@ function statusBadge(work) {
   return "";
 }
 
-function beforeAfter(work) {
-  if (!work.before && !work.after) return "";
-  return `
-    <div class="work-media work-media-comparison">
-      <div class="before-after" style="--split:50%">
-        <div class="pane before" style="${work.before ? `background-image:url('${escapeHTML(work.before)}')` : ""}">${work.before ? "" : "ANTES"}</div>
-        <div class="pane after" style="${work.after ? `background-image:url('${escapeHTML(work.after)}')` : ""}">${work.after ? "" : "DESPUÉS"}</div>
-        <div class="divider" aria-hidden="true"></div>
-        <div class="handle" aria-hidden="true">↔</div>
-        <input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después de ${escapeHTML(work.title)}">
-      </div>
-      <span class="media-label">ANTES / DESPUÉS</span>
-    </div>`;
+function categoryCount(filter) {
+  return filter === "all" ? WORKS.length : WORKS.filter(work => work.category === filter).length;
 }
 
-function buildShowcase(work) {
+function renderFilters(active = "all") {
+  const root = document.querySelector("#filter-bar");
+  if (!root) return;
+
+  root.innerHTML = `
+    <div class="filter-list" role="group" aria-label="Filtrar trabajos">
+      ${CATEGORIES.map(([key, label]) => `
+        <button class="filter-btn ${key === active ? "active" : ""}" type="button" data-filter="${key}">
+          <span>${label}</span><small>${categoryCount(key)}</small>
+        </button>
+      `).join("")}
+    </div>
+    <span class="portfolio-total">${categoryCount(active)} ${categoryCount(active) === 1 ? "proyecto" : "proyectos"}</span>
+  `;
+
+  root.querySelectorAll(".filter-btn").forEach(btn => btn.addEventListener("click", () => {
+    renderFilters(btn.dataset.filter);
+    renderWorks(btn.dataset.filter);
+  }));
+}
+
+function renderCard(work) {
   const images = Array.isArray(work.images) ? work.images.filter(Boolean).slice(0, 10) : [];
-  if (!images.length) return '<div class="work-media media-empty"><span>FOTOGRAFÍAS / POR AGREGAR</span></div>';
+  const featured = images[0] || "";
+  const previewImages = images.slice(1, 4);
+  const quickSpecs = Array.isArray(work.components) ? work.components.slice(0, 3) : [];
 
-  const featured = images[0];
   return `
-    <div class="work-media work-media-gallery" data-gallery="${escapeHTML(work.id)}">
-      <button class="gallery-feature" type="button" data-gallery-feature="${escapeHTML(work.id)}" aria-label="Ampliar fotografía principal de ${escapeHTML(work.title)}">
-        <img src="${escapeHTML(featured)}" alt="${escapeHTML(work.title)} — fotografía principal">
-        <span class="gallery-expand" aria-hidden="true">↗</span>
-      </button>
-      <div class="gallery-thumbs" role="list" aria-label="Fotografías del proyecto ${escapeHTML(work.title)}">
-        ${images.map((src, i) => `
-          <button class="gallery-thumb ${i === 0 ? "active" : ""}" type="button" data-gallery-thumb="${escapeHTML(work.id)}" data-index="${i}" aria-label="Ver fotografía ${i + 1} de ${images.length}">
-            <img src="${escapeHTML(src)}" alt="" loading="${i === 0 ? "eager" : "lazy"}">
-          </button>
-        `).join("")}
+    <article class="work-card">
+      <div class="work-card-media">
+        ${featured ? `
+          <div class="work-card-gallery">
+            <button class="card-feature" type="button" data-work-id="${escapeHTML(work.id)}" aria-label="Abrir ${escapeHTML(work.title)}">
+              <img src="${escapeHTML(featured)}" alt="${escapeHTML(work.title)} — fotografía principal" loading="lazy">
+            </button>
+            ${previewImages.length ? `<div class="card-preview-grid">${previewImages.map((src, index) => `
+              <button type="button" data-work-id="${escapeHTML(work.id)}" aria-label="Ver fotografía ${index + 2} de ${images.length}">
+                <img src="${escapeHTML(src)}" alt="" loading="lazy">
+              </button>`).join("")}
+            </div>` : ""}
+          </div>` : `<div class="media-empty">FOTOGRAFÍAS / POR AGREGAR</div>`}
+        <div class="work-card-topline">
+          <span>${escapeHTML(typeLabel(work))}</span>
+          ${statusBadge(work)}
+        </div>
+        ${images.length ? `<span class="work-photo-count">${images.length} FOTOS</span>` : ""}
+        <button class="work-image-action js-open-work" type="button" data-work-id="${escapeHTML(work.id)}" aria-label="Ver proyecto ${escapeHTML(work.title)}">
+          <span>Ver proyecto</span><b>↗</b>
+        </button>
       </div>
-      <div class="gallery-count">${images.length} FOTOGRAFÍAS</div>
-    </div>`;
+      <div class="work-card-body">
+        <div class="work-card-meta"><span>PROYECTO #${escapeHTML(work.id)}</span><span>${escapeHTML(work.service)}</span></div>
+        <h3>${escapeHTML(work.title)}</h3>
+        <p>${escapeHTML(work.description)}</p>
+        ${quickSpecs.length ? `<div class="work-quick-specs">${quickSpecs.map(spec => `<span>${escapeHTML(spec)}</span>`).join("")}</div>` : ""}
+        <button class="work-card-link js-open-work" type="button" data-work-id="${escapeHTML(work.id)}">Ver caso completo <span>→</span></button>
+      </div>
+    </article>
+  `;
 }
 
-function renderMedia(work) {
-  if (work.type === "maintenance" || work.before || work.after) return beforeAfter(work);
-  return buildShowcase(work);
+function renderWorks(filter = "all") {
+  const root = document.querySelector("#portfolio-grid");
+  if (!root) return;
+
+  const list = filter === "all" ? WORKS : WORKS.filter(work => work.category === filter);
+
+  if (!list.length) {
+    root.innerHTML = `
+      <div class="empty-state portfolio-empty" style="grid-column:1/-1">
+        <p class="eyebrow">PORTFOLIO / CONTENIDO</p>
+        <h3>No hay trabajos en esta categoría.</h3>
+        <p>Prueba otra categoría para ver proyectos publicados.</p>
+      </div>`;
+    return;
+  }
+
+  root.innerHTML = list.map(renderCard).join("");
+  root.querySelectorAll(".js-open-work, .work-card-gallery [data-work-id]").forEach(button => button.addEventListener("click", () => openWork(button.dataset.workId)));
 }
 
-function renderDetails(work) {
+function renderDetail(work) {
+  const images = Array.isArray(work.images) ? work.images.filter(Boolean).slice(0, 10) : [];
   const components = Array.isArray(work.components) && work.components.length ? `
-    <div class="work-detail-block">
+    <section class="modal-detail-section">
       <span class="detail-label">ESPECIFICACIONES</span>
-      <div class="component-grid">${work.components.map(x => `<span>${escapeHTML(x)}</span>`).join("")}</div>
-    </div>` : "";
+      <div class="component-grid">${work.components.map(item => `<div>${escapeHTML(item)}</div>`).join("")}</div>
+    </section>` : "";
 
   const process = Array.isArray(work.process) && work.process.length ? `
-    <div class="work-detail-block">
+    <section class="modal-detail-section">
       <span class="detail-label">PROCESO</span>
-      <ol class="work-process">${work.process.map(x => `<li>${escapeHTML(x)}</li>`).join("")}</ol>
-    </div>` : "";
+      <ol class="work-process">${work.process.map(item => `<li>${escapeHTML(item)}</li>`).join("")}</ol>
+    </section>` : "";
 
   const testing = Array.isArray(work.testing) && work.testing.length ? `
-    <div class="work-detail-block">
+    <section class="modal-detail-section">
       <span class="detail-label">TESTING</span>
-      <div class="testing-list">${work.testing.map(x => `<span>${escapeHTML(x)}</span>`).join("")}</div>
-    </div>` : "";
+      <div class="testing-list">${work.testing.map(item => `<span>${escapeHTML(item)}</span>`).join("")}</div>
+    </section>` : "";
 
   const result = work.result ? `
     <div class="work-result">
@@ -145,166 +192,189 @@ function renderDetails(work) {
       <p>${escapeHTML(work.result)}</p>
     </div>` : "";
 
-  return `${components}${process}${testing}${result}`;
-}
-
-function renderFilters(active = "all") {
-  const root = document.querySelector("#filter-bar");
-  if (!root) return;
-  root.innerHTML = CATEGORIES.map(([key, label]) => `<button class="filter-btn ${key === active ? "active" : ""}" type="button" data-filter="${key}">${label}</button>`).join("");
-  root.querySelectorAll(".filter-btn").forEach(btn => btn.addEventListener("click", () => {
-    renderFilters(btn.dataset.filter);
-    renderWorks(btn.dataset.filter);
-  }));
-}
-
-function renderWorks(filter = "all") {
-  const root = document.querySelector("#portfolio-grid");
-  if (!root) return;
-  const list = filter === "all" ? WORKS : WORKS.filter(work => work.category === filter);
-
-  if (!list.length) {
-    root.innerHTML = `<div class="empty-state" style="grid-column:1/-1">
-      <p class="eyebrow">PORTFOLIO / CONTENIDO</p>
-      <h3>${WORKS.length ? "No hay trabajos en esta categoría." : "Los primeros proyectos aparecerán aquí."}</h3>
-      <p>${WORKS.length ? "Prueba otra categoría para ver trabajos publicados." : "Cada PC armado, mantenimiento, upgrade o personalización puede documentarse como un nuevo caso."}</p>
-    </div>`;
-    return;
-  }
-
-  root.innerHTML = list.map(work => `
-    <article class="portfolio-card portfolio-card-${escapeHTML(work.type || "project")}">
-      ${renderMedia(work)}
-      <div class="portfolio-info">
-        <div class="work-heading-line">
-          <p class="eyebrow">PROYECTO #${escapeHTML(work.id)} / ${escapeHTML(typeLabel(work))}</p>
-          ${statusBadge(work)}
-        </div>
-        <h3>${escapeHTML(work.title)}</h3>
-        <p class="work-description">${escapeHTML(work.description)}</p>
-        ${renderDetails(work)}
-        <a class="text-link js-work-wa" data-work-title="${escapeHTML(work.title)}" href="#">Consultar por un trabajo similar <span>→</span></a>
+  const gallery = images.length ? `
+    <div class="case-gallery">
+      <div class="case-gallery-main">
+        <img id="case-main-image" src="${escapeHTML(images[0])}" alt="${escapeHTML(work.title)} — fotografía 1">
+        <button class="case-gallery-prev" type="button" data-case-prev aria-label="Fotografía anterior">‹</button>
+        <button class="case-gallery-next" type="button" data-case-next aria-label="Fotografía siguiente">›</button>
+        <button class="case-gallery-zoom" id="case-zoom" type="button" aria-label="Ampliar fotografía">↗</button>
+        <span class="case-gallery-index" id="case-index">1 / ${images.length}</span>
       </div>
-    </article>
-  `).join("");
+      <div class="case-gallery-thumbs" id="case-thumbs" aria-label="Fotografías del proyecto">
+        ${images.map((src, index) => `
+          <button type="button" class="case-thumb ${index === 0 ? "active" : ""}" data-case-index="${index}" aria-label="Ver fotografía ${index + 1}">
+            <img src="${escapeHTML(src)}" alt="" loading="lazy">
+          </button>
+        `).join("")}
+      </div>
+    </div>` : `<div class="modal-no-image">FOTOGRAFÍAS / POR AGREGAR</div>`;
 
-  root.querySelectorAll(".before-after input").forEach(input => input.addEventListener("input", event => {
-    event.currentTarget.closest(".before-after").style.setProperty("--split", `${event.currentTarget.value}%`);
-  }));
-
-  root.querySelectorAll("[data-gallery-thumb]").forEach(thumb => thumb.addEventListener("click", () => {
-    const id = thumb.dataset.galleryThumb;
-    const index = Number(thumb.dataset.index);
-    const work = WORKS.find(item => item.id === id);
-    const images = work?.images || [];
-    const gallery = thumb.closest(".work-media-gallery");
-    const feature = gallery?.querySelector("[data-gallery-feature] img");
-    if (!feature || !images[index]) return;
-    feature.src = images[index];
-    feature.alt = `${work.title} — fotografía ${index + 1}`;
-    gallery.querySelectorAll(".gallery-thumb").forEach(item => item.classList.remove("active"));
-    thumb.classList.add("active");
-  }));
-
-  root.querySelectorAll("[data-gallery-feature]").forEach(button => button.addEventListener("click", () => {
-    const id = button.dataset.galleryFeature;
-    const work = WORKS.find(item => item.id === id);
-    const gallery = button.closest(".work-media-gallery");
-    const active = gallery?.querySelector(".gallery-thumb.active");
-    openLightbox(work, Number(active?.dataset.index || 0));
-  }));
-
-  root.querySelectorAll(".js-work-wa").forEach(link => {
-    const title = link.dataset.workTitle;
-    link.href = whatsappUrl(`Hola Krown PC's, quiero consultar por un trabajo similar al proyecto ${title}.`);
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-  });
+  return `
+    <div class="case-modal-inner">
+      <div class="case-modal-media">${gallery}</div>
+      <div class="case-modal-info">
+        <div class="work-card-meta"><span>PROYECTO #${escapeHTML(work.id)}</span><span>${escapeHTML(typeLabel(work))}</span></div>
+        ${statusBadge(work)}
+        <h2>${escapeHTML(work.title)}</h2>
+        <p class="case-description">${escapeHTML(work.description)}</p>
+        ${components}${process}${testing}${result}
+        <a class="button button-primary case-whatsapp" id="case-whatsapp" href="#" target="_blank" rel="noopener noreferrer">Consultar un proyecto similar <span>↗</span></a>
+      </div>
+    </div>`;
 }
 
-function initLightbox() {
-  if (document.querySelector("#portfolio-lightbox")) return;
+function initCaseModal() {
+  if (document.querySelector("#case-modal")) return;
   document.body.insertAdjacentHTML("beforeend", `
-    <div class="portfolio-lightbox" id="portfolio-lightbox" hidden aria-hidden="true">
-      <div class="lightbox-backdrop" data-lightbox-close></div>
-      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Galería de proyecto">
-        <button class="lightbox-close" type="button" data-lightbox-close aria-label="Cerrar galería">×</button>
-        <button class="lightbox-prev" type="button" data-lightbox-prev aria-label="Fotografía anterior">‹</button>
-        <img class="lightbox-image" src="" alt="">
-        <button class="lightbox-next" type="button" data-lightbox-next aria-label="Fotografía siguiente">›</button>
-        <div class="lightbox-caption"><strong class="lightbox-title"></strong><span class="lightbox-index"></span></div>
+    <div class="case-modal" id="case-modal" hidden aria-hidden="true">
+      <div class="case-modal-backdrop" data-close-case></div>
+      <div class="case-modal-dialog" role="dialog" aria-modal="true" aria-label="Detalle del proyecto">
+        <button class="case-modal-close" type="button" data-close-case aria-label="Cerrar proyecto">×</button>
+        <div id="case-modal-content"></div>
       </div>
     </div>`);
 
-  const box = document.querySelector("#portfolio-lightbox");
-  box.addEventListener("click", event => {
-    if (event.target.closest("[data-lightbox-close]")) closeLightbox();
-    if (event.target.closest("[data-lightbox-prev]")) moveLightbox(-1);
-    if (event.target.closest("[data-lightbox-next]")) moveLightbox(1);
+  const modal = document.querySelector("#case-modal");
+  modal.addEventListener("click", event => {
+    if (event.target.closest("[data-close-case]")) closeWork();
+    if (event.target.closest("[data-case-index]")) setCaseImage(Number(event.target.closest("[data-case-index]").dataset.caseIndex));
+    if (event.target.closest("[data-case-prev]")) setCaseImage(activeImage - 1);
+    if (event.target.closest("[data-case-next]")) setCaseImage(activeImage + 1);
+    if (event.target.closest("#case-zoom")) openImageViewer(activeWork, activeImage);
+  });
+
+  document.addEventListener("keydown", event => {
+    if (modal.hidden) return;
+    if (event.key === "Escape") closeWork();
+    if (event.key === "ArrowLeft") setCaseImage(activeImage - 1);
+    if (event.key === "ArrowRight") setCaseImage(activeImage + 1);
+  });
+}
+
+function setCaseImage(index) {
+  if (!activeWork?.images?.length) return;
+  const images = activeWork.images.filter(Boolean).slice(0, 10);
+  activeImage = (index + images.length) % images.length;
+  const main = document.querySelector("#case-main-image");
+  if (main) {
+    main.src = images[activeImage];
+    main.alt = `${activeWork.title} — fotografía ${activeImage + 1}`;
+  }
+  const counter = document.querySelector("#case-index");
+  if (counter) counter.textContent = `${activeImage + 1} / ${images.length}`;
+  document.querySelectorAll(".case-thumb").forEach((thumb, i) => thumb.classList.toggle("active", i === activeImage));
+}
+
+function openWork(id) {
+  const work = WORKS.find(item => item.id === id);
+  if (!work) return;
+  activeWork = work;
+  activeImage = 0;
+  lastFocusedElement = document.activeElement;
+  const modal = document.querySelector("#case-modal");
+  const content = document.querySelector("#case-modal-content");
+  if (!modal || !content) return;
+  content.innerHTML = renderDetail(work);
+  const wa = content.querySelector("#case-whatsapp");
+  if (wa) wa.href = whatsappUrl(`Hola Krown PC's, quiero consultar por un trabajo similar al proyecto ${work.title}.`);
+  modal.hidden = false;
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  requestAnimationFrame(() => modal.classList.add("is-visible"));
+  modal.querySelector(".case-modal-close")?.focus();
+}
+
+function closeWork() {
+  const modal = document.querySelector("#case-modal");
+  if (!modal) return;
+  modal.classList.remove("is-visible");
+  setTimeout(() => {
+    modal.hidden = true;
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    lastFocusedElement?.focus?.();
+  }, 180);
+}
+
+function initImageViewer() {
+  if (document.querySelector("#image-viewer")) return;
+  document.body.insertAdjacentHTML("beforeend", `
+    <div class="image-viewer" id="image-viewer" hidden aria-hidden="true">
+      <div class="image-viewer-backdrop" data-close-viewer></div>
+      <div class="image-viewer-dialog" role="dialog" aria-modal="true" aria-label="Fotografía ampliada">
+        <button class="image-viewer-close" type="button" data-close-viewer aria-label="Cerrar fotografía">×</button>
+        <button class="image-viewer-prev" type="button" data-viewer-prev aria-label="Fotografía anterior">‹</button>
+        <img id="viewer-image" src="" alt="">
+        <button class="image-viewer-next" type="button" data-viewer-next aria-label="Fotografía siguiente">›</button>
+        <div class="image-viewer-caption"><strong id="viewer-title"></strong><span id="viewer-index"></span></div>
+      </div>
+    </div>`);
+
+  const viewer = document.querySelector("#image-viewer");
+  viewer.addEventListener("click", event => {
+    if (event.target.closest("[data-close-viewer]")) closeImageViewer();
+    if (event.target.closest("[data-viewer-prev]")) moveImageViewer(-1);
+    if (event.target.closest("[data-viewer-next]")) moveImageViewer(1);
   });
   document.addEventListener("keydown", event => {
-    if (box.hidden) return;
-    if (event.key === "Escape") closeLightbox();
-    if (event.key === "ArrowLeft") moveLightbox(-1);
-    if (event.key === "ArrowRight") moveLightbox(1);
+    if (viewer.hidden) return;
+    if (event.key === "Escape") closeImageViewer();
+    if (event.key === "ArrowLeft") moveImageViewer(-1);
+    if (event.key === "ArrowRight") moveImageViewer(1);
   });
 }
 
-let lightboxState = { work: null, index: 0 };
-
-function updateLightbox() {
-  const { work, index } = lightboxState;
+function openImageViewer(work, index = 0) {
   if (!work?.images?.length) return;
-  const images = work.images;
-  const safeIndex = (index + images.length) % images.length;
-  lightboxState.index = safeIndex;
-  const box = document.querySelector("#portfolio-lightbox");
-  box.querySelector(".lightbox-image").src = images[safeIndex];
-  box.querySelector(".lightbox-image").alt = `${work.title} — fotografía ${safeIndex + 1}`;
-  box.querySelector(".lightbox-title").textContent = work.title;
-  box.querySelector(".lightbox-index").textContent = `${safeIndex + 1} / ${images.length}`;
+  activeWork = work;
+  activeImage = index;
+  const viewer = document.querySelector("#image-viewer");
+  if (!viewer) return;
+  viewer.hidden = false;
+  viewer.setAttribute("aria-hidden", "false");
+  document.body.classList.add("viewer-open");
+  updateImageViewer();
+  viewer.querySelector(".image-viewer-close")?.focus();
 }
 
-function openLightbox(work, index = 0) {
-  if (!work?.images?.length) return;
-  lightboxState = { work, index };
-  const box = document.querySelector("#portfolio-lightbox");
-  box.hidden = false;
-  box.setAttribute("aria-hidden", "false");
-  document.body.classList.add("lightbox-open");
-  updateLightbox();
-  box.querySelector(".lightbox-close")?.focus();
+function updateImageViewer() {
+  if (!activeWork?.images?.length) return;
+  const images = activeWork.images.filter(Boolean).slice(0, 10);
+  activeImage = (activeImage + images.length) % images.length;
+  document.querySelector("#viewer-image").src = images[activeImage];
+  document.querySelector("#viewer-image").alt = `${activeWork.title} — fotografía ${activeImage + 1}`;
+  document.querySelector("#viewer-title").textContent = activeWork.title;
+  document.querySelector("#viewer-index").textContent = `${activeImage + 1} / ${images.length}`;
 }
 
-function closeLightbox() {
-  const box = document.querySelector("#portfolio-lightbox");
-  if (!box) return;
-  box.hidden = true;
-  box.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("lightbox-open");
+function moveImageViewer(delta) {
+  activeImage += delta;
+  updateImageViewer();
 }
 
-function moveLightbox(delta) {
-  lightboxState.index += delta;
-  updateLightbox();
+function closeImageViewer() {
+  const viewer = document.querySelector("#image-viewer");
+  if (!viewer) return;
+  viewer.hidden = true;
+  viewer.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("viewer-open");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#year")?.append(String(new Date().getFullYear()));
-  initLightbox();
+  initCaseModal();
+  initImageViewer();
 
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".site-nav");
-
   window.addEventListener("scroll", () => header?.classList.toggle("scrolled", window.scrollY > 18), { passive: true });
-
   toggle?.addEventListener("click", () => {
     const open = nav.classList.toggle("open");
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
   });
-
   nav?.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
     nav.classList.remove("open");
     toggle?.setAttribute("aria-expanded", "false");
