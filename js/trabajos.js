@@ -1,6 +1,45 @@
-/* Krown PC's — Portfolio
-   El contenido editable vive en js/data.js.
+/* Krown — Portfolio / trabajos reales
+   Para agregar un proyecto, edita únicamente WORKS.
 */
+
+const WORKS = [
+  {
+    id: "001",
+    type: "build",
+    category: "armado",
+    status: "sold",
+    title: "KROWN BUILD #001",
+    service: "Armado de PC",
+    description: "PC gaming armado desde cero, configurado y probado antes de la entrega.",
+    images: [
+      "assets/trabajos/trabajo-001/principal.jpg",
+      "assets/trabajos/trabajo-001/vista-01.jpg",
+      "assets/trabajos/trabajo-001/vista-02.jpg",
+      "assets/trabajos/trabajo-001/interior.jpg",
+      "assets/trabajos/trabajo-001/detalle.jpg",
+      "assets/trabajos/trabajo-001/trasera.jpg",
+      "assets/trabajos/trabajo-001/cajas.jpg"
+    ],
+    components: [
+      "CPU · Ryzen 5 5500",
+      "GPU · Galax RTX 4060",
+      "Motherboard · MSI A520M Pro",
+      "RAM · 16 GB (2×8 GB) Hiksemi Future 3200 MHz",
+      "Storage · Samsung PM9A1 512 GB + Kingston KC600 1 TB",
+      "PSU · MSI MAG A650BN 650 W",
+      "Case · Gamdias Atlas M3"
+    ],
+    process: [
+      "Selección y compatibilidad de componentes",
+      "Armado completo del equipo",
+      "Cable management y organización interna",
+      "Configuración del sistema",
+      "Pruebas de estabilidad y temperaturas"
+    ],
+    testing: ["OCCT", "Cinebench", "FurMark", "HWiNFO"],
+    result: "Equipo terminado, configurado y entregado al cliente. Proyecto vendido."
+  }
+];
 
 const CATEGORIES = [
   ["all", "Todos"],
@@ -12,6 +51,7 @@ const CATEGORIES = [
   ["upgrade", "Upgrades"]
 ];
 
+const SITE_CONFIG = { whatsappNumber: "56957374233" };
 let activeWork = null;
 let activeImage = 0;
 let lastFocusedElement = null;
@@ -27,7 +67,12 @@ function whatsappUrl(message) {
 }
 
 function typeLabel(work) {
-  return ({ build: "BUILD / ARMADO", maintenance: "MANTENIMIENTO", upgrade: "UPGRADE", diagnostic: "DIAGNÓSTICO" })[work.type] || "PROYECTO";
+  return {
+    build: "BUILD / ARMADO",
+    maintenance: "MANTENIMIENTO",
+    upgrade: "UPGRADE",
+    diagnostic: "DIAGNÓSTICO"
+  }[work.type] || "PROYECTO";
 }
 
 function statusBadge(work) {
@@ -47,7 +92,7 @@ function renderFilters(active = "all") {
   root.innerHTML = `
     <div class="filter-list" role="group" aria-label="Filtrar trabajos">
       ${CATEGORIES.map(([key, label]) => `
-        <button class="filter-btn ${key === active ? "active" : ""}" type="button" data-filter="${key}" ${categoryCount(key) === 0 ? "disabled" : ""}>
+        <button class="filter-btn ${key === active ? "active" : ""}" type="button" data-filter="${key}">
           <span>${label}</span><small>${categoryCount(key)}</small>
         </button>
       `).join("")}
@@ -55,7 +100,7 @@ function renderFilters(active = "all") {
     <span class="portfolio-total">${categoryCount(active)} ${categoryCount(active) === 1 ? "proyecto" : "proyectos"}</span>
   `;
 
-  root.querySelectorAll(".filter-btn:not(:disabled)").forEach(btn => btn.addEventListener("click", () => {
+  root.querySelectorAll(".filter-btn").forEach(btn => btn.addEventListener("click", () => {
     renderFilters(btn.dataset.filter);
     renderWorks(btn.dataset.filter);
   }));
@@ -71,16 +116,24 @@ function renderCard(work) {
     <article class="work-card">
       <div class="work-card-media">
         ${featured ? `
-          <button class="card-feature js-open-work" type="button" data-work-id="${escapeHTML(work.id)}" aria-label="Abrir ${escapeHTML(work.title)}">
-            <img src="${escapeHTML(featured)}" alt="${escapeHTML(work.title)} — fotografía principal" loading="lazy">
-          </button>
-          ${previewImages.length ? `<div class="card-preview-grid">${previewImages.map((src, index) => `
-            <button class="js-open-work" type="button" data-work-id="${escapeHTML(work.id)}" aria-label="Ver fotografía ${index + 2} de ${images.length}">
-              <img src="${escapeHTML(src)}" alt="" loading="lazy">
-            </button>`).join("")}</div>` : ""}` : `<div class="media-empty">FOTOGRAFÍAS / POR AGREGAR</div>`}
-        <div class="work-card-topline"><span>${escapeHTML(typeLabel(work))}</span>${statusBadge(work)}</div>
-        ${images.length ? `<span class="work-photo-count">${images.length} FOTOGRAFÍAS</span>` : ""}
-        <button class="work-image-action js-open-work" type="button" data-work-id="${escapeHTML(work.id)}" aria-label="Ver caso completo de ${escapeHTML(work.title)}"><span>Ver caso</span><b>↗</b></button>
+          <div class="work-card-gallery">
+            <button class="card-feature" type="button" data-work-id="${escapeHTML(work.id)}" aria-label="Abrir ${escapeHTML(work.title)}">
+              <img src="${escapeHTML(featured)}" alt="${escapeHTML(work.title)} — fotografía principal" loading="lazy">
+            </button>
+            ${previewImages.length ? `<div class="card-preview-grid">${previewImages.map((src, index) => `
+              <button type="button" data-work-id="${escapeHTML(work.id)}" aria-label="Ver fotografía ${index + 2} de ${images.length}">
+                <img src="${escapeHTML(src)}" alt="" loading="lazy">
+              </button>`).join("")}
+            </div>` : ""}
+          </div>` : `<div class="media-empty">FOTOGRAFÍAS / POR AGREGAR</div>`}
+        <div class="work-card-topline">
+          <span>${escapeHTML(typeLabel(work))}</span>
+          ${statusBadge(work)}
+        </div>
+        ${images.length ? `<span class="work-photo-count">${images.length} FOTOS</span>` : ""}
+        <button class="work-image-action js-open-work" type="button" data-work-id="${escapeHTML(work.id)}" aria-label="Ver proyecto ${escapeHTML(work.title)}">
+          <span>Ver proyecto</span><b>↗</b>
+        </button>
       </div>
       <div class="work-card-body">
         <div class="work-card-meta"><span>PROYECTO #${escapeHTML(work.id)}</span><span>${escapeHTML(work.service)}</span></div>
@@ -89,32 +142,55 @@ function renderCard(work) {
         ${quickSpecs.length ? `<div class="work-quick-specs">${quickSpecs.map(spec => `<span>${escapeHTML(spec)}</span>`).join("")}</div>` : ""}
         <button class="work-card-link js-open-work" type="button" data-work-id="${escapeHTML(work.id)}">Ver caso completo <span>→</span></button>
       </div>
-    </article>`;
+    </article>
+  `;
 }
 
 function renderWorks(filter = "all") {
   const root = document.querySelector("#portfolio-grid");
   if (!root) return;
+
   const list = filter === "all" ? WORKS : WORKS.filter(work => work.category === filter);
 
   if (!list.length) {
-    root.innerHTML = `<div class="portfolio-empty"><span class="eyebrow">${escapeHTML(filter)}</span><h3>Aún no hay proyectos aquí.</h3><p>Esta categoría se irá completando con trabajos reales.</p></div>`;
+    root.innerHTML = `
+      <div class="empty-state portfolio-empty" style="grid-column:1/-1">
+        <p class="eyebrow">PORTFOLIO / CONTENIDO</p>
+        <h3>No hay trabajos en esta categoría.</h3>
+        <p>Prueba otra categoría para ver proyectos publicados.</p>
+      </div>`;
     return;
   }
 
   root.innerHTML = list.map(renderCard).join("");
-  root.querySelectorAll(".js-open-work").forEach(button => button.addEventListener("click", () => openWork(button.dataset.workId)));
+  root.querySelectorAll(".js-open-work, .work-card-gallery [data-work-id]").forEach(button => button.addEventListener("click", () => openWork(button.dataset.workId)));
 }
 
 function renderDetail(work) {
   const images = Array.isArray(work.images) ? work.images.filter(Boolean).slice(0, 10) : [];
   const components = Array.isArray(work.components) && work.components.length ? `
-    <section class="modal-detail-section"><span class="detail-label">ESPECIFICACIONES</span><div class="component-grid">${work.components.map(item => `<div>${escapeHTML(item)}</div>`).join("")}</div></section>` : "";
+    <section class="modal-detail-section">
+      <span class="detail-label">ESPECIFICACIONES</span>
+      <div class="component-grid">${work.components.map(item => `<div>${escapeHTML(item)}</div>`).join("")}</div>
+    </section>` : "";
+
   const process = Array.isArray(work.process) && work.process.length ? `
-    <section class="modal-detail-section"><span class="detail-label">PROCESO</span><ol class="work-process">${work.process.map(item => `<li>${escapeHTML(item)}</li>`).join("")}</ol></section>` : "";
+    <section class="modal-detail-section">
+      <span class="detail-label">PROCESO</span>
+      <ol class="work-process">${work.process.map(item => `<li>${escapeHTML(item)}</li>`).join("")}</ol>
+    </section>` : "";
+
   const testing = Array.isArray(work.testing) && work.testing.length ? `
-    <section class="modal-detail-section"><span class="detail-label">TESTING</span><div class="testing-list">${work.testing.map(item => `<span>${escapeHTML(item)}</span>`).join("")}</div></section>` : "";
-  const result = work.result ? `<div class="work-result"><span class="detail-label">RESULTADO</span><p>${escapeHTML(work.result)}</p></div>` : "";
+    <section class="modal-detail-section">
+      <span class="detail-label">TESTING</span>
+      <div class="testing-list">${work.testing.map(item => `<span>${escapeHTML(item)}</span>`).join("")}</div>
+    </section>` : "";
+
+  const result = work.result ? `
+    <div class="work-result">
+      <span class="detail-label">RESULTADO</span>
+      <p>${escapeHTML(work.result)}</p>
+    </div>` : "";
 
   const gallery = images.length ? `
     <div class="case-gallery">
@@ -122,11 +198,15 @@ function renderDetail(work) {
         <img id="case-main-image" src="${escapeHTML(images[0])}" alt="${escapeHTML(work.title)} — fotografía 1">
         <button class="case-gallery-prev" type="button" data-case-prev aria-label="Fotografía anterior">‹</button>
         <button class="case-gallery-next" type="button" data-case-next aria-label="Fotografía siguiente">›</button>
-        <button class="case-gallery-zoom" type="button" id="case-zoom" aria-label="Ampliar fotografía">↗</button>
+        <button class="case-gallery-zoom" id="case-zoom" type="button" aria-label="Ampliar fotografía">↗</button>
         <span class="case-gallery-index" id="case-index">1 / ${images.length}</span>
       </div>
-      <div class="case-gallery-thumbs" id="case-thumbs">
-        ${images.map((src, index) => `<button class="case-thumb ${index === 0 ? "active" : ""}" type="button" data-case-index="${index}" aria-label="Ver fotografía ${index + 1}"><img src="${escapeHTML(src)}" alt="" loading="lazy"></button>`).join("")}
+      <div class="case-gallery-thumbs" id="case-thumbs" aria-label="Fotografías del proyecto">
+        ${images.map((src, index) => `
+          <button type="button" class="case-thumb ${index === 0 ? "active" : ""}" data-case-index="${index}" aria-label="Ver fotografía ${index + 1}">
+            <img src="${escapeHTML(src)}" alt="" loading="lazy">
+          </button>
+        `).join("")}
       </div>
     </div>` : `<div class="modal-no-image">FOTOGRAFÍAS / POR AGREGAR</div>`;
 
@@ -134,7 +214,7 @@ function renderDetail(work) {
     <div class="case-modal-inner">
       <div class="case-modal-media">${gallery}</div>
       <div class="case-modal-info">
-        <div class="case-kicker"><span>PROYECTO #${escapeHTML(work.id)}</span><span>${escapeHTML(typeLabel(work))}</span></div>
+        <div class="work-card-meta"><span>PROYECTO #${escapeHTML(work.id)}</span><span>${escapeHTML(typeLabel(work))}</span></div>
         ${statusBadge(work)}
         <h2>${escapeHTML(work.title)}</h2>
         <p class="case-description">${escapeHTML(work.description)}</p>
@@ -145,10 +225,11 @@ function renderDetail(work) {
 }
 
 function initCaseModal() {
+  if (document.querySelector("#case-modal")) return;
   document.body.insertAdjacentHTML("beforeend", `
     <div class="case-modal" id="case-modal" hidden aria-hidden="true">
       <div class="case-modal-backdrop" data-close-case></div>
-      <div class="case-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="case-modal-title">
+      <div class="case-modal-dialog" role="dialog" aria-modal="true" aria-label="Detalle del proyecto">
         <button class="case-modal-close" type="button" data-close-case aria-label="Cerrar proyecto">×</button>
         <div id="case-modal-content"></div>
       </div>
@@ -161,6 +242,13 @@ function initCaseModal() {
     if (event.target.closest("[data-case-prev]")) setCaseImage(activeImage - 1);
     if (event.target.closest("[data-case-next]")) setCaseImage(activeImage + 1);
     if (event.target.closest("#case-zoom")) openImageViewer(activeWork, activeImage);
+  });
+
+  document.addEventListener("keydown", event => {
+    if (modal.hidden) return;
+    if (event.key === "Escape") closeWork();
+    if (event.key === "ArrowLeft") setCaseImage(activeImage - 1);
+    if (event.key === "ArrowRight") setCaseImage(activeImage + 1);
   });
 }
 
@@ -186,9 +274,10 @@ function openWork(id) {
   lastFocusedElement = document.activeElement;
   const modal = document.querySelector("#case-modal");
   const content = document.querySelector("#case-modal-content");
-  content.innerHTML = renderDetail(work).replace("<h2>", `<h2 id="case-modal-title">`);
+  if (!modal || !content) return;
+  content.innerHTML = renderDetail(work);
   const wa = content.querySelector("#case-whatsapp");
-  if (wa) wa.href = whatsappUrl(`Hola Krown PC's, quiero consultar por un trabajo similar al proyecto ${work.title}.`);
+  if (wa) wa.href = whatsappUrl(`Hola Krown, vi el proyecto ${work.title} en su portafolio y quisiera cotizar un trabajo similar. Me gustaría comentarles lo que necesito y recibir orientación.`);
   modal.hidden = false;
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
@@ -209,6 +298,7 @@ function closeWork() {
 }
 
 function initImageViewer() {
+  if (document.querySelector("#image-viewer")) return;
   document.body.insertAdjacentHTML("beforeend", `
     <div class="image-viewer" id="image-viewer" hidden aria-hidden="true">
       <div class="image-viewer-backdrop" data-close-viewer></div>
@@ -227,6 +317,12 @@ function initImageViewer() {
     if (event.target.closest("[data-viewer-prev]")) moveImageViewer(-1);
     if (event.target.closest("[data-viewer-next]")) moveImageViewer(1);
   });
+  document.addEventListener("keydown", event => {
+    if (viewer.hidden) return;
+    if (event.key === "Escape") closeImageViewer();
+    if (event.key === "ArrowLeft") moveImageViewer(-1);
+    if (event.key === "ArrowRight") moveImageViewer(1);
+  });
 }
 
 function openImageViewer(work, index = 0) {
@@ -234,6 +330,7 @@ function openImageViewer(work, index = 0) {
   activeWork = work;
   activeImage = index;
   const viewer = document.querySelector("#image-viewer");
+  if (!viewer) return;
   viewer.hidden = false;
   viewer.setAttribute("aria-hidden", "false");
   document.body.classList.add("viewer-open");
@@ -242,12 +339,11 @@ function openImageViewer(work, index = 0) {
 }
 
 function updateImageViewer() {
-  const images = activeWork?.images?.filter(Boolean).slice(0, 10) || [];
-  if (!images.length) return;
+  if (!activeWork?.images?.length) return;
+  const images = activeWork.images.filter(Boolean).slice(0, 10);
   activeImage = (activeImage + images.length) % images.length;
-  const image = document.querySelector("#viewer-image");
-  image.src = images[activeImage];
-  image.alt = `${activeWork.title} — fotografía ${activeImage + 1}`;
+  document.querySelector("#viewer-image").src = images[activeImage];
+  document.querySelector("#viewer-image").alt = `${activeWork.title} — fotografía ${activeImage + 1}`;
   document.querySelector("#viewer-title").textContent = activeWork.title;
   document.querySelector("#viewer-index").textContent = `${activeImage + 1} / ${images.length}`;
 }
@@ -265,25 +361,11 @@ function closeImageViewer() {
   document.body.classList.remove("viewer-open");
 }
 
-function initKeyboard() {
-  document.addEventListener("keydown", event => {
-    const modal = document.querySelector("#case-modal");
-    const viewer = document.querySelector("#image-viewer");
-    if (viewer && !viewer.hidden) {
-      if (event.key === "Escape") closeImageViewer();
-      if (event.key === "ArrowLeft") moveImageViewer(-1);
-      if (event.key === "ArrowRight") moveImageViewer(1);
-      return;
-    }
-    if (modal && !modal.hidden) {
-      if (event.key === "Escape") closeWork();
-      if (event.key === "ArrowLeft") setCaseImage(activeImage - 1);
-      if (event.key === "ArrowRight") setCaseImage(activeImage + 1);
-    }
-  });
-}
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#year")?.append(String(new Date().getFullYear()));
+  initCaseModal();
+  initImageViewer();
 
-function initNavigation() {
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".site-nav");
@@ -297,19 +379,13 @@ function initNavigation() {
     nav.classList.remove("open");
     toggle?.setAttribute("aria-expanded", "false");
   }));
-}
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#year")?.append(String(new Date().getFullYear()));
-  initNavigation();
-  initCaseModal();
-  initImageViewer();
-  initKeyboard();
-  document.querySelectorAll(".js-whatsapp").forEach(link => {
-    link.href = whatsappUrl("Hola Krown PC's, quiero cotizar un proyecto y me gustaría recibir orientación.");
+  nav?.querySelectorAll(".js-whatsapp").forEach(link => {
+    link.href = whatsappUrl("Hola Krown, quiero cotizar un proyecto y me gustaría recibir orientación sobre la opción más adecuada para mi PC.");
     link.target = "_blank";
     link.rel = "noopener noreferrer";
   });
+
   renderFilters();
   renderWorks();
 });
