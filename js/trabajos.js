@@ -1,4 +1,4 @@
-const WORKS = [const WORKS = [
+const WORKS = [
   {
     id: "001",
     type: "build",
@@ -58,7 +58,6 @@ const WORKS = [const WORKS = [
   //   before: "assets/trabajos/proyecto-001-antes.webp",
   //   after: "assets/trabajos/proyecto-001-despues.webp"
   // }
-];
 
 const CATEGORIES = [
   ["all","Todos"],["armado","Armado"],["mantenimiento","Mantenimiento"],["optimizacion","Optimización"],["diagnostico","Diagnóstico"],["personalizacion","Personalización"]
