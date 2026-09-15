@@ -4,47 +4,55 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Trabajos | Krown PC's</title>
-  <meta name="description" content="Portafolio de trabajos de Krown PC's: armado, mantenimiento, optimización, diagnóstico y personalización.">
+  <meta name="description" content="Portafolio de trabajos de Krown PC's: builds, mantenimiento, upgrades, diagnóstico y personalización.">
   <meta name="theme-color" content="#08080b">
-  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
-  <link rel="icon" href="assets/icons/favicon-32x32.png" type="image/png" sizes="32x32">
-  <link rel="icon" href="assets/icons/favicon-16x16.png" type="image/png" sizes="16x16">
-  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-  <link rel="manifest" href="assets/icons/site.webmanifest">
-  <link rel="stylesheet" href="css/style.css">
-  <script defer src="js/trabajos.js"></script>
+  <link rel="icon" href="assets/logo/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css?v=3">
+  <script defer src="js/trabajos.js?v=3"></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header" id="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="index.html" aria-label="Krown PC's, inicio"><span class="brand-mark">K</span><span>KROWN <b>PC'S</b></span></a>
+      <a class="brand" href="index.html" aria-label="Krown PC's, inicio"><img class="brand-logo" src="assets/logo/krown-logo.png" alt="Krown PC's"><span>KROWN <b>PC'S</b></span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú"><span></span><span></span><span></span></button>
       <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
         <a href="index.html#inicio">Inicio</a><a href="index.html#servicios">Servicios</a><a href="index.html#equipos">Equipos</a><a href="trabajos.html">Trabajos</a><a href="index.html#nosotros">Nosotros</a><a href="index.html#faq">FAQ</a>
-        <a class="nav-cta js-whatsapp" data-message="general" href="#">Cotizar</a>
+        <a class="nav-cta js-whatsapp" href="#">Cotizar</a>
       </nav>
     </div>
   </header>
+
   <main id="contenido">
     <section class="portfolio-hero">
       <div class="container">
         <p class="eyebrow">KROWN / PORTFOLIO</p>
         <h1>Trabajos<br><em>realizados.</em></h1>
-        <p>Una biblioteca de proyectos que irá creciendo con cada trabajo documentado.</p>
+        <p>Builds, mantenimientos, upgrades y personalizaciones documentados. Cada proyecto puede mostrar su proceso, resultado y pruebas realizadas.</p>
       </div>
     </section>
+
     <section class="section section-light">
       <div class="container">
+        <div class="section-heading portfolio-heading">
+          <div>
+            <p class="eyebrow">PROYECTOS</p>
+            <h2>Trabajo <em>real.</em></h2>
+          </div>
+          <p class="section-intro">Los builds desde cero se presentan como showcases. Los mantenimientos pueden incorporar comparación Antes / Después.</p>
+        </div>
         <div class="filter-bar" id="filter-bar" aria-label="Filtrar trabajos"></div>
         <div class="portfolio-grid" id="portfolio-grid"></div>
       </div>
     </section>
   </main>
+
   <footer class="site-footer">
-    <div class="container footer-top"><a class="brand" href="index.html"><span class="brand-mark">K</span><span>KROWN <b>PC'S</b></span></a><p>Potencia tu reino.</p><a class="footer-contact js-whatsapp" data-message="general" href="#">WhatsApp ↗</a></div>
-    <div class="container footer-bottom"><span>© <span id="year"></span> Krown PC's</span><span>PC SERVICES / SANTIAGO, CHILE</span><a href="#">Volver arriba ↑</a></div>
+    <div class="container footer-top"><a class="brand" href="index.html"><img class="brand-logo" src="assets/logo/krown-logo.png" alt="Krown PC's"><span>KROWN <b>PC'S</b></span></a><p>Potencia tu reino.</p><a class="footer-contact js-whatsapp" href="#">WhatsApp ↗</a></div>
+    <div class="container footer-bottom"><span>© <span id="year"></span> Krown PC's</span><span>PC SERVICES / SANTIAGO, CHILE</span><a href="#contenido">Volver arriba ↑</a></div>
   </footer>
-  <a class="floating-whatsapp js-whatsapp" data-message="general" href="#" aria-label="Contactar a Krown PC's por WhatsApp">WA</a>
+  <a class="floating-whatsapp js-whatsapp" href="#" aria-label="Contactar a Krown PC's por WhatsApp">WA</a>
 </body>
 </html>

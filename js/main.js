@@ -107,13 +107,16 @@ function renderFeaturedWork() {
   if (!root) return;
   root.innerHTML = `
     <article class="work-feature">
-      <div class="work-media" aria-label="Placeholder para fotografía real del proyecto"></div>
+      <a class="work-feature-media" href="trabajos.html" aria-label="Ver Krown Build #001">
+        <img src="assets/trabajos/trabajo-001/principal.jpg" alt="Krown Build #001 — PC gaming armado desde cero" loading="lazy">
+        <span>PROYECTO #001 / ARMADO</span>
+      </a>
       <div class="work-info">
-        <p class="eyebrow">PROYECTO DESTACADO / CONTENIDO POR AGREGAR</p>
-        <h3>Primer caso documentado</h3>
-        <p>Esta tarjeta está preparada para recibir un trabajo real de Krown PC's, con fotografías, descripción del servicio y resultado.</p>
-        <div class="work-tags"><span>ANTES / DESPUÉS</span><span>PROCESO</span><span>TESTING</span></div>
-        <a class="text-link" href="trabajos.html">Ver todos los trabajos <span>→</span></a>
+        <p class="eyebrow">PROYECTO DESTACADO / BUILD #001</p>
+        <h3>Krown Build #001</h3>
+        <p>PC gaming armado desde cero, configurado y documentado como parte del portafolio de Krown PC's.</p>
+        <div class="work-tags"><span>RYZEN 5 5500</span><span>RTX 4060</span><span>16 GB</span><span>TESTING</span></div>
+        <a class="text-link" href="trabajos.html">Ver proyecto completo <span>→</span></a>
       </div>
     </article>`;
 }

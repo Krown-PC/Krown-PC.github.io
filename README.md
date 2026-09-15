@@ -1,68 +1,39 @@
-# Krown PC's — sitio estático
+# Krown PC's — GitHub Pages
 
-Primera versión funcional preparada para GitHub Pages.
+Sitio estático para Krown PC's. No requiere backend, base de datos, CMS ni servidor.
 
 ## Estructura
 
-- `index.html` — Home / showroom
-- `trabajos.html` — Portafolio
-- `css/style.css` — estilos
-- `js/main.js` — contenido editable de servicios, equipos y FAQ + WhatsApp
-- `js/trabajos.js` — contenido editable del portafolio
-- `assets/` — fotografías, logo, vídeo e iconos
-- `assets/backgrounds/krown-hero.mp4` — vídeo del Hero, optimizado para web y sin audio
-- `assets/backgrounds/krown-hero-poster.webp` — poster/fallback del vídeo
+- `index.html` — página principal
+- `trabajos.html` — portfolio / casos reales
+- `css/style.css` — estilos globales
+- `js/main.js` — contenido y comportamiento de la página principal
+- `js/trabajos.js` — datos y renderizado del portfolio
+- `assets/logo/` — logo y favicon
+- `assets/backgrounds/` — video y poster del Hero
+- `assets/trabajos/` — fotografías de proyectos terminados
+- `assets/equipos/` — fotografías de equipos actualmente disponibles
 
-## Configuración rápida
+## Agregar un nuevo trabajo
 
-### 1. WhatsApp
+1. Crea una carpeta `assets/trabajos/trabajo-XXX/`.
+2. Sube las fotografías del proyecto.
+3. Abre `js/trabajos.js`.
+4. Agrega un nuevo objeto dentro de `WORKS`.
+5. Usa rutas relativas como `assets/trabajos/trabajo-002/foto-01.jpg`.
+6. Para un build usa `type: "build"` e `images: [...]`.
+7. Para mantenimiento con comparación usa `type: "maintenance"`, `before` y `after`.
 
-En `js/main.js` y `js/trabajos.js`, cambia:
+El portfolio admite hasta 10 fotografías por proyecto. La galería incluye miniaturas, cambio de imagen principal y visor ampliado con navegación por teclado.
 
-```js
-whatsappNumber: "569XXXXXXXX"
-```
+## Equipos disponibles
 
-por el número real, sin `+`, espacios ni guiones. Mantén ambos valores iguales.
+Los equipos para venta/showroom se gestionan por separado en `js/main.js` dentro de `EQUIPMENT`. Los proyectos vendidos o terminados pertenecen a `assets/trabajos/`.
 
-### 2. Equipos
+## WhatsApp
 
-En `js/main.js`, edita el array `EQUIPMENT`.
-
-Los equipos no disponibles no deben incluirse como disponibles. El precio se muestra solamente cuando `status === "available"` y existe `price`.
-
-### 3. Trabajos
-
-En `js/trabajos.js`, agrega objetos al array `WORKS` con información real.
-
-Las rutas de las fotografías deben apuntar a `assets/trabajos/...`.
-
-### 4. Fotografías
-
-No se incluyen fotografías ficticias. Los placeholders pueden reemplazarse directamente por fotografías reales.
-
-### 5. Quiénes somos
-
-Los campos de Misión, Visión y Propuesta de valor están deliberadamente como `Contenido por definir`, según el brief.
-
-### 6. Testimonios
-
-No se muestran testimonios ficticios. El componente de la Home está preparado como estado de espera y puede sustituirse por testimonios reales posteriormente.
+El número se encuentra en `SITE_CONFIG` de `js/main.js` y `js/trabajos.js`.
 
 ## GitHub Pages
 
-Sube el contenido de esta carpeta al repositorio y configura GitHub Pages para publicar desde la rama/carpeta elegida.
-
-No requiere Node.js, PHP, backend, base de datos ni build step.
-
-## Notas
-
-- El sitio utiliza HTML5, CSS3 y JavaScript vanilla.
-- No depende de librerías externas.
-- Los enlaces internos son relativos para funcionar bajo una ruta de proyecto de GitHub Pages.
-- Se incluye soporte para `prefers-reduced-motion`.
-
-
-### 7. Vídeo del Hero
-
-El vídeo del Hero está configurado para reproducción automática, sin sonido, en loop y con `playsinline`. Se utilizó una versión optimizada a 720×720 px / 30 fps / H.264 sin pista de audio para reducir el peso de descarga. El poster se muestra como fallback visual y cuando el usuario tiene activado `prefers-reduced-motion`.
+La configuración recomendada para este proyecto es `Deploy from a branch` → `main` → `/ (root)`.
