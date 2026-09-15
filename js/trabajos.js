@@ -72,17 +72,101 @@ function whatsappUrl(message) {
   return `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
-function beforeAfter(work) {
-  if (!work.before && !work.after) return `<div class="work-media" aria-label="Placeholder para fotografías reales"></div>`;
-  return `
-    <div class="work-media">
-      <div class="before-after" style="--split:50%">
-        <div class="pane before" style="${work.before ? `background-image:url('${work.before}');background-size:cover;background-position:center` : ""}">ANTES</div>
-        <div class="pane after" style="${work.after ? `background-image:url('${work.after}');background-size:cover;background-position:center` : ""}">DESPUÉS</div>
-        <div class="divider"></div><div class="handle">↔</div>
-        <input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después">
+function workMedia(work) {
+  if (work.type === "build" && Array.isArray(work.images) && work.images.length) {
+    const images = work.images;
+
+    return `
+      <div class="work-media" style="
+        padding: 16px;
+        background: #f4f4f6;
+      ">
+        <img
+          src="${images[0]}"
+          alt="${work.title}"
+          style="
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            display: block;
+            border-radius: 10px;
+          "
+        >
+
+        <div style="
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 8px;
+          margin-top: 10px;
+        ">
+          ${images.slice(1, 9).map((image, index) => `
+            <img
+              src="${image}"
+              alt="${work.title} - fotografía ${index + 2}"
+              loading="lazy"
+              style="
+                width: 100%;
+                height: 85px;
+                object-fit: cover;
+                display: block;
+                border-radius: 7px;
+              "
+            >
+          `).join("")}
+        </div>
       </div>
-    </div>`;
+    `;
+  }
+
+  if (work.before && work.after) {
+    return `
+      <div class="work-media">
+        <div class="before-after" style="--split:50%">
+          <div
+            class="pane before"
+            style="
+              background-image:url('${work.before}');
+              background-size:cover;
+              background-position:center;
+            "
+          >ANTES</div>
+
+          <div
+            class="pane after"
+            style="
+              background-image:url('${work.after}');
+              background-size:cover;
+              background-position:center;
+            "
+          >DESPUÉS</div>
+
+          <div class="divider"></div>
+          <div class="handle"></div>
+
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            aria-label="Comparar antes y después"
+          >
+        </div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="work-media" aria-label="Sin fotografías">
+      <div style="
+        min-height:300px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      ">
+        FOTOGRAFÍA / POR AGREGAR
+      </div>
+    </div>
+  `;
 }
 
 function renderFilters(active = "all") {
@@ -103,7 +187,7 @@ function renderWorks(filter = "all") {
   }
   root.innerHTML = list.map(w => `
     <article class="portfolio-card">
-      ${beforeAfter(w)}
+      ${workMedia(w)}
       <div class="portfolio-info">
         <p class="eyebrow">PROYECTO #${w.id} / ${w.service}</p>
         <h3>${w.title}</h3>
