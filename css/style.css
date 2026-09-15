@@ -613,3 +613,62 @@ body.modal-open, body.viewer-open { overflow:hidden; }
   .case-gallery-main{min-height:320px;}
   .case-modal-info{padding:28px 22px;}
 }
+
+/* =========================================================
+   KROWN UI POLISH v5 — typography, contact affordance, modal stability
+   ========================================================= */
+.eyebrow{font-size:.76rem;letter-spacing:.15em;}
+.section-intro{font-size:1rem;line-height:1.65;}
+.site-nav{font-size:.84rem;gap:26px;}
+.hero-text{font-size:1.08rem;}
+.hero-meta{font-size:.7rem;letter-spacing:.11em;}
+.service-card p{font-size:.96rem;line-height:1.6;}
+.service-card ul{font-size:.83rem;}
+.card-link{font-size:.73rem;}
+.filter-btn{font-size:.74rem;padding:10px 15px;}
+.filter-btn small{font-size:.6rem;}
+.portfolio-total{font-size:.68rem;}
+.work-card-meta{font-size:.61rem;}
+.work-card-body>p{font-size:.9rem;line-height:1.6;}
+.work-card-link{font-size:.73rem;}
+.work-quick-specs span{font-size:.62rem;}
+
+/* Floating WhatsApp: recognizable brand mark, without extra text. */
+.floating-whatsapp{width:58px;height:58px;min-width:58px;padding:0;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 12px 32px rgba(0,0,0,.25),0 8px 28px rgba(37,211,102,.18);}
+.floating-whatsapp::before,.floating-whatsapp::after{display:none;content:none;}
+.floating-whatsapp svg{width:28px;height:28px;fill:currentColor;}
+.floating-whatsapp:hover,.floating-whatsapp:focus-visible{background:#1fb85a;transform:translateY(-3px) scale(1.04);}
+
+/* Equipment empty-state CTA: never allow the button to be squeezed/cropped. */
+.equipment-grid .empty-state{grid-template-columns:72px minmax(0,1fr) auto;}
+.equipment-grid .empty-state .button{display:inline-flex;align-items:center;justify-content:center;min-width:184px;min-height:48px;padding:12px 18px;white-space:nowrap;flex-shrink:0;}
+
+/* Case modal: isolate both columns so media can never paint over the information panel. */
+.case-modal-dialog{overflow:hidden;}
+.case-modal-inner{grid-template-columns:minmax(0,1.12fr) minmax(400px,.88fr);height:min(900px,calc(100vh - 48px));min-height:0;align-items:stretch;}
+.case-modal-media{min-height:0;overflow:auto;overscroll-behavior:contain;}
+.case-modal-info{min-width:0;min-height:0;overflow:auto;overscroll-behavior:contain;}
+.case-gallery{position:static;}
+.case-gallery-main{width:100%;min-height:0;aspect-ratio:4/3;}
+.case-modal-info h2{font-size:clamp(2rem,3.4vw,3.7rem);line-height:.94;overflow-wrap:anywhere;}
+.case-description{font-size:.98rem;line-height:1.65;}
+.component-grid div{font-size:.74rem;line-height:1.45;min-width:0;}
+.work-process{font-size:.82rem;line-height:1.55;}
+.testing-list span{font-size:.65rem;}
+.work-result p{font-size:.82rem;line-height:1.55;}
+
+@media (max-width:980px){
+  .case-modal-inner{grid-template-columns:1fr;height:auto;max-height:none;}
+  .case-modal-dialog{max-height:calc(100vh - 32px);overflow:auto;}
+  .case-modal-media,.case-modal-info{overflow:visible;}
+  .case-gallery-main{aspect-ratio:16/11;}
+}
+@media (max-width:700px){
+  .site-nav{font-size:.9rem;}
+  .hero-text{font-size:1rem;}
+  .filter-btn{font-size:.76rem;}
+  .equipment-grid .empty-state{grid-template-columns:1fr;}
+  .equipment-grid .empty-state .button{min-width:0;width:100%;}
+  .floating-whatsapp{width:54px;height:54px;min-width:54px;right:14px;bottom:14px;}
+  .floating-whatsapp svg{width:26px;height:26px;}
+}
