@@ -6,10 +6,15 @@
  * partir de esta lista, incluyendo los botones de filtro por categoría.
  *
  * Campos:
- *  - id: identificador único (usar el siguiente número correlativo)
- *  - categoria: { valor, etiqueta } — el valor se usa para filtrar,
- *    la etiqueta es lo que se muestra. Usa la MISMA categoría (valor)
- *    para agrupar trabajos del mismo tipo de servicio.
+ *  - id: identificador único (usar el siguiente número correlativo). Se usa
+ *    también como ancla (ej. trabajos.html#proyecto-001), así que el Hero
+ *    de la página principal puede enlazar directo a un caso específico.
+ *  - filtro: { valor, etiqueta } — el valor agrupa el filtro (usa el MISMO
+ *    valor para trabajos del mismo tipo general, ej. todos los
+ *    mantenimientos comparten "mantenimiento" aunque sean Nivel 1 o 2).
+ *    La etiqueta es el nombre del botón de filtro.
+ *  - tag: etiqueta específica que se muestra en la tarjeta (puede ser más
+ *    detallada que la del filtro, ej. "Mantenimiento Nivel 2").
  *  - titulo: nombre corto del caso ("Proyecto #00X")
  *  - descripcion: resumen del trabajo realizado (sin inventar resultados
  *    de testing que no hayan sido verificados realmente)
@@ -19,7 +24,8 @@
 const KROWN_PORTFOLIO = [
   {
     id: "001",
-    categoria: { valor: "mantenimiento-n2", etiqueta: "Mantenimiento Nivel 2" },
+    filtro: { valor: "mantenimiento", etiqueta: "Mantenimiento" },
+    tag: "Mantenimiento Nivel 2",
     titulo: "Proyecto #001",
     descripcion:
       "Equipo con acumulación de polvo importante y temperaturas elevadas bajo carga. Desarme completo, limpieza profunda, cambio de pasta térmica en CPU y GPU, cable management y test de estabilidad antes de la entrega.",
@@ -29,7 +35,8 @@ const KROWN_PORTFOLIO = [
   },
   {
     id: "002",
-    categoria: { valor: "armado", etiqueta: "Armado a Medida" },
+    filtro: { valor: "armado", etiqueta: "Armado" },
+    tag: "Armado a Medida",
     titulo: "Proyecto #002",
     descripcion:
       "Armado completo a partir de una selección de componentes definida junto al cliente, priorizando flujo de aire y silencio. Cable management desde cero y testing de temperaturas y estabilidad antes de la entrega.",
@@ -39,7 +46,8 @@ const KROWN_PORTFOLIO = [
   },
   {
     id: "003",
-    categoria: { valor: "estetica", etiqueta: "Personalización Estética" },
+    filtro: { valor: "personalizacion", etiqueta: "Personalización" },
+    tag: "Personalización Estética",
     titulo: "Proyecto #003",
     descripcion:
       "Gabinete repintado y personalizado con vinilos, sumado a una mantención general del equipo. El resultado combina identidad visual propia con un funcionamiento verificado.",
@@ -49,7 +57,8 @@ const KROWN_PORTFOLIO = [
   },
   {
     id: "004",
-    categoria: { valor: "mantenimiento-n1", etiqueta: "Mantenimiento Nivel 1" },
+    filtro: { valor: "mantenimiento", etiqueta: "Mantenimiento" },
+    tag: "Mantenimiento Nivel 1",
     titulo: "Proyecto #004",
     descripcion:
       "Mantención preventiva sobre un equipo con temperaturas algo altas en uso prolongado. Limpieza superficial, cambio de pasta térmica del CPU, cable management y test de temperaturas.",
@@ -59,7 +68,8 @@ const KROWN_PORTFOLIO = [
   },
   {
     id: "005",
-    categoria: { valor: "diagnostico", etiqueta: "Diagnóstico y Reparación" },
+    filtro: { valor: "diagnostico", etiqueta: "Diagnóstico" },
+    tag: "Diagnóstico y Reparación",
     titulo: "Proyecto #005",
     descripcion:
       "Equipo con fallas intermitentes de encendido. Diagnóstico dirigido para aislar el componente responsable, presupuesto previo aprobado por el cliente y reemplazo del componente afectado.",
@@ -69,7 +79,8 @@ const KROWN_PORTFOLIO = [
   },
   {
     id: "006",
-    categoria: { valor: "armado", etiqueta: "Armado a Medida" },
+    filtro: { valor: "armado", etiqueta: "Armado" },
+    tag: "Armado a Medida",
     titulo: "Proyecto #006",
     descripcion:
       "Segundo armado a medida, enfocado en aprovechar componentes que el cliente ya tenía y sumar solo lo necesario para cumplir su objetivo de uso. Cable management y testing incluidos.",

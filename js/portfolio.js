@@ -14,39 +14,41 @@
 
     const categorias = [{ valor: "todos", etiqueta: "Todos" }];
     KROWN_PORTFOLIO.forEach((p) => {
-      if (!categorias.some((c) => c.valor === p.categoria.valor)) {
-        categorias.push(p.categoria);
+      if (!categorias.some((c) => c.valor === p.filtro.valor)) {
+        categorias.push(p.filtro);
       }
     });
 
+    // Si la URL trae un ancla (#proyecto-001) mostramos "Todos" para que el
+    // trabajo enlazado desde el Hero siempre esté visible al llegar.
     let activo = "todos";
 
     function svgFlecha() {
-      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 7 3 12 8 17"/><polyline points="16 7 21 12 16 17"/></svg>';
+      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 7 3 12 8 17"/><polyline points="16 7 21 12 16 17"/></svg>';
     }
 
     function cardHTML(p) {
       return `
-        <article class="trabajo-card reveal is-visible" data-categoria="${p.categoria.valor}">
+        <article class="trabajo-card reveal is-visible" data-categoria="${p.filtro.valor}" id="proyecto-${p.id}">
           <div class="ba-slider">
             <span class="ba-label ba-label--before">Antes</span>
             <span class="ba-label ba-label--after">Después</span>
-            <img class="ba-after" src="${p.despues.src}" alt="${p.despues.alt}" />
+            <img class="ba-after" src="${p.despues.src}" alt="${p.despues.alt}" loading="lazy" decoding="async" />
             <div class="ba-before-wrap">
-              <img src="${p.antes.src}" alt="${p.antes.alt}" />
+              <img src="${p.antes.src}" alt="${p.antes.alt}" loading="lazy" decoding="async" />
             </div>
             <div class="ba-handle">
               <div class="ba-handle-grip">${svgFlecha()}</div>
             </div>
           </div>
           <div class="trabajo-info">
-            <span class="tag">${p.categoria.etiqueta}</span>
+            <span class="tag">${p.tag}</span>
             <h3>${p.titulo}</h3>
             <p>${p.descripcion}</p>
             <div class="trabajo-meta">
               ${p.meta.map((m) => `<span>${m}</span>`).join("")}
             </div>
-            <a href="#" class="btn btn-ghost btn-sm" data-wa="trabajoSimilar" data-wa-param="${p.titulo} — ${p.categoria.etiqueta}">Cotizar algo similar</a>
+            <a href="#" class="btn btn-ghost btn-sm" data-wa="trabajoSimilar" data-wa-param="${p.titulo} — ${p.tag}">Cotizar algo similar</a>
           </div>
         </article>`;
     }
@@ -55,7 +57,7 @@
       filtersEl.innerHTML = categorias
         .map(
           (c) =>
-            `<button class="filter-btn${c.valor === activo ? " is-active" : ""}" data-filtro="${c.valor}">${c.etiqueta}</button>`
+            `<button class="filter-btn${c.valor === activo ? " is-active" : ""}" data-filtro="${c.valor}" aria-pressed="${c.valor === activo}">${c.etiqueta}</button>`
         )
         .join("");
 
@@ -70,7 +72,7 @@
 
     function renderGrid() {
       const items =
-        activo === "todos" ? KROWN_PORTFOLIO : KROWN_PORTFOLIO.filter((p) => p.categoria.valor === activo);
+        activo === "todos" ? KROWN_PORTFOLIO : KROWN_PORTFOLIO.filter((p) => p.filtro.valor === activo);
 
       grid.innerHTML = items.map(cardHTML).join("");
       emptyEl.classList.toggle("is-visible", items.length === 0);
@@ -97,5 +99,12 @@
 
     renderFiltros();
     renderGrid();
+
+    // Si se llegó con un ancla a un proyecto específico, hace scroll hacia él
+    // una vez que el grid ya está renderizado.
+    if (window.location.hash) {
+      const target = document.querySelector(window.location.hash);
+      if (target) window.requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+    }
   });
 })();

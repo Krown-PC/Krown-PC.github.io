@@ -9,9 +9,13 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="KROWN — Potencia tu reino" />
 <meta property="og:description" content="Armado, mantención, diagnóstico y personalización de PC en Santiago. Equipos probados antes de entregarlos." />
-<meta property="og:image" content="assets/img/misc/social-share.svg" />
+<meta property="og:image" content="assets/logo/krown-lockup-dark.png" />
 
-<link rel="icon" href="assets/img/misc/social-share.svg" type="image/svg+xml" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,14 +25,19 @@
 </head>
 <body>
 
+<a href="#main" class="skip-link">Saltar al contenido</a>
+
 <!-- ============ HEADER ============ -->
 <header class="site-header">
   <div class="container">
-    <a href="#inicio" class="logo">KROWN<span class="logo-dot">.</span></a>
+    <a href="#inicio" class="logo">
+      <img src="assets/logo/krown-icon.png" alt="" class="logo-icon" width="24" height="42" />
+      KROWN<span class="logo-dot">.</span>
+    </a>
 
     <nav class="nav-desktop" aria-label="Navegación principal">
       <ul>
-        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#inicio">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#trabajos">Trabajos</a></li>
         <li><a href="#equipos">Equipos</a></li>
@@ -40,7 +49,7 @@
     <div class="header-actions">
       <a href="#" class="btn btn-primary btn-sm" data-wa="cotizarGeneral">Cotizar</a>
       <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </div>
@@ -48,7 +57,7 @@
 
 <nav class="nav-mobile" aria-label="Navegación móvil">
   <ul>
-    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#inicio">Inicio</a></li>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#trabajos">Trabajos</a></li>
     <li><a href="#equipos">Equipos</a></li>
@@ -61,7 +70,7 @@
   </div>
 </nav>
 
-<main>
+<main id="main">
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="inicio">
@@ -75,14 +84,14 @@
 
         <div class="hero-ctas">
           <a href="#" class="btn btn-primary" data-wa="cotizarGeneral">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.14h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.37c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.17 8.17 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.22.89 2.4 1.01 2.57.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.14h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.37c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.17 8.17 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.22.89 2.4 1.01 2.57.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
             Cotizar por WhatsApp
           </a>
           <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
         </div>
 
         <div class="hero-trust">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
           Equipos testeados antes de entrega — resultados incluidos.
         </div>
       </div>
@@ -101,7 +110,7 @@
   <section class="testing" id="proceso">
     <div class="container">
       <div class="testing-media hud-frame reveal">
-        <img src="assets/img/misc/testing-bench.svg" alt="Banco de pruebas KROWN con monitoreo de temperaturas y estabilidad" />
+        <img src="assets/img/misc/testing-bench.svg" alt="Banco de pruebas KROWN con monitoreo de temperaturas y estabilidad" loading="lazy" decoding="async" />
       </div>
 
       <div class="testing-copy reveal">
@@ -109,19 +118,26 @@
         <h2>Cada equipo se prueba antes de llegar a tus manos</h2>
         <p>No entregamos nada a ciegas. Antes de cerrar un trabajo corremos pruebas de estabilidad, temperatura y rendimiento — y cuando corresponde, te compartimos las capturas reales.</p>
 
-        <div class="testing-tools">
-          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/></svg> Cinebench</div>
-          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg> OCCT</div>
-          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg> FurMark</div>
-          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> HWiNFO</div>
-          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg> CrystalDiskInfo</div>
-          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> RivaTuner</div>
+        <div class="proceso-steps">
+          <div class="proceso-step"><span class="num">1</span><span class="label">Armamos</span></div>
+          <div class="proceso-step"><span class="num">2</span><span class="label">Testeamos</span></div>
+          <div class="proceso-step"><span class="num">3</span><span class="label">Verificamos</span></div>
+          <div class="proceso-step"><span class="num">4</span><span class="label">Entregamos</span></div>
         </div>
 
-        <p style="margin-bottom:20px; font-size:14.5px;">Según el trabajo, esto puede incluir pruebas de CPU, GPU, RAM y almacenamiento, además de monitoreo de temperaturas y benchmarks de rendimiento.</p>
+        <div class="testing-tools">
+          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/></svg> Cinebench</div>
+          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg> OCCT</div>
+          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg> FurMark</div>
+          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> HWiNFO</div>
+          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg> CrystalDiskInfo</div>
+          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> RivaTuner</div>
+        </div>
+
+        <p style="margin-bottom:20px; font-size:14.5px;">Según el trabajo, esto puede incluir pruebas de CPU, GPU, RAM y almacenamiento, además de monitoreo de temperaturas y benchmarks de rendimiento. No todas las herramientas se usan en todos los equipos.</p>
 
         <div class="testing-note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;flex-shrink:0;color:var(--purple-light);margin-top:1px;"><path d="M12 9v4"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;flex-shrink:0;color:var(--purple-light);margin-top:1px;"><path d="M12 9v4"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
           <span>Los resultados que compartimos corresponden a trabajos reales, con capturas del equipo. No publicamos benchmarks ni certificaciones que no hayamos obtenido nosotros mismos.</span>
         </div>
       </div>
@@ -140,17 +156,17 @@
       <div class="servicios-grid">
 
         <article class="card servicio-card reveal">
-          <div class="servicio-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="15" x2="4" y2="15"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="15" x2="22" y2="15"/></svg></div>
+          <div class="servicio-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="15" x2="4" y2="15"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="15" x2="22" y2="15"/></svg></div>
           <h3>Armado de PC</h3>
           <p>Ensamblamos tu equipo con los componentes que ya tienes o los que definamos juntos para el proyecto. Cable management prolijo y testing incluido antes de la entrega.</p>
           <a href="#" class="servicio-link" data-wa="servicio" data-wa-param="Armado de PC">
             Cotizar armado
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </article>
 
         <article class="card servicio-card reveal">
-          <div class="servicio-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <div class="servicio-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
           <h3>Mantenimiento Nivel 1</h3>
           <p>Mantención preventiva rápida para que tu equipo respire y se mantenga fresco.</p>
           <ul class="servicio-list">
@@ -161,12 +177,12 @@
           </ul>
           <a href="#" class="servicio-link" data-wa="servicio" data-wa-param="Mantenimiento Nivel 1">
             Cotizar Nivel 1
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </article>
 
         <article class="card servicio-card reveal">
-          <div class="servicio-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+          <div class="servicio-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
           <h3>Mantenimiento Nivel 2</h3>
           <p>Intervención completa para equipos con más uso o que necesitan un reseteo a fondo.</p>
           <ul class="servicio-list">
@@ -177,53 +193,57 @@
           </ul>
           <a href="#" class="servicio-link" data-wa="servicio" data-wa-param="Mantenimiento Nivel 2">
             Cotizar Nivel 2
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </article>
 
         <article class="card servicio-card reveal">
-          <div class="servicio-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <div class="servicio-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
           <h3>Instalación y optimización de Windows</h3>
           <p>Instalación limpia, drivers y ajustes de energía y rendimiento. Tu equipo queda listo para usar desde el primer inicio.</p>
           <a href="#" class="servicio-link" data-wa="servicio" data-wa-param="Instalación y optimización de Windows">
             Cotizar instalación
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </article>
 
         <article class="card servicio-card reveal">
-          <div class="servicio-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <div class="servicio-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
           <h3>Diagnóstico de problemas</h3>
           <p>Identificamos qué le pasa a tu PC — temperaturas, cuellos de botella, fallas de hardware o software — antes de gastar en nada. Presupuesto previo a cualquier reparación.</p>
           <a href="#" class="servicio-link" data-wa="diagnostico">
             Agendar diagnóstico
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </article>
 
         <article class="card servicio-card reveal">
-          <div class="servicio-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
+          <div class="servicio-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
           <h3>Instalación de componentes y RGB</h3>
           <p>Suma o reemplaza componentes e iluminación RGB con una instalación limpia, ordenada y probada.</p>
           <a href="#" class="servicio-link" data-wa="servicio" data-wa-param="Instalación de componentes y RGB">
             Cotizar instalación
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </article>
 
         <article class="card servicio-card reveal">
-          <div class="servicio-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+          <div class="servicio-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
           <h3>Personalización estética</h3>
           <p>Pintura de gabinete, stickers, vinilos y otros detalles para que tu equipo se vea tan bien como funciona.</p>
           <a href="#" class="servicio-link" data-wa="servicio" data-wa-param="Personalización estética">
             Cotizar personalización
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </article>
 
       </div>
 
       <!-- Comparación Mantenimiento N1 vs N2 -->
+      <p class="niveles-compare-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        Desliza la tabla hacia el lado para ver ambos niveles
+      </p>
       <div class="niveles-compare reveal">
         <table>
           <thead>
@@ -269,7 +289,7 @@
             </div>
             <div class="ba-handle">
               <div class="ba-handle-grip">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 7 3 12 8 17"/><polyline points="16 7 21 12 16 17"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 7 3 12 8 17"/><polyline points="16 7 21 12 16 17"/></svg>
               </div>
             </div>
           </div>
@@ -283,7 +303,10 @@
               <span>Cable management</span>
               <span>Test de estabilidad</span>
             </div>
-            <a href="#" class="btn btn-ghost btn-sm" data-wa="trabajoSimilar" data-wa-param="Proyecto #001 — Mantenimiento Nivel 2">Cotizar algo similar</a>
+            <div class="trabajo-actions">
+              <a href="trabajos.html#proyecto-001" class="btn btn-ghost btn-sm">Ver proyecto</a>
+              <a href="#" class="btn btn-primary btn-sm" data-wa="trabajoSimilar" data-wa-param="Proyecto #001 — Mantenimiento Nivel 2">Cotizar algo similar</a>
+            </div>
           </div>
         </article>
 
@@ -297,7 +320,7 @@
             </div>
             <div class="ba-handle">
               <div class="ba-handle-grip">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 7 3 12 8 17"/><polyline points="16 7 21 12 16 17"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 7 3 12 8 17"/><polyline points="16 7 21 12 16 17"/></svg>
               </div>
             </div>
           </div>
@@ -311,7 +334,10 @@
               <span>Test de temperaturas</span>
               <span>Windows instalado</span>
             </div>
-            <a href="#" class="btn btn-ghost btn-sm" data-wa="trabajoSimilar" data-wa-param="Proyecto #002 — Armado a Medida">Cotizar algo similar</a>
+            <div class="trabajo-actions">
+              <a href="trabajos.html#proyecto-002" class="btn btn-ghost btn-sm">Ver proyecto</a>
+              <a href="#" class="btn btn-primary btn-sm" data-wa="trabajoSimilar" data-wa-param="Proyecto #002 — Armado a Medida">Cotizar algo similar</a>
+            </div>
           </div>
         </article>
 
@@ -325,7 +351,7 @@
             </div>
             <div class="ba-handle">
               <div class="ba-handle-grip">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 7 3 12 8 17"/><polyline points="16 7 21 12 16 17"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 7 3 12 8 17"/><polyline points="16 7 21 12 16 17"/></svg>
               </div>
             </div>
           </div>
@@ -338,7 +364,10 @@
               <span>Vinilos</span>
               <span>Mantenimiento incluido</span>
             </div>
-            <a href="#" class="btn btn-ghost btn-sm" data-wa="trabajoSimilar" data-wa-param="Proyecto #003 — Personalización Estética">Cotizar algo similar</a>
+            <div class="trabajo-actions">
+              <a href="trabajos.html#proyecto-003" class="btn btn-ghost btn-sm">Ver proyecto</a>
+              <a href="#" class="btn btn-primary btn-sm" data-wa="trabajoSimilar" data-wa-param="Proyecto #003 — Personalización Estética">Cotizar algo similar</a>
+            </div>
           </div>
         </article>
 
@@ -359,66 +388,8 @@
         <p>Cuando hay un equipo disponible lo vas a ver acá, con precio y estado real. Los proyectos ya entregados quedan como parte del portafolio — nunca se muestran como disponibles.</p>
       </div>
 
-      <div class="equipos-grid">
-
-        <article class="card equipo-card reveal">
-          <div class="equipo-media">
-            <span class="equipo-status disponible"><span class="dot"></span> Disponible</span>
-            <img src="assets/img/equipos/krown-vanguard.svg" alt="KROWN Vanguard, equipo disponible" />
-          </div>
-          <div class="equipo-body">
-            <h3>KROWN Vanguard</h3>
-            <ul class="equipo-specs">
-              <li>AMD Ryzen 5 5500</li>
-              <li>Galax RTX 4060</li>
-              <li>16GB DDR4 Hiksemi</li>
-              <li>MSI A520M Pro</li>
-              <li>SSD Kingston KC600 1TB + NVMe Samsung PM9A1 512GB</li>
-              <li>Fuente MSI MAG A650BN 650W</li>
-              <li>Gabinete Gamdias Atlas M3M</li>
-              <li>Windows 11 instalado y activado</li>
-            </ul>
-            <div class="equipo-footer">
-              <!-- TODO: reemplazar por el precio real vigente -->
-              <span class="equipo-price">Consultar<br /><small>Precio vigente por WhatsApp</small></span>
-              <a href="#" class="btn btn-primary btn-sm" data-wa="equipoDisponible" data-wa-param="KROWN Vanguard">Consultar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card equipo-card is-muted reveal">
-          <div class="equipo-media">
-            <span class="equipo-status entregado">Entregado</span>
-            <img src="assets/img/equipos/proyecto-i7-6700.svg" alt="Proyecto entregado con procesador i7-6700" />
-          </div>
-          <div class="equipo-body">
-            <h3>Proyecto entregado</h3>
-            <ul class="equipo-specs">
-              <li>Intel Core i7-6700</li>
-              <li>Zotac GTX 1060 6GB</li>
-            </ul>
-            <div class="equipo-footer">
-              <span class="equipo-price" style="color:var(--text-dim); font-size:13px;">Ya no disponible</span>
-              <a href="#" class="btn btn-ghost btn-sm" data-wa="equipoSimilar" data-wa-param="i7-6700 / GTX 1060 6GB">Uno similar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card equipo-card reveal">
-          <div class="equipo-media">
-            <span class="equipo-status arma">Cotización a medida</span>
-            <img src="assets/img/equipos/arma-el-tuyo.svg" alt="Arma tu equipo a medida" />
-          </div>
-          <div class="equipo-body">
-            <h3>¿No encontraste lo que buscabas?</h3>
-            <p style="font-size:13.5px; margin-bottom:0;">Armamos un equipo pensado en tu presupuesto y uso — gaming, trabajo o ambos. Tú defines, nosotros ejecutamos y probamos antes de entregar.</p>
-            <div class="equipo-footer">
-              <span></span>
-              <a href="#" class="btn btn-primary btn-sm" data-wa="cotizarGeneral">Cotizar mi equipo</a>
-            </div>
-          </div>
-        </article>
-
+      <div class="equipos-grid" id="equipos-grid" aria-live="polite">
+        <!-- Generado dinámicamente por js/equipos.js a partir de js/equipos-data.js -->
       </div>
     </div>
   </section>
@@ -427,7 +398,7 @@
   <section class="nosotros" id="nosotros">
     <div class="container">
       <div class="nosotros-media hud-frame reveal">
-        <img src="assets/img/misc/taller.svg" alt="Taller de trabajo de KROWN" />
+        <img src="assets/img/misc/taller.svg" alt="Taller de trabajo de KROWN" loading="lazy" decoding="async" />
       </div>
 
       <div class="reveal">
@@ -448,20 +419,12 @@
   </section>
 
   <!-- ============ TESTIMONIOS ============ -->
-  <section class="testimonios" aria-label="Testimonios de clientes">
+  <!-- Oculta por defecto: js/testimonials.js solo la muestra si hay al menos
+       un testimonio real cargado en js/testimonials-data.js. Nunca se deben
+       publicar testimonios inventados ni marcadores de posición visibles. -->
+  <section class="testimonios" id="testimonios" aria-label="Testimonios de clientes" hidden>
     <div class="marquee">
-      <div class="marquee-track">
-        <!-- TODO: reemplazar cada item por una reseña real. Nunca se deben publicar testimonios inventados. -->
-        <div class="testimonio-item"><div class="testimonio-stars">★★★★★</div><p>[Testimonio real de un cliente — reemplazar con la reseña completa]</p><div class="testimonio-autor">[Nombre del cliente]</div></div>
-        <div class="testimonio-item"><div class="testimonio-stars">★★★★★</div><p>[Testimonio real de un cliente — reemplazar con la reseña completa]</p><div class="testimonio-autor">[Nombre del cliente]</div></div>
-        <div class="testimonio-item"><div class="testimonio-stars">★★★★★</div><p>[Testimonio real de un cliente — reemplazar con la reseña completa]</p><div class="testimonio-autor">[Nombre del cliente]</div></div>
-        <div class="testimonio-item"><div class="testimonio-stars">★★★★★</div><p>[Testimonio real de un cliente — reemplazar con la reseña completa]</p><div class="testimonio-autor">[Nombre del cliente]</div></div>
-        <!-- Duplicado para el efecto de loop continuo del marquee -->
-        <div class="testimonio-item" aria-hidden="true"><div class="testimonio-stars">★★★★★</div><p>[Testimonio real de un cliente — reemplazar con la reseña completa]</p><div class="testimonio-autor">[Nombre del cliente]</div></div>
-        <div class="testimonio-item" aria-hidden="true"><div class="testimonio-stars">★★★★★</div><p>[Testimonio real de un cliente — reemplazar con la reseña completa]</p><div class="testimonio-autor">[Nombre del cliente]</div></div>
-        <div class="testimonio-item" aria-hidden="true"><div class="testimonio-stars">★★★★★</div><p>[Testimonio real de un cliente — reemplazar con la reseña completa]</p><div class="testimonio-autor">[Nombre del cliente]</div></div>
-        <div class="testimonio-item" aria-hidden="true"><div class="testimonio-stars">★★★★★</div><p>[Testimonio real de un cliente — reemplazar con la reseña completa]</p><div class="testimonio-autor">[Nombre del cliente]</div></div>
-      </div>
+      <div class="marquee-track" id="testimonios-track"></div>
     </div>
   </section>
 
@@ -473,54 +436,8 @@
         <h2>Antes de escribirnos, quizás esto ya responde tu duda</h2>
       </div>
 
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            ¿Cómo sé si mi PC necesita mantenimiento?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">Señales típicas son ruido de ventiladores más fuerte de lo normal, temperaturas altas, apagones bajo carga o una baja de rendimiento notoria. Si tu equipo tiene más de un año sin limpieza, probablemente ya le sirve un Mantenimiento Nivel 1 o Nivel 2 según su estado.</div></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            ¿Cuánto se demora un servicio?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">Depende del servicio: un diagnóstico es rápido, un mantenimiento Nivel 1 o 2 se coordina según tu disponibilidad, y un armado a medida depende de la llegada de los componentes. Te confirmamos un plazo concreto apenas conversamos por WhatsApp.</div></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            ¿Puedo llevar mis propios componentes para el armado?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">Sí. Podemos armar tu equipo con los componentes que ya tienes, o ayudarte a definir y conseguir los que falten según tu presupuesto y uso.</div></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            ¿Qué pruebas le hacen a mi equipo antes de entregarlo?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">Según el trabajo, corremos pruebas de estabilidad, temperatura y rendimiento con herramientas como HWiNFO, OCCT, FurMark y Cinebench. Puedes ver más detalle en la sección "Proceso" más arriba.</div></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            ¿Qué pasa si el diagnóstico determina que necesito una reparación?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">Te enviamos un presupuesto antes de realizar cualquier reparación o reemplazo. No se hace ningún gasto adicional sin tu aprobación.</div></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            ¿Dónde atienden y cómo coordinamos la entrega?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">Atendemos en Santiago. La modalidad de retiro o entrega la coordinamos directamente por WhatsApp según tu ubicación y el tipo de servicio.</div></div>
-        </div>
+      <div class="faq-list" id="faq-list">
+        <!-- Generado dinámicamente por js/faq.js a partir de js/faq-data.js -->
       </div>
     </div>
   </section>
@@ -547,7 +464,10 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo">KROWN<span class="logo-dot">.</span></div>
+        <div class="logo">
+          <img src="assets/logo/krown-icon.png" alt="" class="logo-icon" width="24" height="42" />
+          KROWN<span class="logo-dot">.</span>
+        </div>
         <p>Armado, mantención, diagnóstico y personalización de computadores en Santiago. Potencia tu reino.</p>
       </div>
 
@@ -581,28 +501,18 @@
 
 <!-- ============ WHATSAPP FLOTANTE ============ -->
 <a href="#" class="wa-float" data-wa="general" aria-label="Escríbenos por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.14h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.37c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.17 8.17 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.22.89 2.4 1.01 2.57.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.14h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.37c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.17 8.17 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.22.89 2.4 1.01 2.57.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
   <span class="wa-float-text">Escríbenos</span>
 </a>
 
 <script src="js/config.js"></script>
 <script src="js/before-after.js"></script>
+<script src="js/equipos-data.js"></script>
+<script src="js/testimonials-data.js"></script>
+<script src="js/faq-data.js"></script>
 <script src="js/main.js"></script>
-<script>
-  // Rellena los links de contacto del footer usando la configuración central
-  document.addEventListener("DOMContentLoaded", () => {
-    const emailLink = document.getElementById("footer-email");
-    if (emailLink) {
-      emailLink.href = "mailto:" + KROWN_CONFIG.email;
-      emailLink.textContent = KROWN_CONFIG.email;
-    }
-    if (KROWN_CONFIG.instagram) {
-      const igItem = document.getElementById("footer-ig-item");
-      const igLink = document.getElementById("footer-ig");
-      igLink.href = KROWN_CONFIG.instagram;
-      igItem.style.display = "";
-    }
-  });
-</script>
+<script src="js/equipos.js"></script>
+<script src="js/testimonials.js"></script>
+<script src="js/faq.js"></script>
 </body>
 </html>

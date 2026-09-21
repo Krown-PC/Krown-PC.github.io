@@ -81,7 +81,5 @@ write("img/misc/testing-bench.svg", "BANCO DE PRUEBAS", "Captura real de HWiNFO 
 # Quienes somos
 write("img/misc/taller.svg", "TALLER KROWN", "Foto del espacio de trabajo", 1200, 900)
 
-# Favicon simple (cuadrado con acento morado) como placeholder
-write("img/misc/social-share.svg", "KROWN", "Imagen para compartir en redes (1200x630)", 1200, 630)
-
 print("\nListo. Todas las imágenes son placeholders SVG — reemplázalas por fotos/video reales.")
+print("Nota: el favicon y la imagen para redes ya usan el logo real en assets/logo/ — este script no los toca.")

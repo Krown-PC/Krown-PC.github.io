@@ -9,12 +9,12 @@
     initHeaderScroll();
     initMobileNav();
     initScrollSpy();
-    initFaq();
     initMarqueePause();
     initWaButtons();
     initReveal();
     initHeroVideo();
     initYear();
+    initFooterLinks();
   });
 
   /* Header cambia de fondo al hacer scroll */
@@ -81,32 +81,6 @@
     );
 
     sections.forEach((s) => observer.observe(s.section));
-  }
-
-  /* Acordeón FAQ */
-  function initFaq() {
-    document.querySelectorAll(".faq-item").forEach((item) => {
-      const question = item.querySelector(".faq-question");
-      const answer = item.querySelector(".faq-answer");
-      if (!question || !answer) return;
-
-      question.addEventListener("click", () => {
-        const isOpen = item.classList.contains("is-open");
-
-        // Cierra los demás para mantener la lista compacta
-        item.parentElement.querySelectorAll(".faq-item.is-open").forEach((openItem) => {
-          if (openItem !== item) {
-            openItem.classList.remove("is-open");
-            openItem.querySelector(".faq-answer").style.maxHeight = null;
-            openItem.querySelector(".faq-question").setAttribute("aria-expanded", "false");
-          }
-        });
-
-        item.classList.toggle("is-open", !isOpen);
-        question.setAttribute("aria-expanded", String(!isOpen));
-        answer.style.maxHeight = !isOpen ? answer.scrollHeight + "px" : null;
-      });
-    });
   }
 
   /* Pausa el marquee de testimonios al tocar en móvil (touch) */
@@ -211,5 +185,22 @@
   function initYear() {
     const el = document.getElementById("year");
     if (el) el.textContent = new Date().getFullYear();
+  }
+
+  /* Rellena los links de contacto del footer usando la configuración central */
+  function initFooterLinks() {
+    const emailLink = document.getElementById("footer-email");
+    if (emailLink && typeof KROWN_CONFIG !== "undefined") {
+      emailLink.href = "mailto:" + KROWN_CONFIG.email;
+      emailLink.textContent = KROWN_CONFIG.email;
+    }
+    if (typeof KROWN_CONFIG !== "undefined" && KROWN_CONFIG.instagram) {
+      const igItem = document.getElementById("footer-ig-item");
+      const igLink = document.getElementById("footer-ig");
+      if (igItem && igLink) {
+        igLink.href = KROWN_CONFIG.instagram;
+        igItem.style.display = "";
+      }
+    }
   }
 })();
