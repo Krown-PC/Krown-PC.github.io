@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://krown-pc.github.io/sitemap.xml
