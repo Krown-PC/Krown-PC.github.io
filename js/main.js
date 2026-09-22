@@ -174,15 +174,19 @@
     }, 2000);
   }
 
-  /* Respeta prefers-reduced-motion pausando el video del Hero */
+  /* Refuerza el autoplay del video del Hero por si el atributo nativo no alcanza
+   * (algunos navegadores lo bloquean si la pestaña se abrió en segundo plano). El
+   * video es silencioso y en loop, así que no hay sonido ni control que perder. */
   function initHeroVideo() {
     const video = document.querySelector(".hero-media video");
     if (!video) return;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) {
-      video.pause();
-      video.removeAttribute("autoplay");
-    }
+    const attemptPlay = () => video.play().catch(() => {});
+    attemptPlay();
+    // Si el navegador igual lo bloquea al cargar, reintenta apenas la pestaña
+    // vuelve a estar visible (típico de "abrir en pestaña nueva" en segundo plano).
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden && video.paused) attemptPlay();
+    });
   }
 
   function initYear() {
