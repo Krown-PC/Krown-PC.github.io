@@ -71,7 +71,7 @@
 :root {
   /* Marca */
   --purple: #6929b2;
-  --purple-light: #8b4fd9;
+  --purple-light: #9a66e0;
   --purple-glow: rgba(105, 41, 178, 0.45);
 
   /* Base — negro no-puro para que las fotos no se "recorten" */
@@ -84,7 +84,7 @@
   /* Texto */
   --text: #f2f1f4;
   --text-muted: #a29cae;
-  --text-dim: #6f6a7a;
+  --text-dim: #847f8f;
 
   /* Estado */
   --success: #35c46a;
@@ -138,7 +138,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   font-synthesis: none;
@@ -186,7 +186,7 @@ input:focus-visible {
   border-radius: var(--radius-sm);
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
   transition: top var(--transition);
 }
 
@@ -254,7 +254,7 @@ section {
   align-items: center;
   gap: 8px;
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 13.5px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -270,11 +270,11 @@ section {
 }
 
 .section-head h2 {
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(30px, 4.2vw, 44px);
 }
 
 .section-head p {
-  font-size: 17px;
+  font-size: 19px;
 }
 
 /* ---- Background grid texture (sutil, Cyber/Y2K 20%) ---- */
@@ -335,7 +335,7 @@ section {
   border-radius: var(--radius-sm);
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16.5px;
   border: 1px solid transparent;
   transition: transform var(--transition), box-shadow var(--transition),
     background var(--transition), border-color var(--transition),
@@ -371,7 +371,7 @@ section {
 
 .btn-sm {
   padding: 10px 18px;
-  font-size: 13px;
+  font-size: 14.5px;
 }
 
 .btn-block {
@@ -416,7 +416,7 @@ section {
   font-size: 24px;
   letter-spacing: 0.04em;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 9px;
 }
 
@@ -424,11 +424,17 @@ section {
   color: var(--purple-light);
 }
 
+.logo-text {
+  display: block;
+  transform: translateY(4px);
+}
+
 .logo-icon {
   height: 30px;
   width: auto;
   flex-shrink: 0;
   display: block;
+  transform: translateY(-3px);
 }
 
 .nav-desktop {
@@ -441,7 +447,7 @@ section {
 }
 
 .nav-desktop a {
-  font-size: 14px;
+  font-size: 15.5px;
   font-weight: 500;
   color: var(--text-muted);
   position: relative;
@@ -518,7 +524,7 @@ section {
   display: block;
   padding: 16px 4px;
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   border-bottom: 1px solid var(--border);
 }
@@ -576,14 +582,14 @@ section {
 
 .hero .slogan {
   font-family: var(--font-display);
-  font-size: clamp(18px, 2.4vw, 22px);
+  font-size: clamp(19px, 2.6vw, 24px);
   color: var(--purple-light);
   font-weight: 500;
   margin-bottom: 20px;
 }
 
 .hero p.lead {
-  font-size: 18px;
+  font-size: 20px;
   max-width: 46ch;
   color: var(--text-muted);
 }
@@ -599,7 +605,7 @@ section {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 13px;
+  font-size: 14.5px;
   color: var(--text-dim);
 }
 
@@ -650,7 +656,7 @@ section {
   align-items: center;
   gap: 8px;
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -748,13 +754,13 @@ section {
   border: 1px solid rgba(105, 41, 178, 0.5);
   color: var(--purple-light);
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 700;
 }
 
 .proceso-step .label {
   font-family: var(--font-display);
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -792,7 +798,7 @@ section {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  font-size: 13px;
+  font-size: 14.5px;
   font-weight: 500;
 }
 
@@ -811,7 +817,7 @@ section {
   border: 1px solid var(--border);
   border-left: 3px solid var(--purple);
   border-radius: var(--radius-sm);
-  font-size: 14px;
+  font-size: 15.5px;
   color: var(--text-muted);
 }
 
@@ -858,12 +864,12 @@ section {
 }
 
 .servicio-card h3 {
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 8px;
 }
 
 .servicio-card p {
-  font-size: 14.5px;
+  font-size: 16px;
   flex-grow: 1;
 }
 
@@ -875,7 +881,7 @@ section {
 }
 
 .servicio-list li {
-  font-size: 13.5px;
+  font-size: 15px;
   color: var(--text-muted);
   padding-left: 18px;
   position: relative;
@@ -896,7 +902,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--purple-light);
   padding-top: 14px;
@@ -915,7 +921,7 @@ section {
 /* Comparación niveles de mantenimiento */
 .niveles-compare-hint {
   display: none;
-  font-size: 12.5px;
+  font-size: 14px;
   color: var(--text-dim);
   margin: 40px 0 8px;
   align-items: center;
@@ -947,7 +953,7 @@ section {
   width: 100%;
   border-collapse: collapse;
   min-width: 560px;
-  font-size: 14px;
+  font-size: 15.5px;
 }
 
 .niveles-compare th,
@@ -1028,7 +1034,7 @@ section {
   top: 14px;
   z-index: 3;
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1107,7 +1113,7 @@ section {
 .trabajo-info .tag {
   display: inline-block;
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1120,7 +1126,7 @@ section {
 }
 
 .trabajo-info h3 {
-  font-size: 22px;
+  font-size: 23px;
   margin-bottom: 10px;
 }
 
@@ -1132,7 +1138,7 @@ section {
 }
 
 .trabajo-meta span {
-  font-size: 12.5px;
+  font-size: 14px;
   color: var(--text-dim);
   background: var(--bg-elevated);
   border: 1px solid var(--border);
@@ -1197,7 +1203,7 @@ section {
   align-items: center;
   gap: 6px;
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1240,7 +1246,7 @@ section {
 }
 
 .equipo-body h3 {
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 6px;
 }
 
@@ -1252,7 +1258,7 @@ section {
 }
 
 .equipo-specs li {
-  font-size: 13px;
+  font-size: 14.5px;
   color: var(--text-muted);
   padding-left: 14px;
   position: relative;
@@ -1278,14 +1284,14 @@ section {
 .equipo-price {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 19px;
+  font-size: 21px;
 }
 
 .equipo-price small {
   display: block;
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 11px;
+  font-size: 12.5px;
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -1309,7 +1315,7 @@ section {
 
 .equipos-empty p.lead {
   color: var(--text);
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 20px;
 }
 
@@ -1356,7 +1362,7 @@ section {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 600;
   text-align: center;
 }
@@ -1412,19 +1418,19 @@ section {
 
 .testimonio-stars {
   color: var(--purple-light);
-  font-size: 14px;
+  font-size: 15.5px;
   letter-spacing: 2px;
   margin-bottom: 10px;
 }
 
 .testimonio-item p {
-  font-size: 14px;
+  font-size: 15.5px;
   color: var(--text);
   margin-bottom: 10px;
 }
 
 .testimonio-autor {
-  font-size: 12.5px;
+  font-size: 14px;
   color: var(--text-dim);
   font-weight: 600;
 }
@@ -1456,7 +1462,7 @@ section {
   border: none;
   color: var(--text);
   font-family: var(--font-display);
-  font-size: 15.5px;
+  font-size: 17px;
   font-weight: 600;
   text-align: left;
 }
@@ -1481,7 +1487,7 @@ section {
 
 .faq-answer-inner {
   padding: 0 22px 20px;
-  font-size: 14.5px;
+  font-size: 16px;
   color: var(--text-muted);
 }
 
@@ -1506,12 +1512,12 @@ section {
 }
 
 .cta-final h2 {
-  font-size: clamp(26px, 4vw, 34px);
+  font-size: clamp(28px, 4.2vw, 36px);
   margin-bottom: 12px;
 }
 
 .cta-final p {
-  font-size: 16px;
+  font-size: 18px;
   max-width: 46ch;
   margin-left: auto;
   margin-right: auto;
@@ -1545,12 +1551,12 @@ section {
 }
 
 .footer-brand p {
-  font-size: 14px;
+  font-size: 15.5px;
   max-width: 34ch;
 }
 
 .footer-col h4 {
-  font-size: 13px;
+  font-size: 14.5px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-dim);
@@ -1564,7 +1570,7 @@ section {
 }
 
 .footer-col a {
-  font-size: 14px;
+  font-size: 15.5px;
   color: var(--text-muted);
   transition: color var(--transition);
 }
@@ -1581,7 +1587,7 @@ section {
   gap: 12px;
   align-items: center;
   justify-content: space-between;
-  font-size: 12.5px;
+  font-size: 14px;
   color: var(--text-dim);
 }
 
@@ -1601,7 +1607,7 @@ section {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(31, 185, 85, 0.5);
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15.5px;
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
@@ -1640,7 +1646,7 @@ section {
   border: 1px solid var(--border-strong);
   background: transparent;
   color: var(--text-muted);
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 600;
   transition: all var(--transition);
 }
@@ -1684,12 +1690,12 @@ section {
 }
 
 .page-hero h1 {
-  font-size: clamp(32px, 5vw, 46px);
+  font-size: clamp(34px, 5.2vw, 48px);
   max-width: 20ch;
 }
 
 .page-hero p.lead {
-  font-size: 17px;
+  font-size: 19px;
   max-width: 60ch;
   color: var(--text-muted);
 }
@@ -1699,7 +1705,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-muted);
   margin-bottom: 20px;
