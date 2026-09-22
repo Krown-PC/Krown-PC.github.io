@@ -62,29 +62,26 @@ También en `js/config.js`, dentro de `KROWN_WA_MESSAGES`. Puedes editar el text
 
 ## 2. Video del Hero
 
-El Hero ya trae integrado el video real del armado RGB (720×720, formato cuadrado 1:1, sin audio, H.264) — no es un marcador de posición. Se generaron ambos formatos a partir de tu clip original:
+El Hero ya trae integrado el video real del armado RGB (720×720, formato cuadrado 1:1, sin audio, H.264) — no es un marcador de posición.
 
-- `assets/video/hero-loop.mp4` — H.264, el que siempre funciona como respaldo.
-- `assets/video/hero-loop.webm` — VP9, más liviano; los navegadores que lo soportan lo usan primero.
+- `assets/video/hero-loop.mp4` — único formato usado, a propósito (ver nota abajo).
 - `assets/video/hero-poster.jpg` — fotograma de respaldo mientras carga o si el navegador no puede reproducir video.
 
-**Si el video no se reproducía cuando lo subiste tú:** lo más probable es que hayas reemplazado solo `hero-loop.mp4` sin tocar `hero-loop.webm` — como el navegador prueba las fuentes en el orden en que aparecen en el HTML (WebM primero), seguía reproduciendo el WebM viejo (el marcador de posición) en vez de tu video nuevo. La lección para la próxima vez que cambies el video: **si solo tienes un archivo MP4, reemplaza `hero-loop.mp4` Y borra o reemplaza también `hero-loop.webm`** (o borra esa línea `<source>` en `index.html` si no vas a generar un WebM), para que no quede una fuente vieja compitiendo con la nueva.
+**Por qué el sitio usa solo MP4 (sin WebM):** la primera entrega traía también una versión `.webm` (VP9) como fuente preferida, porque pesa menos. Eso causó que el video se reprodujera bien en el teléfono pero se quedara pegado en algunos PC — algunos navegadores de escritorio (típicamente Chrome/Edge en Windows con ciertas combinaciones de tarjeta gráfica/drivers) tienen fallas conocidas decodificando VP9 por hardware que hacen que el video se cuelgue en vez de fallar limpiamente y pasar al MP4 de respaldo; el teléfono en cambio nunca llegaba a intentar el WebM (muchos navegadores móviles, sobre todo iPhone, no lo soportan y usan el MP4 directamente) — por eso ahí sí andaba. La solución fue dejar **solo MP4 (H.264)**, el formato con el soporte más parejo y confiable entre navegadores y dispositivos, sacrificando algo de peso de archivo a cambio de que se reproduzca igual en todos lados.
 
-Para reemplazarlo más adelante por otro clip:
+Si en el futuro quieres volver a agregar un WebM (por ejemplo, para ahorrar ancho de banda en visitas desde el teléfono), pruébalo primero en 2-3 computadores con navegadores distintos antes de dejarlo como fuente preferida — o dejarlo como *segunda* fuente (después del MP4 en el HTML) para que el navegador ya tenga el MP4 funcionando de base.
+
+Para reemplazar el video por otro clip más adelante:
 
 1. Comprime tu clip a **MP4 (H.264)**, sin audio, idealmente entre 5–10 segundos, bajo 5MB, en **1:1 (cuadrado)**.
-2. Genera también la versión **WebM** (más liviana) con, por ejemplo:
-   ```bash
-   ffmpeg -i tu-video.mp4 -c:v libvpx-vp9 -b:v 1M -crf 32 -an -f webm assets/video/hero-loop.webm
-   ```
-   Si prefieres no generarla, borra esa línea `<source>` del `<video>` en `index.html` (la que apunta a `.webm`) para no dejar una versión vieja sirviéndose por accidente.
-3. Reemplaza `assets/video/hero-loop.mp4` con el mismo nombre.
-4. Saca un nuevo fotograma de respaldo (evita el frame 0 si tu clip empieza con un fade a negro — mejor 1 segundo adentro):
+2. Reemplaza `assets/video/hero-loop.mp4` con el mismo nombre.
+3. Saca un nuevo fotograma de respaldo (evita el frame 0 si tu clip empieza con un fade a negro — mejor 1 segundo adentro):
    ```bash
    ffmpeg -ss 00:00:01.0 -i tu-video.mp4 -vframes 1 -q:v 3 -f image2 assets/video/hero-poster.jpg
    ```
+4. **Importante — sube el número de versión en `index.html`:** el `<video>` del Hero referencia los archivos como `hero-loop.mp4?v=2` y `hero-poster.jpg?v=2`. Cada vez que reemplaces el video o el poster (manteniendo el mismo nombre de archivo), sube ese número (`?v=3`, `?v=4`, ...) en las dos líneas dentro de la sección `<div class="hero-media hud-frame reveal">`. Si no lo subes, es muy probable que quien ya visitó el sitio antes (tú mismo probando en tu PC, o un cliente que ya entró una vez) siga viendo la versión vieja del video — los navegadores guardan el archivo de video en caché de forma agresiva por su peso, y sin un cambio en la URL no vuelven a descargarlo aunque el archivo en el servidor ya sea otro.
 
-No necesitas tocar el HTML más allá de eso — los nombres de archivo ya están enlazados. Si más adelante quieres un formato distinto (por ejemplo 16:9), ajusta `aspect-ratio` en `.hero-media` dentro de `css/styles.css`.
+No necesitas tocar nada más del HTML — el resto de los nombres de archivo ya están enlazados. Si más adelante quieres un formato distinto (por ejemplo 16:9), ajusta `aspect-ratio` en `.hero-media` dentro de `css/styles.css`.
 
 ## 3. Reemplazar fotos (equipos, trabajos, taller, testing)
 
@@ -220,4 +217,6 @@ Esta versión incorpora una revisión de experiencia de usuario sobre la primera
 19. **Servicios rebrandeados y data-driven:** la sección Servicios pasó de 7 tarjetas fijas en el HTML a generarse desde `js/servicios-data.js`, con la nomenclatura técnica propia de la marca ("KROWN // BUILD", "KROWN // CLEAN", etc.) como identificador secundario sobre el nombre del servicio en español — así se suma personalidad de marca sin sacrificar claridad para un cliente que no conoce la jerga. La tabla comparativa de niveles también se actualizó para usar "KROWN // CLEAN" y "KROWN // CORE" como encabezados de columna.
 20. **Paquetes combinados (nuevo):** se agregó una sección "Paquetes combinados" bajo Servicios, con 6 packs (`KROWN // BOOT`, `PATCH`, `DEPLOY`, `RESKIN`, `RESKIN FULL`, `PRIME`) que agrupan servicios de la lista con un precio y un badge de ahorro (ej. "Ahorro ~9%"), reutilizando el mismo sistema de tarjetas de Servicios para mantener consistencia visual. Solo se muestran los precios de lanzamiento (ver sección 6) — los precios estables quedaron documentados en comentarios para activarlos más adelante sin rediseñar nada.
 21. **Cohesión de marca en Portafolio y FAQ:** para que la nueva nomenclatura de Servicios no quedara aislada, se actualizaron también las etiquetas de cada trabajo en `trabajos.html` y en los "Trabajos destacados" de la portada (ej. "Mantenimiento Nivel 2 · KROWN // CORE") y las respuestas del FAQ que mencionan servicios específicos, además de sumar una pregunta nueva sobre los paquetes combinados. El objetivo fue que un visitante que llega por cualquier sección del sitio vea siempre el mismo vocabulario de marca.
-22. **Video real del Hero integrado:** se reemplazó el video de marcador de posición por el clip real (armado RGB, 720×720, sin audio) en ambos formatos (`.mp4` y `.webm` regenerado a partir del original) y se generó un nuevo fotograma de respaldo. La causa de que no se reprodujera al subirlo manualmente era que solo se había reemplazado el `.mp4`, dejando el `.webm` viejo activo (el navegador prueba esa fuente primero); ver sección 2 para el detalle y cómo evitarlo la próxima vez.
+22. **Video real del Hero integrado:** se reemplazó el video de marcador de posición por el clip real (armado RGB, 720×720, sin audio) y se generó un nuevo fotograma de respaldo.
+23. **Video del Hero: WebM removido por incompatibilidad en PC:** una primera versión agregó también un `.webm` (VP9) como fuente preferida para aligerar peso. Eso reproducía bien en el teléfono pero se quedaba pegado en computadores — un problema conocido de decodificación VP9 por hardware en ciertos navegadores/GPUs de escritorio, que el teléfono nunca sufría porque ni siquiera intentaba esa fuente. Se resolvió dejando el Hero con **un solo formato, MP4 (H.264)**, el de soporte más parejo entre dispositivos — ver sección 2 para el detalle.
+24. **Video del Hero: versión en la URL para evitar caché vieja:** además del cambio de formato, se agregó `?v=2` a las URLs del video y el poster del Hero. Como el archivo se llama igual que antes (`hero-loop.mp4`), un navegador que ya había cargado el sitio podía seguir mostrando la copia vieja guardada en caché aunque el archivo en el servidor ya fuera otro — típico de que "en mi PC sigue sin funcionar" mientras en un dispositivo que nunca había visitado el sitio sí funcionaba. Subir el número de versión fuerza al navegador a descargar el archivo de nuevo. Ver sección 2, punto 4, para subir ese número la próxima vez que cambies el video.
