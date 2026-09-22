@@ -25,7 +25,7 @@ const KROWN_PORTFOLIO = [
   {
     id: "001",
     filtro: { valor: "mantenimiento", etiqueta: "Mantenimiento" },
-    tag: "Mantenimiento Nivel 2",
+    tag: "Mantenimiento Nivel 2 · KROWN // CORE",
     titulo: "Proyecto #001",
     descripcion:
       "Equipo con acumulación de polvo importante y temperaturas elevadas bajo carga. Desarme completo, limpieza profunda, cambio de pasta térmica en CPU y GPU, cable management y test de estabilidad antes de la entrega.",
@@ -36,7 +36,7 @@ const KROWN_PORTFOLIO = [
   {
     id: "002",
     filtro: { valor: "armado", etiqueta: "Armado" },
-    tag: "Armado a Medida",
+    tag: "Armado a Medida · KROWN // BUILD",
     titulo: "Proyecto #002",
     descripcion:
       "Armado completo a partir de una selección de componentes definida junto al cliente, priorizando flujo de aire y silencio. Cable management desde cero y testing de temperaturas y estabilidad antes de la entrega.",
@@ -47,7 +47,7 @@ const KROWN_PORTFOLIO = [
   {
     id: "003",
     filtro: { valor: "personalizacion", etiqueta: "Personalización" },
-    tag: "Personalización Estética",
+    tag: "Personalización Estética · KROWN // CUSTOM",
     titulo: "Proyecto #003",
     descripcion:
       "Gabinete repintado y personalizado con vinilos, sumado a una mantención general del equipo. El resultado combina identidad visual propia con un funcionamiento verificado.",
@@ -58,7 +58,7 @@ const KROWN_PORTFOLIO = [
   {
     id: "004",
     filtro: { valor: "mantenimiento", etiqueta: "Mantenimiento" },
-    tag: "Mantenimiento Nivel 1",
+    tag: "Mantenimiento Nivel 1 · KROWN // CLEAN",
     titulo: "Proyecto #004",
     descripcion:
       "Mantención preventiva sobre un equipo con temperaturas algo altas en uso prolongado. Limpieza superficial, cambio de pasta térmica del CPU, cable management y test de temperaturas.",
@@ -69,7 +69,7 @@ const KROWN_PORTFOLIO = [
   {
     id: "005",
     filtro: { valor: "diagnostico", etiqueta: "Diagnóstico" },
-    tag: "Diagnóstico y Reparación",
+    tag: "Diagnóstico y Reparación · KROWN // CHECK",
     titulo: "Proyecto #005",
     descripcion:
       "Equipo con fallas intermitentes de encendido. Diagnóstico dirigido para aislar el componente responsable, presupuesto previo aprobado por el cliente y reemplazo del componente afectado.",
@@ -80,7 +80,7 @@ const KROWN_PORTFOLIO = [
   {
     id: "006",
     filtro: { valor: "armado", etiqueta: "Armado" },
-    tag: "Armado a Medida",
+    tag: "Armado a Medida · KROWN // BUILD",
     titulo: "Proyecto #006",
     descripcion:
       "Segundo armado a medida, enfocado en aprovechar componentes que el cliente ya tenía y sumar solo lo necesario para cumplir su objetivo de uso. Cable management y testing incluidos.",

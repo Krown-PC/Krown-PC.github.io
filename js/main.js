@@ -121,6 +121,9 @@
         case "trabajoSimilar":
           message = KROWN_WA_MESSAGES.trabajoSimilar(param);
           break;
+        case "paquete":
+          message = KROWN_WA_MESSAGES.paquete(param);
+          break;
         case "diagnostico":
           message = KROWN_WA_MESSAGES.diagnostico;
           break;

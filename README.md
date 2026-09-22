@@ -20,6 +20,8 @@ krown/
 │   ├── testimonials.js           → Muestra la franja de testimonios solo si hay datos reales
 │   ├── faq-data.js               → Preguntas y respuestas del acordeón FAQ
 │   ├── faq.js                    → Renderiza y wirea el acordeón FAQ
+│   ├── servicios-data.js         → Servicios individuales y paquetes combinados (precios acá)
+│   ├── servicios.js              → Renderiza Servicios + Paquetes a partir de servicios-data.js
 │   ├── portfolio-data.js         → Datos de cada trabajo del portafolio (edita/agrega acá)
 │   └── portfolio.js              → Renderiza trabajos.html a partir de portfolio-data.js
 ├── assets/
@@ -58,21 +60,31 @@ instagram: "", // deja vacío para ocultar el link en el footer
 ### Mensajes de WhatsApp
 También en `js/config.js`, dentro de `KROWN_WA_MESSAGES`. Puedes editar el texto de cada mensaje sin tocar el HTML.
 
-## 2. Reemplazar el video del Hero
+## 2. Video del Hero
 
-El Hero trae un video de marcador de posición (un loop genérico con la paleta de colores de la marca) para que el sitio se vea completo desde ya. El recuadro del Hero está ajustado en **formato cuadrado (1:1)**, así que tu video debe venir grabado o exportado en 1:1 para que se vea completo (sin recortes en los costados).
+El Hero ya trae integrado el video real del armado RGB (720×720, formato cuadrado 1:1, sin audio, H.264) — no es un marcador de posición. Se generaron ambos formatos a partir de tu clip original:
+
+- `assets/video/hero-loop.mp4` — H.264, el que siempre funciona como respaldo.
+- `assets/video/hero-loop.webm` — VP9, más liviano; los navegadores que lo soportan lo usan primero.
+- `assets/video/hero-poster.jpg` — fotograma de respaldo mientras carga o si el navegador no puede reproducir video.
+
+**Si el video no se reproducía cuando lo subiste tú:** lo más probable es que hayas reemplazado solo `hero-loop.mp4` sin tocar `hero-loop.webm` — como el navegador prueba las fuentes en el orden en que aparecen en el HTML (WebM primero), seguía reproduciendo el WebM viejo (el marcador de posición) en vez de tu video nuevo. La lección para la próxima vez que cambies el video: **si solo tienes un archivo MP4, reemplaza `hero-loop.mp4` Y borra o reemplaza también `hero-loop.webm`** (o borra esa línea `<source>` en `index.html` si no vas a generar un WebM), para que no quede una fuente vieja compitiendo con la nueva.
+
+Para reemplazarlo más adelante por otro clip:
 
 1. Comprime tu clip a **MP4 (H.264)**, sin audio, idealmente entre 5–10 segundos, bajo 5MB, en **1:1 (cuadrado)**.
-2. Guarda una versión también en **WebM** si quieres el formato más liviano (opcional — el MP4 solo también funciona en todos los navegadores modernos).
-3. Reemplaza estos archivos manteniendo el mismo nombre:
-   - `assets/video/hero-loop.mp4`
-   - `assets/video/hero-loop.webm` (opcional, bórralo del HTML si no lo generas)
-   - `assets/video/hero-poster.jpg` — una captura de un fotograma del video (se muestra mientras carga o si el navegador no puede reproducirlo). Puedes sacarla con:
-     ```bash
-     ffmpeg -i tu-video.mp4 -vframes 1 -q:v 3 assets/video/hero-poster.jpg
-     ```
+2. Genera también la versión **WebM** (más liviana) con, por ejemplo:
+   ```bash
+   ffmpeg -i tu-video.mp4 -c:v libvpx-vp9 -b:v 1M -crf 32 -an -f webm assets/video/hero-loop.webm
+   ```
+   Si prefieres no generarla, borra esa línea `<source>` del `<video>` en `index.html` (la que apunta a `.webm`) para no dejar una versión vieja sirviéndose por accidente.
+3. Reemplaza `assets/video/hero-loop.mp4` con el mismo nombre.
+4. Saca un nuevo fotograma de respaldo (evita el frame 0 si tu clip empieza con un fade a negro — mejor 1 segundo adentro):
+   ```bash
+   ffmpeg -ss 00:00:01.0 -i tu-video.mp4 -vframes 1 -q:v 3 -f image2 assets/video/hero-poster.jpg
+   ```
 
-No necesitas tocar el HTML — los nombres de archivo ya están enlazados. Si más adelante cambias de opinión y quieres un formato distinto (por ejemplo 16:9), ajusta `aspect-ratio` en `.hero-media` dentro de `css/styles.css`.
+No necesitas tocar el HTML más allá de eso — los nombres de archivo ya están enlazados. Si más adelante quieres un formato distinto (por ejemplo 16:9), ajusta `aspect-ratio` en `.hero-media` dentro de `css/styles.css`.
 
 ## 3. Reemplazar fotos (equipos, trabajos, taller, testing)
 
@@ -101,7 +113,16 @@ Abre `js/portfolio-data.js` y copia un objeto del arreglo `KROWN_PORTFOLIO`, ed�
 
 Cada trabajo destacado en `index.html` puede enlazar a su versión completa en el portafolio vía `trabajos.html#proyecto-00X` (el botón "Ver proyecto") — el número debe coincidir con el `id` del objeto en `portfolio-data.js`.
 
-## 6. Testimonios
+## 6. Servicios, niveles y paquetes combinados
+
+La sección **Servicios** (tarjetas individuales), la tabla comparativa de niveles y **Paquetes combinados** (packs con descuento) se generan desde `js/servicios-data.js` — no hay que tocar `index.html` para agregar, quitar o repreciar nada.
+
+- **`KROWN_SERVICIOS`** — un objeto por servicio individual (`KROWN // BUILD`, `CLEAN`, `CORE`, `OS`, `CHECK`, `UPGRADE`, `CUSTOM`). Cada uno tiene `slug` (el nombre técnico tipo "KROWN // ALGO"), `nombre` (el nombre en español que ve el cliente), `descripcion`, y **o bien** `lista` (bullets simples, ej. Nivel 1/Nivel 2) **o bien** `tiers` (sub-opciones con su propio precio, ej. Upgrade Quick/Full o Custom Exterior/Complete/Vinyls) — nunca ambos a la vez.
+- **`KROWN_PAQUETES`** — un objeto por paquete combinado (`KROWN // BOOT`, `PATCH`, `DEPLOY`, `RESKIN`, `RESKIN FULL`, `PRIME`), con `incluye` (lista de servicios que agrupa), `precio` y `ahorro` (el badge verde, ej. `"Ahorro ~9%"`).
+- **Precios de lanzamiento vs. estables:** el sitio muestra **solo el precio de lanzamiento** en el campo `precio` de cada objeto, tal como se pidió para este lanzamiento. El precio "estable" (el que rige una vez pasado el período de lanzamiento) está documentado en un comentario junto a cada servicio/paquete dentro de `js/servicios-data.js`, pero no se muestra en ningún lado del sitio. Cuando llegue el momento de subir a precios estables, basta con reemplazar el valor de `precio` por el precio estable correspondiente (ya anotado en el comentario) — no hay que tocar el HTML ni el CSS.
+- El botón de cada tarjeta usa `data-wa="servicio"` o `data-wa="paquete"` con el nombre como parámetro, así el mensaje de WhatsApp que se abre ya menciona el servicio o paquete exacto por el que preguntó el cliente.
+
+## 7. Testimonios
 
 Por diseño, el sitio **no trae testimonios inventados** y la sección permanece **oculta** hasta que agregues al menos uno real. Abre `js/testimonials-data.js` y agrega objetos al arreglo `KROWN_TESTIMONIOS`:
 
@@ -113,15 +134,15 @@ const KROWN_TESTIMONIOS = [
 
 Apenas el arreglo tenga un elemento, la franja aparece automáticamente en `index.html`.
 
-## 7. Preguntas frecuentes
+## 8. Preguntas frecuentes
 
 Edita `js/faq-data.js` — cada objeto es `{ pregunta, respuesta }`. El acordeón se genera y funciona solo.
 
-## 8. Misión, visión y propuesta de valor
+## 9. Misión, visión y propuesta de valor
 
 Quedó pendiente a propósito (tal como definimos). En `index.html`, dentro de la sección "Nosotros", hay un comentario `<!-- TODO: Bastian — agregar aquí misión, visión y propuesta de valor -->` donde puedes agregar ese contenido cuando esté listo.
 
-## 9. Assets de marca (logo real)
+## 10. Assets de marca (logo real)
 
 Ya están integrados en el sitio:
 
@@ -134,7 +155,9 @@ Ya están integrados en el sitio:
 
 **Alineación del logo:** el ícono (corona + K) y el texto "KROWN" quedan centrados entre sí — el ícono se subió un poco y el texto se bajó un poco (`.logo-icon` y `.logo-text` en `css/styles.css`, cada uno con su propio `transform: translateY(...)`) hasta compensar que el dibujo del ícono (corona liviana arriba, K pesada abajo) no tiene su "centro visual" en el centro geométrico del archivo. Si más adelante cambias el ícono por otra versión, puede que necesites reajustar esos dos valores a ojo.
 
-## 10. Tipografía (Technos, Bebas Neue, Oswald)
+**Sin punto final:** el wordmark "KROWN" ya no lleva el punto morado decorativo al final (`.logo-dot`) en ningún lugar del sitio — se quitó del header y el footer de ambas páginas. El punto que aparece en el texto legal del footer ("© KROWN. Todos los derechos reservados.") es gramatical, no de marca, y se mantiene.
+
+## 11. Tipografía (Technos, Bebas Neue, Oswald)
 
 El sitio usa tres fuentes autoalojadas (no dependen de Google Fonts ni de ninguna conexión externa) — los archivos están en `assets/fonts/` y se cargan con `@font-face` al inicio de `css/styles.css`:
 
@@ -144,7 +167,7 @@ El sitio usa tres fuentes autoalojadas (no dependen de Google Fonts ni de ningun
 
 Si en algún momento quieres volver a cambiar alguna, solo edita las variables `--font-brand`, `--font-display` y `--font-body` dentro de `:root` en `css/styles.css` (y agrega los `@font-face` correspondientes si es una fuente nueva).
 
-## 11. Probar el sitio localmente
+## 12. Probar el sitio localmente
 
 No necesitas instalar nada. Desde la carpeta `krown/`:
 
@@ -154,7 +177,7 @@ python3 -m http.server 8000
 
 Y abre `http://localhost:8000` en tu navegador.
 
-## 12. Publicar en GitHub Pages
+## 13. Publicar en GitHub Pages
 
 1. Crea un repositorio nuevo en GitHub (ej. `krown-web` o `tu-usuario.github.io` si quieres que sea tu dominio raíz).
 2. Sube el **contenido de esta carpeta** (`index.html`, `css/`, `js/`, `assets/`, etc.) a la raíz del repositorio.
@@ -193,3 +216,8 @@ Esta versión incorpora una revisión de experiencia de usuario sobre la primera
 15. **Legibilidad — tamaños de texto:** se subió el tamaño de prácticamente todo el texto del sitio (cuerpo, botones, nav, badges, tablas, tarjetas) entre 1 y 2px, manteniendo la proporción entre títulos y texto secundario. El body pasó de 16px a 18px base.
 16. **Contraste de color (accesibilidad):** el gris usado para texto secundario (`--text-dim`) y el morado usado como acento de texto (`--purple-light`) estaban por debajo del mínimo recomendado (WCAG AA, 4.5:1) para texto normal sobre el fondo oscuro. Se aclararon ligeramente ambos tokens (mismo tono, un escalón más claro) — ahora todo el texto secundario y los links/acentos en morado pasan el estándar de contraste sin cambiar la identidad visual.
 17. **Alineación del logo (revisión 2):** el ajuste anterior (alinear por la base) seguía viéndose descentrado porque las métricas verticales de la fuente Technos no coinciden con las del ícono. Se resolvió centrando ambos elementos y aplicando un pequeño desplazamiento independiente a cada uno (`.logo-icon` sube, `.logo-text` baja) hasta calzar visualmente — la solución robusta hubiera sido ajustar los metadatos de la fuente, pero un ajuste manual por CSS es más simple de mantener para un logo que no va a cambiar seguido.
+18. **Wordmark sin punto:** se quitó el punto morado decorativo al final de "KROWN" en el header y footer de ambas páginas — el nombre de marca ahora aparece limpio en todas sus apariciones como texto solo (el punto del footer legal, que es gramatical, se mantuvo intacto).
+19. **Servicios rebrandeados y data-driven:** la sección Servicios pasó de 7 tarjetas fijas en el HTML a generarse desde `js/servicios-data.js`, con la nomenclatura técnica propia de la marca ("KROWN // BUILD", "KROWN // CLEAN", etc.) como identificador secundario sobre el nombre del servicio en español — así se suma personalidad de marca sin sacrificar claridad para un cliente que no conoce la jerga. La tabla comparativa de niveles también se actualizó para usar "KROWN // CLEAN" y "KROWN // CORE" como encabezados de columna.
+20. **Paquetes combinados (nuevo):** se agregó una sección "Paquetes combinados" bajo Servicios, con 6 packs (`KROWN // BOOT`, `PATCH`, `DEPLOY`, `RESKIN`, `RESKIN FULL`, `PRIME`) que agrupan servicios de la lista con un precio y un badge de ahorro (ej. "Ahorro ~9%"), reutilizando el mismo sistema de tarjetas de Servicios para mantener consistencia visual. Solo se muestran los precios de lanzamiento (ver sección 6) — los precios estables quedaron documentados en comentarios para activarlos más adelante sin rediseñar nada.
+21. **Cohesión de marca en Portafolio y FAQ:** para que la nueva nomenclatura de Servicios no quedara aislada, se actualizaron también las etiquetas de cada trabajo en `trabajos.html` y en los "Trabajos destacados" de la portada (ej. "Mantenimiento Nivel 2 · KROWN // CORE") y las respuestas del FAQ que mencionan servicios específicos, además de sumar una pregunta nueva sobre los paquetes combinados. El objetivo fue que un visitante que llega por cualquier sección del sitio vea siempre el mismo vocabulario de marca.
+22. **Video real del Hero integrado:** se reemplazó el video de marcador de posición por el clip real (armado RGB, 720×720, sin audio) en ambos formatos (`.mp4` y `.webm` regenerado a partir del original) y se generó un nuevo fotograma de respaldo. La causa de que no se reprodujera al subirlo manualmente era que solo se había reemplazado el `.mp4`, dejando el `.webm` viejo activo (el navegador prueba esa fuente primero); ver sección 2 para el detalle y cómo evitarlo la próxima vez.

@@ -420,10 +420,6 @@ section {
   gap: 9px;
 }
 
-.logo .logo-dot {
-  color: var(--purple-light);
-}
-
 .logo-text {
   display: block;
   transform: translateY(4px);
@@ -898,14 +894,13 @@ section {
 }
 
 .servicio-link {
-  margin-top: auto;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: 15px;
   font-weight: 600;
   color: var(--purple-light);
-  padding-top: 14px;
+  white-space: nowrap;
 }
 
 .servicio-link svg {
@@ -916,6 +911,127 @@ section {
 
 .servicio-link:hover svg {
   transform: translateX(3px);
+}
+
+/* Nombre de marca del servicio (ej. "KROWN // BUILD") sobre el título */
+.servicio-slug {
+  display: block;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  color: var(--purple-light);
+  margin-bottom: 6px;
+}
+
+/* Precio + CTA anclados al fondo de la tarjeta */
+.servicio-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.servicio-price {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  white-space: nowrap;
+}
+
+/* Variantes con precio propio (ej. Upgrade Quick/Full, Custom Exterior/Complete/Vinyls) */
+.servicio-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+
+.servicio-tier {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.servicio-tier-name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.03em;
+}
+
+.servicio-tier-name span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: normal;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.servicio-tier-price {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ---- Paquetes combinados ---- */
+.paquetes-head {
+  margin: 64px 0 28px;
+  max-width: 640px;
+}
+
+.paquetes-head h3 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin-bottom: 10px;
+}
+
+.paquetes-head p {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+.paquete-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.paquete-head .servicio-icon {
+  margin-bottom: 0;
+}
+
+.paquete-ahorro {
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--success);
+  background: rgba(53, 196, 106, 0.12);
+  border: 1px solid rgba(53, 196, 106, 0.35);
+  padding: 5px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.paquete-card {
+  border-color: rgba(105, 41, 178, 0.28);
+}
+
+.paquete-card:hover {
+  border-color: var(--purple-light);
 }
 
 /* Comparación niveles de mantenimiento */

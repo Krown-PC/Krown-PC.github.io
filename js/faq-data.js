@@ -8,12 +8,12 @@ const KROWN_FAQ = [
   {
     pregunta: "¿Cómo sé si mi PC necesita mantenimiento?",
     respuesta:
-      "Señales típicas son ruido de ventiladores más fuerte de lo normal, temperaturas altas, apagones bajo carga o una baja de rendimiento notoria. Si tu equipo tiene más de un año sin limpieza, probablemente ya le sirve un Mantenimiento Nivel 1 o Nivel 2 según su estado.",
+      "Señales típicas son ruido de ventiladores más fuerte de lo normal, temperaturas altas, apagones bajo carga o una baja de rendimiento notoria. Si tu equipo tiene más de un año sin limpieza, probablemente ya le sirve un Mantenimiento Nivel 1 (KROWN // CLEAN) o Nivel 2 (KROWN // CORE) según su estado.",
   },
   {
     pregunta: "¿Cuánto se demora un servicio?",
     respuesta:
-      "Depende del servicio: un diagnóstico es rápido, un mantenimiento Nivel 1 o 2 se coordina según tu disponibilidad, y un armado a medida depende de la llegada de los componentes. Te confirmamos un plazo concreto apenas conversamos por WhatsApp.",
+      "Depende del servicio: un diagnóstico (KROWN // CHECK) es rápido, un mantenimiento Nivel 1 o 2 (KROWN // CLEAN o CORE) se coordina según tu disponibilidad, y un armado a medida (KROWN // BUILD) depende de la llegada de los componentes. Te confirmamos un plazo concreto apenas conversamos por WhatsApp.",
   },
   {
     pregunta: "¿Puedo llevar mis propios componentes para el armado?",
@@ -23,7 +23,7 @@ const KROWN_FAQ = [
   {
     pregunta: "¿Realizan mantenimiento de tarjetas gráficas?",
     respuesta:
-      "Sí, el cambio de pasta térmica de la GPU está incluido en el Mantenimiento Nivel 2. También podemos revisarla como parte de un diagnóstico si sospechas que es la causa de un problema.",
+      "Sí, el cambio de pasta térmica de la GPU está incluido en el Mantenimiento Nivel 2 (KROWN // CORE). También podemos revisarla como parte de un diagnóstico (KROWN // CHECK) si sospechas que es la causa de un problema.",
   },
   {
     pregunta: "¿Qué pruebas le hacen a mi equipo antes de entregarlo?",
@@ -44,6 +44,11 @@ const KROWN_FAQ = [
     pregunta: "¿Los equipos disponibles tienen pruebas realizadas?",
     respuesta:
       "Sí. Todo equipo que ofrecemos pasa por el mismo proceso de testing que describimos en la sección \"Proceso\" antes de estar disponible.",
+  },
+  {
+    pregunta: "¿Puedo combinar servicios para pagar menos?",
+    respuesta:
+      "Sí — los paquetes combinados (como KROWN // BOOT, KROWN // PATCH o KROWN // PRIME) juntan dos o más servicios en la misma visita con un precio más bajo que contratarlos por separado. Puedes verlos en la sección \"Paquetes combinados\", más arriba.",
   },
   {
     pregunta: "¿Dónde atienden y cómo coordinamos la entrega?",

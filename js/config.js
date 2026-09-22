@@ -46,6 +46,8 @@ const KROWN_WA_MESSAGES = {
     `Hola KROWN, vi el proyecto "${nombre}" en su portafolio. Me gustaría cotizar un equipo similar.`,
   trabajoSimilar: (nombre) =>
     `Hola KROWN, vi el trabajo "${nombre}" en su sitio. Me gustaría cotizar algo similar para mi equipo.`,
+  paquete: (nombre) =>
+    `Hola KROWN, me interesa el paquete ${nombre}. ¿Me pueden dar más detalles y coordinar?`,
   diagnostico:
     "Hola KROWN, mi computador está presentando problemas y me gustaría agendar un diagnóstico.",
   testing:
