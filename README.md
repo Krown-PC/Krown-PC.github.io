@@ -24,6 +24,7 @@ krown/
 │   └── portfolio.js              → Renderiza trabajos.html a partir de portfolio-data.js
 ├── assets/
 │   ├── logo/                      → Logo real de la marca (ver sección de assets de marca)
+│   ├── fonts/                     → Technos, Bebas Neue y Oswald autoalojadas (ver sección de tipografía)
 │   ├── video/                    → Video en loop del Hero + poster de respaldo
 │   ├── img/equipos/               → Fotos de equipos disponibles / vendidos
 │   ├── img/trabajos/               → Fotos antes/después de cada proyecto
@@ -59,9 +60,9 @@ También en `js/config.js`, dentro de `KROWN_WA_MESSAGES`. Puedes editar el text
 
 ## 2. Reemplazar el video del Hero
 
-El Hero trae un video de marcador de posición (un loop genérico con la paleta de colores de la marca) para que el sitio se vea completo desde ya. Para poner tu video real:
+El Hero trae un video de marcador de posición (un loop genérico con la paleta de colores de la marca) para que el sitio se vea completo desde ya. El recuadro del Hero está ajustado en **formato cuadrado (1:1)**, así que tu video debe venir grabado o exportado en 1:1 para que se vea completo (sin recortes en los costados).
 
-1. Comprime tu clip a **MP4 (H.264)**, sin audio, idealmente entre 5–10 segundos, bajo 5MB.
+1. Comprime tu clip a **MP4 (H.264)**, sin audio, idealmente entre 5–10 segundos, bajo 5MB, en **1:1 (cuadrado)**.
 2. Guarda una versión también en **WebM** si quieres el formato más liviano (opcional — el MP4 solo también funciona en todos los navegadores modernos).
 3. Reemplaza estos archivos manteniendo el mismo nombre:
    - `assets/video/hero-loop.mp4`
@@ -71,7 +72,7 @@ El Hero trae un video de marcador de posición (un loop genérico con la paleta 
      ffmpeg -i tu-video.mp4 -vframes 1 -q:v 3 assets/video/hero-poster.jpg
      ```
 
-No necesitas tocar el HTML — los nombres de archivo ya están enlazados.
+No necesitas tocar el HTML — los nombres de archivo ya están enlazados. Si más adelante cambias de opinión y quieres un formato distinto (por ejemplo 16:9), ajusta `aspect-ratio` en `.hero-media` dentro de `css/styles.css`.
 
 ## 3. Reemplazar fotos (equipos, trabajos, taller, testing)
 
@@ -129,9 +130,21 @@ Ya están integrados en el sitio:
 - **`assets/logo/krown-lockup-purple.png`** y **`krown-brand-sheet.png`** — quedan guardados como referencia/uso externo (redes sociales, papelería), no están enlazados en el sitio.
 - **Favicon:** el set completo generado (favicon.ico + PNG en varios tamaños + ícono para Android/iOS) reemplaza el ícono de marcador de posición anterior. Estos archivos deben quedar en la **raíz** del sitio (junto a `index.html`), no dentro de `assets/`, para que funcionen igual en cualquier navegador y dispositivo.
 
-**Nota de color:** el morado del logo real (`#5B3D91` aprox.) es un poco más apagado que el morado de acento usado en botones y detalles del sitio (`#6929B2`, definido así en el brief original). Ambos se leen como el mismo morado de marca y no chocan, pero si quieres que calcen exactamente, dime y ajusto la variable `--purple` en `css/styles.css` al tono exacto del logo.
+**Nota de color:** el logo original traía un morado (`#5B3D91` aprox.) distinto al acento del sitio (`#6929B2`). Ya se unificó todo a `#6929B2`: se recoloreó el ícono, el favicon completo (todos los tamaños) y los lockups, así que ahora el morado del logo, los botones y todos los detalles del sitio son exactamente el mismo tono.
 
-## 10. Probar el sitio localmente
+**Alineación del logo:** el ícono (corona + K) y el texto "KROWN" ahora quedan alineados por su base (`align-items: flex-end` en `.logo`, en `css/styles.css`), en vez de centrados verticalmente — así el ícono ya no se ve más abajo que el texto en el header ni en el footer.
+
+## 10. Tipografía (Technos, Bebas Neue, Oswald)
+
+El sitio usa tres fuentes autoalojadas (no dependen de Google Fonts ni de ninguna conexión externa) — los archivos están en `assets/fonts/` y se cargan con `@font-face` al inicio de `css/styles.css`:
+
+- **Technos** (`--font-brand`) — el nombre de marca "KROWN": se usa en el logo del header/footer y en el título grande del Hero (`<h1>KROWN</h1>`). El paquete que enviaste no traía archivo de licencia — confirma que tienes los derechos de uso de Technos para este sitio.
+- **Bebas Neue** (`--font-display`) — subtítulos y encabezados: todos los `h1`-`h4` (salvo el "KROWN" del Hero), badges, botones, nav, tags y etiquetas. Licencia SIL Open Font License (uso libre), ver `assets/fonts/BebasNeue-OFL.txt`.
+- **Oswald** (`--font-body`) — texto normal: párrafos, listas de specs, texto de las tarjetas. Se incluyeron los pesos Light/Regular/Medium/SemiBold/Bold. Licencia SIL Open Font License (uso libre), ver `assets/fonts/Oswald-OFL.txt`.
+
+Si en algún momento quieres volver a cambiar alguna, solo edita las variables `--font-brand`, `--font-display` y `--font-body` dentro de `:root` en `css/styles.css` (y agrega los `@font-face` correspondientes si es una fuente nueva).
+
+## 11. Probar el sitio localmente
 
 No necesitas instalar nada. Desde la carpeta `krown/`:
 
@@ -141,7 +154,7 @@ python3 -m http.server 8000
 
 Y abre `http://localhost:8000` en tu navegador.
 
-## 11. Publicar en GitHub Pages
+## 12. Publicar en GitHub Pages
 
 1. Crea un repositorio nuevo en GitHub (ej. `krown-web` o `tu-usuario.github.io` si quieres que sea tu dominio raíz).
 2. Sube el **contenido de esta carpeta** (`index.html`, `css/`, `js/`, `assets/`, etc.) a la raíz del repositorio.
@@ -156,7 +169,7 @@ No hay build step ni dependencias — es HTML/CSS/JS puro, así que se publica t
 - **`prefers-reduced-motion`:** el video del Hero se pausa automáticamente y todas las transiciones se acortan si el visitante lo tiene activado en su sistema.
 - **Red de seguridad en las animaciones de aparición:** si por cualquier motivo el efecto de aparición al hacer scroll no se dispara, el contenido igual se muestra a los 2 segundos — nunca queda nada oculto permanentemente.
 - **Imágenes:** todas las fotos bajo el pliegue (equipos, trabajos, taller, banco de pruebas) usan `loading="lazy"` para no descargarlas hasta que el visitante se acerca a ellas.
-- **Favicon propio:** `assets/img/misc/favicon.svg` es un ícono cuadrado dedicado (distinto de la imagen para redes sociales, que es rectangular).
+- **Favicon propio:** favicon dedicado en la raíz del sitio (`favicon.ico` + PNG en varios tamaños), generado a partir del ícono real de la marca — distinto del lockup rectangular usado como imagen de vista previa al compartir el link.
 - El sitio no usa `localStorage` ni cookies, no tiene carrito ni checkout, y no requiere backend.
 
 ## Notas de la auditoría UX/UI
@@ -174,3 +187,6 @@ Esta versión incorpora una revisión de experiencia de usuario sobre la primera
 9. **Conexión Home ↔ Portafolio:** cada trabajo destacado en la portada ahora tiene un botón "Ver proyecto" que lleva directo a su ficha completa en `trabajos.html`.
 10. **Código:** se eliminó la duplicación del script de footer entre `index.html` y `trabajos.html` (ahora vive una sola vez en `main.js`).
 11. **Logo real integrado:** se reemplazó el favicon y el ícono de marca (hechos como marcador de posición) por los archivos reales del logo, y se agregó el set completo de favicon para todos los dispositivos (antes solo había un ícono SVG simplificado).
+12. **Tipografía de marca:** se reemplazaron las fuentes genéricas (Space Grotesk / Inter) por las fuentes reales de la marca — Technos para el nombre "KROWN", Bebas Neue para subtítulos/encabezados y Oswald para el texto normal — autoalojadas para no depender de Google Fonts.
+13. **Alineación del logo:** se corrigió el ícono (corona + K) para que quede alineado por su base con el texto "KROWN" en vez de centrado, ya que el diseño del ícono (corona liviana arriba, letra K más pesada abajo) se veía descentrado al centrarlo verticalmente.
+14. **Video del Hero en 1:1:** el recuadro del Hero se ajustó a formato cuadrado para calzar con el video real que se va a usar (antes era un rectángulo 16:10, pensado para el video de marcador de posición).

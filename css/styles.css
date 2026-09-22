@@ -3,6 +3,70 @@
    Filosofía: "Professional technology first. Cyber/Y2K second." (80/20)
    ========================================================================== */
 
+/* ---- Fuentes (autoalojadas, sin depender de Google Fonts) ----
+   - Technos    -> nombre de marca (logo "KROWN")
+   - Bebas Neue -> subtítulos / encabezados
+   - Oswald     -> texto normal
+   Nota: Technos no incluye archivo de licencia en el paquete entregado;
+   confirma que tienes los derechos de uso para este sitio. Bebas Neue y
+   Oswald son de Google Fonts (licencia OFL, uso libre) — ver
+   assets/fonts/*-OFL.txt. */
+@font-face {
+  font-family: "Technos";
+  src: url("../assets/fonts/Technos.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("../assets/fonts/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("../assets/fonts/Oswald-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("../assets/fonts/Oswald-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("../assets/fonts/Oswald-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("../assets/fonts/Oswald-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("../assets/fonts/Oswald-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ---- Tokens ---- */
 :root {
   /* Marca */
@@ -27,8 +91,9 @@
   --warn: #d9a441;
 
   /* Tipografía */
-  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-brand: "Technos", "Bebas Neue", system-ui, sans-serif;
+  --font-display: "Bebas Neue", "Oswald", system-ui, sans-serif;
+  --font-body: "Oswald", system-ui, -apple-system, sans-serif;
 
   /* Layout */
   --container: 1240px;
@@ -76,6 +141,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
 }
 
 img,
@@ -345,12 +411,12 @@ section {
 }
 
 .logo {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 22px;
-  letter-spacing: 0.06em;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0.04em;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 9px;
 }
 
@@ -501,7 +567,10 @@ section {
 }
 
 .hero h1 {
-  font-size: clamp(38px, 6vw, 62px);
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: clamp(44px, 7vw, 72px);
+  letter-spacing: 0.02em;
   margin-bottom: 8px;
 }
 
@@ -547,7 +616,10 @@ section {
   overflow: hidden;
   border: 1px solid var(--border-strong);
   background: var(--bg-elevated);
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 1 / 1;
+  max-width: 560px;
+  margin-inline: auto;
+  width: 100%;
 }
 
 .hero-media video,
