@@ -19,73 +19,63 @@
  *  - descripcion: resumen del trabajo realizado (sin inventar resultados
  *    de testing que no hayan sido verificados realmente)
  *  - meta: lista corta de chips (qué se hizo)
+ *  - ratio: proporción de las fotos del slider, ej. "3 / 4" (vertical) o "4 / 3"
+ *      (horizontal). Debe ser la misma para el antes y el después.
  *  - antes / despues: { src, alt } de las fotos del slider
+ *  - capturas: (opcional) lista de { src, label } con capturas del banco de
+ *      pruebas; se muestran como miniaturas bajo la descripción.
  */
 const KROWN_PORTFOLIO = [
   {
     id: "001",
-    filtro: { valor: "mantenimiento", etiqueta: "Mantenimiento" },
-    tag: "Mantenimiento Nivel 2 · KROWN // CORE",
+    filtro: { valor: "mantenimiento", etiqueta: "Mantención" },
+    tag: "Mantención Nivel 2 · KROWN // CORE",
     titulo: "Proyecto #001",
     descripcion:
-      "Equipo con acumulación de polvo importante y temperaturas elevadas bajo carga. Desarme completo, limpieza profunda, cambio de pasta térmica en CPU y GPU, cable management y test de estabilidad antes de la entrega.",
-    meta: ["Desarme completo", "Pasta térmica CPU + GPU", "Cable management", "Test de estabilidad"],
-    antes: { src: "assets/img/trabajos/proyecto-001-antes.jpg", alt: "Equipo antes del mantenimiento nivel 2" },
-    despues: { src: "assets/img/trabajos/proyecto-001-despues.jpg", alt: "Equipo después del mantenimiento nivel 2" },
+      "Mantención completa de un equipo con acumulación de polvo: se cambió la pasta térmica del CPU y de la GPU y se limpió todo el interior.",
+    meta: ["Pasta térmica CPU + GPU", "Limpieza completa"],
+    ratio: "3 / 4",
+    antes: { src: "assets/img/trabajos/proyecto-001-antes.webp", alt: "Interior del equipo antes de la mantención nivel 2, con polvo y cables desordenados" },
+    despues: { src: "assets/img/trabajos/proyecto-001-despues.webp", alt: "Interior del equipo después de la mantención nivel 2, limpio" },
   },
   {
     id: "002",
-    filtro: { valor: "armado", etiqueta: "Armado" },
-    tag: "Armado a Medida · KROWN // BUILD",
+    filtro: { valor: "mantenimiento", etiqueta: "Mantención" },
+    tag: "Mantención Nivel 1 · KROWN // CLEAN",
     titulo: "Proyecto #002",
     descripcion:
-      "Armado completo a partir de una selección de componentes definida junto al cliente, priorizando flujo de aire y silencio. Cable management desde cero y testing de temperaturas y estabilidad antes de la entrega.",
-    meta: ["Armado completo", "Cable management", "Test de temperaturas", "Windows instalado"],
-    antes: { src: "assets/img/trabajos/proyecto-002-antes.svg", alt: "Componentes antes del armado" },
-    despues: { src: "assets/img/trabajos/proyecto-002-despues.svg", alt: "Equipo armado a medida, resultado final" },
+      "Mantención preventiva de un equipo que marcaba 41 °C en reposo. Se cambió la pasta térmica del CPU y se hizo una limpieza superficial: después del trabajo la temperatura en reposo bajó a 34 °C.",
+    meta: ["Pasta térmica CPU", "Limpieza superficial", "41 °C → 34 °C en reposo"],
+    ratio: "3 / 4",
+    antes: { src: "assets/img/trabajos/proyecto-002-antes.webp", alt: "Equipo con polvo acumulado antes de la mantención nivel 1" },
+    despues: { src: "assets/img/trabajos/proyecto-002-despues.webp", alt: "Equipo limpio después de la mantención nivel 1" },
+    capturas: [
+      { src: "assets/img/trabajos/proyecto-002-banco-antes.webp", label: "Antes: 41 °C en reposo" },
+      { src: "assets/img/trabajos/proyecto-002-banco-despues.webp", label: "Después: 34 °C en reposo" },
+    ],
   },
   {
     id: "003",
-    filtro: { valor: "personalizacion", etiqueta: "Personalización" },
-    tag: "Personalización Estética · KROWN // CUSTOM",
+    filtro: { valor: "mantenimiento", etiqueta: "Mantención" },
+    tag: "Mantención Nivel 1 · KROWN // CLEAN",
     titulo: "Proyecto #003",
     descripcion:
-      "Gabinete repintado y personalizado con vinilos, sumado a una mantención general del equipo. El resultado combina identidad visual propia con un funcionamiento verificado.",
-    meta: ["Pintura de gabinete", "Vinilos", "Mantenimiento incluido"],
-    antes: { src: "assets/img/trabajos/proyecto-003-antes.svg", alt: "Gabinete antes de la personalización estética" },
-    despues: { src: "assets/img/trabajos/proyecto-003-despues.svg", alt: "Gabinete después de la personalización estética" },
+      "Mantención preventiva: se cambió la pasta térmica del CPU y se hizo una limpieza superficial del equipo.",
+    meta: ["Pasta térmica CPU", "Limpieza superficial"],
+    ratio: "1 / 1",
+    antes: { src: "assets/img/trabajos/proyecto-003-antes.webp", alt: "Equipo con polvo acumulado antes de la mantención nivel 1" },
+    despues: { src: "assets/img/trabajos/proyecto-003-despues.webp", alt: "Equipo limpio después de la mantención nivel 1" },
   },
   {
     id: "004",
-    filtro: { valor: "mantenimiento", etiqueta: "Mantenimiento" },
-    tag: "Mantenimiento Nivel 1 · KROWN // CLEAN",
+    filtro: { valor: "armado", etiqueta: "Armado" },
+    tag: "Cambio de gabinete y componentes · KROWN // DEPLOY",
     titulo: "Proyecto #004",
     descripcion:
-      "Mantención preventiva sobre un equipo con temperaturas algo altas en uso prolongado. Limpieza superficial, cambio de pasta térmica del CPU, cable management y test de temperaturas.",
-    meta: ["Limpieza superficial", "Pasta térmica CPU", "Cable management", "Test de temperaturas"],
-    antes: { src: "assets/img/trabajos/proyecto-004-antes.svg", alt: "Equipo antes del mantenimiento nivel 1" },
-    despues: { src: "assets/img/trabajos/proyecto-004-despues.svg", alt: "Equipo después del mantenimiento nivel 1" },
-  },
-  {
-    id: "005",
-    filtro: { valor: "diagnostico", etiqueta: "Diagnóstico" },
-    tag: "Diagnóstico y Reparación · KROWN // CHECK",
-    titulo: "Proyecto #005",
-    descripcion:
-      "Equipo con fallas intermitentes de encendido. Diagnóstico dirigido para aislar el componente responsable, presupuesto previo aprobado por el cliente y reemplazo del componente afectado.",
-    meta: ["Diagnóstico dirigido", "Presupuesto previo", "Reemplazo de componente"],
-    antes: { src: "assets/img/trabajos/proyecto-005-antes.svg", alt: "Equipo antes del diagnóstico" },
-    despues: { src: "assets/img/trabajos/proyecto-005-despues.svg", alt: "Equipo después de la reparación" },
-  },
-  {
-    id: "006",
-    filtro: { valor: "armado", etiqueta: "Armado" },
-    tag: "Armado a Medida · KROWN // BUILD",
-    titulo: "Proyecto #006",
-    descripcion:
-      "Segundo armado a medida, enfocado en aprovechar componentes que el cliente ya tenía y sumar solo lo necesario para cumplir su objetivo de uso. Cable management y testing incluidos.",
-    meta: ["Componentes del cliente", "Cable management", "Test de estabilidad"],
-    antes: { src: "assets/img/trabajos/proyecto-006-antes.svg", alt: "Componentes antes del segundo armado a medida" },
-    despues: { src: "assets/img/trabajos/proyecto-006-despues.svg", alt: "Resultado final del segundo armado a medida" },
+      "Cambio de gabinete y renovación de componentes: se instaló refrigeración líquida y RAM nuevas, además de la instalación del sistema operativo.",
+    meta: ["Gabinete nuevo", "Refrigeración líquida", "RAM nueva", "Instalación del sistema operativo"],
+    ratio: "4 / 3",
+    antes: { src: "assets/img/trabajos/proyecto-004-antes.webp", alt: "Equipo en su gabinete original antes del cambio de componentes" },
+    despues: { src: "assets/img/trabajos/proyecto-004-despues.webp", alt: "Equipo en gabinete blanco nuevo con refrigeración líquida e iluminación RGB" },
   },
 ];

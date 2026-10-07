@@ -1110,7 +1110,7 @@ section {
 .ba-slider {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: var(--ba-ratio, 4 / 3);
   overflow: hidden;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-strong);
@@ -1301,10 +1301,16 @@ section {
 
 .equipo-media {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 5;
+}
+
+.equipo-media {
+  overflow: hidden;
 }
 
 .equipo-media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -2120,3 +2126,96 @@ section {
 .nosotros-historia { font-size: 19px; line-height: 1.6; }
 .nosotros-firma { margin-top: 4px; font-size: 16px; color: var(--text-muted); }
 .nosotros-firma strong { color: var(--text); font-family: var(--font-display); font-size: 20px; letter-spacing: 0.04em; font-weight: 400; }
+
+
+/* ---- Fotos reales: sliders de distinta proporción ---- */
+.trabajo-card .ba-slider {
+  /* nunca más alto que ~80% de la pantalla, sin deformar la foto */
+  width: min(100%, calc(80vh * var(--ba-r, 1.333)));
+  margin-inline: auto;
+}
+
+/* ---- Capturas del banco de pruebas dentro de un proyecto ---- */
+.trabajo-capturas { margin: 4px 0 18px; }
+.trabajo-capturas-titulo {
+  display: block;
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+.trabajo-capturas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.trabajo-capturas-grid a {
+  display: block;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md, 10px);
+  overflow: hidden;
+  background: var(--bg-elevated);
+  transition: border-color 0.2s;
+}
+.trabajo-capturas-grid a:hover { border-color: var(--purple-light); }
+.trabajo-capturas-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.trabajo-capturas-grid span {
+  display: block;
+  padding: 7px 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ---- Galería del banco de pruebas ---- */
+.bench-stage {
+  background: #0a0a10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+}
+.bench-stage img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+.bench-caption {
+  margin: 0;
+  padding: 14px 18px 4px;
+  font-size: 14.5px;
+  color: var(--text);
+}
+.bench-caption strong { font-family: var(--font-display); letter-spacing: 0.04em; }
+.bench-caption span { display: block; color: var(--text-muted); font-size: 13.5px; margin-top: 3px; }
+.bench-thumbs {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  padding: 12px 18px 18px;
+}
+.bench-thumb {
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg);
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+.bench-thumb img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: top left; display: block; }
+.bench-thumb:hover, .bench-thumb:focus-visible { opacity: 1; }
+.bench-thumb.is-active { opacity: 1; border-color: var(--purple); }
+@media (max-width: 520px) {
+  .bench-thumbs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

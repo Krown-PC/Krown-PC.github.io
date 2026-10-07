@@ -16,10 +16,9 @@
  */
 const KROWN_EQUIPOS = [
   {
-    id: "krown-vanguard",
-    nombre: "KROWN Vanguard",
-    estado: "disponible",
-    // TODO: reemplazar por el precio real vigente, ej: "$650.000 CLP"
+    id: "krown-nexus",
+    nombre: "KROWN // NEXUS",
+    estado: "vendido",
     precio: null,
     specs: [
       "AMD Ryzen 5 5500",
@@ -31,14 +30,23 @@ const KROWN_EQUIPOS = [
       "Gabinete Gamdias Atlas M3M",
       "Windows 11 instalado y activado",
     ],
-    imagen: { src: "assets/img/equipos/krown-vanguard.svg", alt: "KROWN Vanguard, equipo disponible" },
+    imagen: { src: "assets/img/equipos/equipo-002-nexus.webp", alt: "KROWN // NEXUS: gabinete Gamdias con vidrio panorámico e iluminación RGB violeta" },
   },
   {
-    id: "proyecto-i7-6700",
-    nombre: "Proyecto entregado",
+    id: "krown-vector",
+    nombre: "KROWN // VECTOR",
     estado: "vendido",
     precio: null,
-    specs: ["Intel Core i7-6700", "Zotac GTX 1060 6GB"],
-    imagen: { src: "assets/img/equipos/proyecto-i7-6700.svg", alt: "Proyecto vendido con procesador i7-6700 y GTX 1060" },
+    specs: [
+      "Intel Core i7-6700",
+      "GTX 1060 6GB",
+      "16GB DDR4 Ballistix",
+      "MSI H110M PRO-VH PLUS",
+      "SSD Crucial 120GB + SSD Kingston A400 1TB",
+      "Fuente MSI MAG A650BN 650W",
+      "Gabinete GameMax Storm BK",
+      "Windows 11 instalado y activado",
+    ],
+    imagen: { src: "assets/img/equipos/equipo-001-vector.webp", alt: "KROWN // VECTOR: gabinete negro con frontal de malla e iluminación RGB violeta" },
   },
 ];

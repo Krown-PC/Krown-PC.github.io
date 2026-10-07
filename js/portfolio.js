@@ -30,7 +30,7 @@
     function cardHTML(p) {
       return `
         <article class="trabajo-card reveal is-visible" data-categoria="${p.filtro.valor}" id="proyecto-${p.id}">
-          <div class="ba-slider">
+          <div class="ba-slider" style="--ba-ratio:${p.ratio || '4 / 3'}; --ba-r:${ratioNum(p.ratio)}">
             <span class="ba-label ba-label--before">Antes</span>
             <span class="ba-label ba-label--after">Después</span>
             <img class="ba-after" src="${p.despues.src}" alt="${p.despues.alt}" loading="lazy" decoding="async" />
@@ -48,9 +48,31 @@
             <div class="trabajo-meta">
               ${p.meta.map((m) => `<span>${m}</span>`).join("")}
             </div>
+            ${capturasHTML(p)}
             <a href="#" class="btn btn-ghost btn-sm" data-wa="trabajoSimilar" data-wa-param="${p.titulo} — ${p.tag}">Cotizar algo similar</a>
           </div>
         </article>`;
+    }
+
+    function ratioNum(r) {
+      const [a, b] = String(r || "4 / 3").split("/").map(Number);
+      return b ? (a / b).toFixed(3) : "1.333";
+    }
+
+    function capturasHTML(p) {
+      if (!p.capturas || !p.capturas.length) return "";
+      return `
+            <div class="trabajo-capturas">
+              <span class="trabajo-capturas-titulo">Capturas del banco de pruebas</span>
+              <div class="trabajo-capturas-grid">
+                ${p.capturas
+                  .map(
+                    (c) =>
+                      `<a href="${c.src}" target="_blank" rel="noopener"><img src="${c.src}" alt="${c.label}" loading="lazy" decoding="async" /><span>${c.label}</span></a>`
+                  )
+                  .join("")}
+              </div>
+            </div>`;
     }
 
     function renderFiltros() {
