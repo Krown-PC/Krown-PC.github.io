@@ -30,8 +30,8 @@ const KROWN_PORTFOLIO = [
     descripcion:
       "Equipo con acumulación de polvo importante y temperaturas elevadas bajo carga. Desarme completo, limpieza profunda, cambio de pasta térmica en CPU y GPU, cable management y test de estabilidad antes de la entrega.",
     meta: ["Desarme completo", "Pasta térmica CPU + GPU", "Cable management", "Test de estabilidad"],
-    antes: { src: "assets/img/trabajos/proyecto-001-antes.svg", alt: "Equipo antes del mantenimiento nivel 2" },
-    despues: { src: "assets/img/trabajos/proyecto-001-despues.svg", alt: "Equipo después del mantenimiento nivel 2" },
+    antes: { src: "assets/img/trabajos/proyecto-001-antes.jpg", alt: "Equipo antes del mantenimiento nivel 2" },
+    despues: { src: "assets/img/trabajos/proyecto-001-despues.jpg", alt: "Equipo después del mantenimiento nivel 2" },
   },
   {
     id: "002",
