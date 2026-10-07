@@ -53,6 +53,11 @@ const KROWN_FAQ = [
   {
     pregunta: "¿Dónde atienden y cómo coordinamos la entrega?",
     respuesta:
-      "Atendemos en Santiago. La modalidad de retiro o entrega la coordinamos directamente por WhatsApp según tu ubicación y el tipo de servicio.",
+      "Atendemos a domicilio en todo Santiago. La personalización estética se realiza en nuestro taller; la modalidad exacta la coordinamos directamente por WhatsApp según tu ubicación y el tipo de servicio.",
+  },
+  {
+    pregunta: "¿Tienen garantía?",
+    respuesta:
+      "Sí: 60 días de garantía sobre la mano de obra de nuestros servicios. Los repuestos y piezas (nuevos o usados) mantienen la garantía de su fabricante o vendedor, cuando corresponde, y las piezas de pintura y personalización no tienen garantía. Si tienes dudas sobre tu caso, escríbenos por WhatsApp antes de contratar.",
   },
 ];

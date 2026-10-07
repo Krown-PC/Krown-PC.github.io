@@ -4,15 +4,19 @@
  * enlaces de contacto y datos de contacto del footer.
  */
 const KROWN_CONFIG = {
-  // TODO: reemplazar por el número real en formato internacional sin '+' ni espacios.
-  // Ejemplo Chile: 56 9 1234 5678  ->  "56912345678"
+  // Número de WhatsApp en formato internacional sin '+' ni espacios.
   whatsappNumber: "56957374233",
 
-  // TODO: reemplazar por el correo real de contacto (opcional, se usa en el footer).
-  email: "krown.cl@gmail.com",
+  // Correo de contacto (se usa en el footer).
+  email: "contacto@krown.cl",
 
-  // TODO: reemplazar por el Instagram real (opcional, se usa en el footer). Dejar "" para ocultar.
-  instagram: "@krown.cl",
+  // Instagram (footer y sección Contenido). Dejar "" para ocultar.
+  instagram: "https://www.instagram.com/krown.cl/",
+
+  // Perfiles de contenido (opcionales). Aparecen como botones al final de la
+  // sección "Contenido". Dejar "" para ocultar el botón de esa red.
+  youtube: "https://www.youtube.com/@krown-cl",
+  tiktok: "https://www.tiktok.com/@krown_cl",
 
   // Ciudad principal de servicio (se usa en microcopy).
   ciudad: "Santiago",
@@ -35,21 +39,21 @@ function krownWaLink(message) {
  */
 const KROWN_WA_MESSAGES = {
   general:
-    "Hola Krown, me gustaría recibir más información sobre sus servicios.",
+    "Hola KROWN, me gustaría recibir más información sobre sus servicios.",
   cotizarGeneral:
-    "Hola Krown, quiero cotizar un servicio o equipo. ¿Me pueden ayudar?",
+    "Hola KROWN, quiero cotizar un servicio o equipo. ¿Me pueden ayudar?",
   servicio: (nombre) =>
-    `Hola Krown, estoy interesado en el servicio de ${nombre}. Me gustaría obtener más información y un presupuesto.`,
+    `Hola KROWN, estoy interesado en el servicio de ${nombre}. Me gustaría obtener más información y un presupuesto.`,
   equipoDisponible: (nombre) =>
-    `Hola Krown, estoy interesado en el equipo ${nombre} y quisiera consultar su disponibilidad.`,
+    `Hola KROWN, estoy interesado en el equipo ${nombre} y quisiera consultar su disponibilidad.`,
   equipoSimilar: (nombre) =>
-    `Hola Krown, vi el proyecto "${nombre}" en su portafolio. Me gustaría cotizar un equipo similar.`,
+    `Hola KROWN, vi el proyecto "${nombre}" en su portafolio. Me gustaría cotizar un equipo similar.`,
   trabajoSimilar: (nombre) =>
-    `Hola Krown, vi el trabajo "${nombre}" en su sitio. Me gustaría cotizar algo similar para mi equipo.`,
+    `Hola KROWN, vi el trabajo "${nombre}" en su sitio. Me gustaría cotizar algo similar para mi equipo.`,
   paquete: (nombre) =>
-    `Hola Krown, me interesa el paquete ${nombre}. ¿Me pueden dar más detalles y coordinar?`,
+    `Hola KROWN, me interesa el paquete ${nombre}. ¿Me pueden dar más detalles y coordinar?`,
   diagnostico:
-    "Hola Krown, mi computador está presentando problemas y me gustaría agendar un diagnóstico.",
+    "Hola KROWN, mi computador está presentando problemas y me gustaría agendar un diagnóstico.",
   testing:
-    "Hola Krown, vi cómo prueban los equipos antes de entregarlos y me gustaría cotizar un servicio.",
+    "Hola KROWN, vi cómo prueban los equipos antes de entregarlos y me gustaría cotizar un servicio.",
 };

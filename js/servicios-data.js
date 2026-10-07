@@ -193,18 +193,6 @@ const KROWN_PAQUETES = [
     waParam: "KROWN // PATCH — Clean + OS",
   },
   {
-    id: "prime",
-    slug: "KROWN // PRIME",
-    nombre: "OS + Core",
-    incluye: [
-      "Instalación y optimización de Windows (os)",
-      "Mantención Nivel 2 (core)",
-    ],
-    precio: "$67.990",
-    ahorro: "Ahorro ~10%",
-    waParam: "KROWN // PRIME — OS + Core",
-  },
-  {
     id: "deploy",
     slug: "KROWN // DEPLOY",
     nombre: "Build + OS",
@@ -234,5 +222,18 @@ const KROWN_PAQUETES = [
     precio: "$139.990",
     ahorro: "Ahorro ~7%",
     waParam: "KROWN // RESKIN FULL — Custom Complete + Vinyls + Core",
+  },
+  {
+    id: "prime",
+    slug: "KROWN // PRIME",
+    nombre: "Build + OS + Core",
+    incluye: [
+      "Armado de PC (build)",
+      "Instalación y optimización de Windows (os)",
+      "Mantención Nivel 2 (core)",
+    ],
+    precio: "$99.990",
+    ahorro: "Ahorro ~10%",
+    waParam: "KROWN // PRIME — Build + OS + Core",
   },
 ];

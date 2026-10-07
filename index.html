@@ -34,7 +34,9 @@
     <nav class="nav-desktop" aria-label="Navegación principal">
       <ul>
         <li><a href="#inicio">Inicio</a></li>
+        <li data-contenido-nav hidden><a href="#contenido">Contenido</a></li>
         <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#paquetes">Paquetes</a></li>
         <li><a href="#trabajos">Trabajos</a></li>
         <li><a href="#equipos">Equipos</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
@@ -54,7 +56,9 @@
 <nav class="nav-mobile" aria-label="Navegación móvil">
   <ul>
     <li><a href="#inicio">Inicio</a></li>
+    <li data-contenido-nav hidden><a href="#contenido">Contenido</a></li>
     <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#paquetes">Paquetes</a></li>
     <li><a href="#trabajos">Trabajos</a></li>
     <li><a href="#equipos">Equipos</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
@@ -101,40 +105,23 @@
     </div>
   </section>
 
-  <!-- ============ PROCESO / TESTING ============ -->
-  <section class="testing" id="proceso">
+  <!-- ============ CONTENIDO / REDES ============ -->
+  <!-- Oculta por defecto: js/contenido.js solo la muestra si hay al menos un
+       video cargado en js/contenido-data.js. -->
+  <section class="contenido" id="contenido" aria-label="Contenido de KROWN en redes" hidden>
     <div class="container">
-      <div class="testing-media hud-frame reveal">
-        <img src="assets/img/misc/testing-bench.svg" alt="Banco de pruebas KROWN con monitoreo de temperaturas y estabilidad" loading="lazy" decoding="async" />
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Contenido KROWN</span>
+        <h2>Tecnología, builds y consejos en video</h2>
+        <p>Videos propios sobre armado, mantenimiento y novedades tech. Míralos donde prefieras y síguenos para no perderte los próximos.</p>
       </div>
 
-      <div class="testing-copy reveal">
-        <span class="eyebrow">Transparencia y control de calidad</span>
-        <h2>Cada equipo se prueba antes de llegar a tus manos</h2>
-        <p>No entregamos nada a ciegas. Antes de cerrar un trabajo corremos pruebas de estabilidad, temperatura y rendimiento — y cuando corresponde, te compartimos las capturas reales.</p>
+      <div class="contenido-layout" id="contenido-layout">
+        <!-- Generado dinámicamente por js/contenido.js a partir de js/contenido-data.js -->
+      </div>
 
-        <div class="proceso-steps">
-          <div class="proceso-step"><span class="num">1</span><span class="label">Armamos</span></div>
-          <div class="proceso-step"><span class="num">2</span><span class="label">Testeamos</span></div>
-          <div class="proceso-step"><span class="num">3</span><span class="label">Verificamos</span></div>
-          <div class="proceso-step"><span class="num">4</span><span class="label">Entregamos</span></div>
-        </div>
-
-        <div class="testing-tools">
-          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/></svg> Cinebench</div>
-          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg> OCCT</div>
-          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg> FurMark</div>
-          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> HWiNFO</div>
-          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg> CrystalDiskInfo</div>
-          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> RivaTuner</div>
-        </div>
-
-        <p style="margin-bottom:20px; font-size:14.5px;">Según el trabajo, esto puede incluir pruebas de CPU, GPU, RAM y almacenamiento, además de monitoreo de temperaturas y benchmarks de rendimiento. No todas las herramientas se usan en todos los equipos.</p>
-
-        <div class="testing-note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;flex-shrink:0;color:var(--purple-light);margin-top:1px;"><path d="M12 9v4"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
-          <span>Los resultados que compartimos corresponden a trabajos reales, con capturas del equipo. No publicamos benchmarks ni certificaciones que no hayamos obtenido nosotros mismos.</span>
-        </div>
+      <div class="contenido-redes" id="contenido-redes" hidden>
+        <!-- Botones a los perfiles (YouTube / Instagram / TikTok), según js/config.js -->
       </div>
     </div>
   </section>
@@ -146,6 +133,36 @@
         <span class="eyebrow">Qué hacemos</span>
         <h2>Servicios técnicos para cada etapa de tu equipo</h2>
         <p>Desde el primer armado hasta la mantención periódica y la personalización estética — todo coordinado directo por WhatsApp.</p>
+      </div>
+
+      <!-- Garantía y zona de atención -->
+      <ul class="confianza-strip reveal" aria-label="Condiciones del servicio">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span><strong>60 días de garantía</strong> sobre la mano de obra</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong>A domicilio en todo Santiago</strong> — la personalización se hace en taller</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span><strong>Sin gastos sorpresa</strong> — presupuesto previo a cualquier reparación</span>
+        </li>
+      </ul>
+
+      <!-- Selector: ¿qué necesitas? -->
+      <div class="necesitas reveal">
+        <p class="necesitas-title">¿Qué necesitas hoy?</p>
+        <div class="necesitas-chips">
+          <a class="necesitas-chip" href="#servicio-clean">Mi PC está lento o se calienta</a>
+          <a class="necesitas-chip" href="#servicio-check">Falla algo y no sé qué es</a>
+          <a class="necesitas-chip" href="#servicio-build">Quiero armar un PC</a>
+          <a class="necesitas-chip" href="#servicio-os">Reinstalar o limpiar Windows</a>
+          <a class="necesitas-chip" href="#servicio-upgrade">Mejorar o cambiar piezas</a>
+          <a class="necesitas-chip" href="#servicio-custom">Personalizarlo estéticamente</a>
+          <a class="necesitas-chip necesitas-chip--alt" href="#paquetes">Quiero ahorrar combinando</a>
+        </div>
       </div>
 
       <div class="servicios-grid" id="servicios-grid">
@@ -178,11 +195,15 @@
           </tbody>
         </table>
       </div>
+    </div>
+  </section>
 
-      <!-- Paquetes combinados -->
-      <div class="paquetes-head">
+  <!-- ============ PAQUETES ============ -->
+  <section class="paquetes" id="paquetes">
+    <div class="container">
+      <div class="section-head section-head--center">
         <span class="eyebrow">Ahorra combinando</span>
-        <h3>Paquetes combinados</h3>
+        <h2>Paquetes combinados</h2>
         <p>Junta servicios en la misma visita y paga menos por el conjunto que por separado.</p>
       </div>
       <div class="servicios-grid" id="paquetes-grid">
@@ -317,17 +338,60 @@
     </div>
   </section>
 
+  <!-- ============ PROCESO / TESTING ============ -->
+  <section class="testing" id="proceso">
+    <div class="container">
+      <div class="testing-media hud-frame reveal">
+        <img src="assets/img/misc/testing-bench.svg" alt="Banco de pruebas KROWN con monitoreo de temperaturas y estabilidad" loading="lazy" decoding="async" />
+      </div>
+
+      <div class="testing-copy reveal">
+        <span class="eyebrow">Transparencia y control de calidad</span>
+        <h2>Cada equipo se prueba antes de llegar a tus manos</h2>
+        <p>No entregamos nada a ciegas. Antes de cerrar un trabajo corremos pruebas de estabilidad, temperatura y rendimiento — y cuando corresponde, te compartimos las capturas reales.</p>
+
+        <div class="proceso-steps">
+          <div class="proceso-step"><span class="num">1</span><span class="label">Armamos</span></div>
+          <div class="proceso-step"><span class="num">2</span><span class="label">Testeamos</span></div>
+          <div class="proceso-step"><span class="num">3</span><span class="label">Verificamos</span></div>
+          <div class="proceso-step"><span class="num">4</span><span class="label">Entregamos</span></div>
+        </div>
+
+        <div class="testing-tools">
+          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/></svg> Cinebench</div>
+          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg> OCCT</div>
+          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg> FurMark</div>
+          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> HWiNFO</div>
+          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg> CrystalDiskInfo</div>
+          <div class="testing-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> RivaTuner</div>
+        </div>
+
+        <p style="margin-bottom:20px; font-size:14.5px;">Según el trabajo, esto puede incluir pruebas de CPU, GPU, RAM y almacenamiento, además de monitoreo de temperaturas y benchmarks de rendimiento. No todas las herramientas se usan en todos los equipos.</p>
+
+        <div class="testing-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;flex-shrink:0;color:var(--purple-light);margin-top:1px;"><path d="M12 9v4"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+          <span>Los resultados que compartimos corresponden a trabajos reales, con capturas del equipo. No publicamos benchmarks ni certificaciones que no hayamos obtenido nosotros mismos.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ QUIÉNES SOMOS ============ -->
   <section class="nosotros" id="nosotros">
     <div class="container">
-      <div class="nosotros-media hud-frame reveal">
-        <img src="assets/img/misc/taller.svg" alt="Taller de trabajo de KROWN" loading="lazy" decoding="async" />
-      </div>
+      <!-- Foto de Bastián: deja tu foto en assets/img/misc/bastian.jpg. Mientras el
+           archivo no exista, esta columna se oculta sola (js/main.js) y el texto
+           queda centrado — nunca se ve un recuadro vacío. -->
+      <figure class="nosotros-media hud-frame reveal" id="nosotros-media" hidden>
+        <img src="assets/img/misc/bastian.jpg" alt="Bastián Oyarce, fundador de KROWN" loading="lazy" decoding="async" />
+      </figure>
 
-      <div class="reveal">
+      <div class="nosotros-copy reveal">
         <span class="eyebrow">Quiénes somos</span>
-        <h2>Una marca técnica, construida sobre trabajos reales</h2>
-        <p>KROWN es un taller técnico independiente especializado en computadores: armado, mantención, diagnóstico y personalización. Trabajamos con procesos claros y resultados que se pueden verificar, no solo prometer.</p>
+        <h2>Detrás de KROWN hay una pasión de toda la vida</h2>
+        <p class="nosotros-historia">Desde los seis años los computadores me fascinan. Empecé desarmando notebooks por pura curiosidad y, con el tiempo, entendí que un computador es mucho más que una máquina: es tu espacio personal, donde te expresas y te muestras al mundo como eres.</p>
+        <p class="nosotros-historia">Así nació KROWN: un lugar donde damos vida a tus ideas y potenciamos tu reino.</p>
+        <p class="nosotros-firma"><strong>Bastián Oyarce</strong> · Fundador de KROWN</p>
 
         <div class="valores-grid">
           <div class="valor-item">Honestidad</div>
@@ -336,7 +400,6 @@
           <div class="valor-item">Eficiencia</div>
           <div class="valor-item">Claridad</div>
         </div>
-        <!-- TODO: Bastian — agregar aquí misión, visión y propuesta de valor completas cuando estén definidas -->
       </div>
     </div>
   </section>
@@ -411,6 +474,8 @@
           <li><a href="#" data-wa="general">WhatsApp</a></li>
           <li id="footer-email-item"><a href="#" id="footer-email">Correo</a></li>
           <li id="footer-ig-item" style="display:none;"><a href="#" id="footer-ig" target="_blank" rel="noopener">Instagram</a></li>
+          <li id="footer-yt-item" style="display:none;"><a href="#" id="footer-yt" target="_blank" rel="noopener">YouTube</a></li>
+          <li id="footer-tt-item" style="display:none;"><a href="#" id="footer-tt" target="_blank" rel="noopener">TikTok</a></li>
         </ul>
       </div>
     </div>
@@ -434,10 +499,12 @@
 <script src="js/equipos-data.js"></script>
 <script src="js/testimonials-data.js"></script>
 <script src="js/faq-data.js"></script>
+<script src="js/contenido-data.js"></script>
 <script src="js/main.js"></script>
 <script src="js/servicios.js"></script>
 <script src="js/equipos.js"></script>
 <script src="js/testimonials.js"></script>
 <script src="js/faq.js"></script>
+<script src="js/contenido.js"></script>
 </body>
 </html>

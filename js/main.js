@@ -13,6 +13,7 @@
     initWaButtons();
     initReveal();
     initHeroVideo();
+    initNosotrosFoto();
     initYear();
     initFooterLinks();
   });
@@ -189,6 +190,21 @@
     });
   }
 
+  /* Muestra la foto de "Quiénes somos" solo si el archivo existe; si no, el texto queda centrado */
+  function initNosotrosFoto() {
+    const section = document.getElementById("nosotros");
+    const fig = document.getElementById("nosotros-media");
+    const img = fig && fig.querySelector("img");
+    if (!section || !fig || !img) return;
+    const mostrar = () => { fig.hidden = false; section.classList.remove("nosotros--solo"); };
+    const ocultar = () => { fig.hidden = true; section.classList.add("nosotros--solo"); };
+    ocultar();
+    const probe = new Image();
+    probe.onload = mostrar;
+    probe.onerror = ocultar;
+    probe.src = img.getAttribute("src");
+  }
+
   function initYear() {
     const el = document.getElementById("year");
     if (el) el.textContent = new Date().getFullYear();
@@ -201,13 +217,15 @@
       emailLink.href = "mailto:" + KROWN_CONFIG.email;
       emailLink.textContent = KROWN_CONFIG.email;
     }
-    if (typeof KROWN_CONFIG !== "undefined" && KROWN_CONFIG.instagram) {
-      const igItem = document.getElementById("footer-ig-item");
-      const igLink = document.getElementById("footer-ig");
-      if (igItem && igLink) {
-        igLink.href = KROWN_CONFIG.instagram;
-        igItem.style.display = "";
-      }
+    if (typeof KROWN_CONFIG !== "undefined") {
+      [["ig", "instagram"], ["yt", "youtube"], ["tt", "tiktok"]].forEach(([id, key]) => {
+        const item = document.getElementById("footer-" + id + "-item");
+        const link = document.getElementById("footer-" + id);
+        if (item && link && KROWN_CONFIG[key]) {
+          link.href = KROWN_CONFIG[key];
+          item.style.display = "";
+        }
+      });
     }
   }
 })();

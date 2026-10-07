@@ -20,6 +20,8 @@ krown/
 │   ├── testimonials.js           → Muestra la franja de testimonios solo si hay datos reales
 │   ├── faq-data.js               → Preguntas y respuestas del acordeón FAQ
 │   ├── faq.js                    → Renderiza y wirea el acordeón FAQ
+│   ├── contenido-data.js         → Videos de YouTube/Instagram/TikTok (vacío = sección oculta)
+│   ├── contenido.js              → Renderiza la sección Contenido
 │   ├── servicios-data.js         → Servicios individuales y paquetes combinados (precios acá)
 │   ├── servicios.js              → Renderiza Servicios + Paquetes a partir de servicios-data.js
 │   ├── portfolio-data.js         → Datos de cada trabajo del portafolio (edita/agrega acá)
@@ -119,9 +121,21 @@ La sección **Servicios** (tarjetas individuales), la tabla comparativa de nivel
 - **`KROWN_SERVICIOS`** — un objeto por servicio individual (`KROWN // BUILD`, `CLEAN`, `CORE`, `OS`, `CHECK`, `UPGRADE`, `CUSTOM`). Cada uno tiene `slug` (el nombre técnico tipo "KROWN // ALGO"), `nombre` (el nombre en español que ve el cliente), `descripcion`, y **o bien** `lista` (bullets simples, ej. Nivel 1/Nivel 2) **o bien** `tiers` (sub-opciones con su propio precio, ej. Upgrade Quick/Full o Custom Exterior/Complete/Vinyls) — nunca ambos a la vez.
 - **`KROWN_PAQUETES`** — un objeto por paquete combinado (`KROWN // BOOT`, `PATCH`, `DEPLOY`, `RESKIN`, `RESKIN FULL`, `PRIME`), con `incluye` (lista de servicios que agrupa), `precio` y `ahorro` (el badge verde, ej. `"Ahorro ~9%"`).
 - **Precios de lanzamiento vs. estables:** el sitio muestra **solo el precio de lanzamiento** en el campo `precio` de cada objeto, tal como se pidió para este lanzamiento. El precio "estable" (el que rige una vez pasado el período de lanzamiento) está documentado en un comentario junto a cada servicio/paquete dentro de `js/servicios-data.js`, pero no se muestra en ningún lado del sitio. Cuando llegue el momento de subir a precios estables, basta con reemplazar el valor de `precio` por el precio estable correspondiente (ya anotado en el comentario) — no hay que tocar el HTML ni el CSS.
+**Estructura de la sección:** "Servicios" (franja de garantía/zona/presupuesto previo, selector "¿Qué necesitas hoy?", tarjetas y tabla comparativa Nivel 1 vs 2) y, aparte, "Paquetes" (`#paquetes`, con su propio link en el menú). Cada tarjeta tiene un ancla (`#servicio-clean`, `#paquete-boot`, etc.) que usa el selector; al llegar, la tarjeta se resalta un momento. Si agregas un servicio nuevo en `js/servicios-data.js`, su ancla se crea sola a partir de su `id`; para sumarlo al selector, agrega un `<a class="necesitas-chip" href="#servicio-ID">` en `index.html`.
+- **Garantía y zona:** la franja de arriba y el FAQ dicen "60 días de garantía en nuestros servicios" y "a domicilio en todo Santiago (la personalización, en taller)". Si cambian las condiciones, edita esos textos en `index.html` (clase `confianza-strip`) y en `js/faq-data.js`.
 - El botón de cada tarjeta usa `data-wa="servicio"` o `data-wa="paquete"` con el nombre como parámetro, así el mensaje de WhatsApp que se abre ya menciona el servicio o paquete exacto por el que preguntó el cliente.
 
-## 7. Testimonios
+## 7. Contenido de redes (YouTube / Instagram / TikTok)
+
+La sección **Contenido** (justo después del Hero) muestra tus videos como tarjetas con miniatura: un video **destacado grande** y 3 más en una lista lateral. Al tocar una tarjeta se abre el video en la red correspondiente (pestaña nueva) — no se incrusta nada, así que la página carga rápido y cada visita suma vistas/seguidores a tu canal.
+
+- **Se edita en `js/contenido-data.js`** (arreglo `KROWN_CONTENIDO`; ahí está documentado cada campo y un ejemplo). Los primeros 4 son los que se muestran; el primero (o el que tenga `destacado: true`) va grande.
+- **Está oculta mientras el arreglo esté vacío** — igual que Testimonios. Al agregar el primer video aparece sola, junto con el link "Contenido" del menú.
+- **Miniaturas:** en YouTube se usa la miniatura oficial automáticamente (solo pegas el link). En Instagram y TikTok hay que guardar una captura en `assets/img/contenido/` y poner su ruta en `miniatura`; si falta, se muestra una tarjeta morada con el ícono de la red. Los videos verticales se recortan al centro en 16:9.
+- **Botones a tus perfiles** ("Ver canal en YouTube", "Seguir en Instagram", "Seguir en TikTok"): se llenan con `youtube`, `instagram` y `tiktok` en `js/config.js`; los que dejes vacíos no aparecen.
+- El bloque "Cada equipo se prueba antes de llegar a tus manos" (banco de pruebas) ahora está entre **Equipos** y **Quiénes somos**.
+
+## 8. Testimonios
 
 Por diseño, el sitio **no trae testimonios inventados** y la sección permanece **oculta** hasta que agregues al menos uno real. Abre `js/testimonials-data.js` y agrega objetos al arreglo `KROWN_TESTIMONIOS`:
 
@@ -133,15 +147,19 @@ const KROWN_TESTIMONIOS = [
 
 Apenas el arreglo tenga un elemento, la franja aparece automáticamente en `index.html`.
 
-## 8. Preguntas frecuentes
+## 9. Preguntas frecuentes
 
 Edita `js/faq-data.js` — cada objeto es `{ pregunta, respuesta }`. El acordeón se genera y funciona solo.
 
-## 9. Misión, visión y propuesta de valor
+## 10. Quiénes somos (texto y foto)
+
+El texto está en primera persona y firmado por Bastián; se edita directo en `index.html` (sección `#nosotros`). La **foto** es opcional: guarda la tuya como `assets/img/misc/bastian.jpg` (vertical o 4:5 funciona mejor) y aparece sola a la izquierda del texto. Mientras ese archivo no exista, la columna de la foto se oculta y el texto queda centrado — nunca se ve un recuadro vacío.
+
+## 11. Misión, visión y propuesta de valor
 
 Quedó pendiente a propósito (tal como definimos). En `index.html`, dentro de la sección "Nosotros", hay un comentario `<!-- TODO: Bastian — agregar aquí misión, visión y propuesta de valor -->` donde puedes agregar ese contenido cuando esté listo.
 
-## 10. Assets de marca (logo real)
+## 12. Assets de marca (logo real)
 
 Ya están integrados en el sitio:
 
@@ -156,7 +174,7 @@ Ya están integrados en el sitio:
 
 **Sin punto final:** el wordmark "KROWN" ya no lleva el punto morado decorativo al final (`.logo-dot`) en ningún lugar del sitio — se quitó del header y el footer de ambas páginas. El punto que aparece en el texto legal del footer ("© KROWN. Todos los derechos reservados.") es gramatical, no de marca, y se mantiene.
 
-## 11. Tipografía (Technos, Bebas Neue, Oswald)
+## 13. Tipografía (Technos, Bebas Neue, Oswald)
 
 El sitio usa tres fuentes autoalojadas (no dependen de Google Fonts ni de ninguna conexión externa) — los archivos están en `assets/fonts/` y se cargan con `@font-face` al inicio de `css/styles.css`:
 
@@ -166,7 +184,7 @@ El sitio usa tres fuentes autoalojadas (no dependen de Google Fonts ni de ningun
 
 Si en algún momento quieres volver a cambiar alguna, solo edita las variables `--font-brand`, `--font-display` y `--font-body` dentro de `:root` en `css/styles.css` (y agrega los `@font-face` correspondientes si es una fuente nueva).
 
-## 12. Probar el sitio localmente
+## 14. Probar el sitio localmente
 
 No necesitas instalar nada. Desde la carpeta `krown/`:
 
@@ -176,7 +194,7 @@ python3 -m http.server 8000
 
 Y abre `http://localhost:8000` en tu navegador.
 
-## 13. Publicar en GitHub Pages
+## 15. Publicar en GitHub Pages
 
 1. Crea un repositorio nuevo en GitHub (ej. `krown-web` o `tu-usuario.github.io` si quieres que sea tu dominio raíz).
 2. Sube el **contenido de esta carpeta** (`index.html`, `css/`, `js/`, `assets/`, etc.) a la raíz del repositorio.
@@ -184,6 +202,22 @@ Y abre `http://localhost:8000` en tu navegador.
 4. GitHub te va a dar una URL tipo `https://tu-usuario.github.io/krown-web/`.
 
 No hay build step ni dependencias — es HTML/CSS/JS puro, así que se publica tal cual.
+
+### Dominio propio (ej. krown.cl)
+
+Este sitio ya incluye el archivo `CNAME` en la raíz con `krown.cl` — bórralo o cámbialo si vas a usar otro dominio o ninguno.
+
+1. Compra el dominio (ej. en NIC.cl para `.cl`).
+2. En la configuración DNS del dominio, **no uses la opción de "redireccionamiento web"** — esa mantiene la URL de GitHub visible en el navegador después de entrar. Usa la opción de **servidores DNS** y agrega:
+   - Un **registro A** para el dominio raíz (`krown.cl`) apuntando a las 4 IPs de GitHub Pages:
+     ```
+     185.199.108.153
+     185.199.109.153
+     185.199.110.153
+     185.199.111.153
+     ```
+   - Un **registro CNAME** para `www` (opcional) apuntando a `tu-usuario.github.io`.
+3. En GitHub: **Settings → Pages → Custom domain**, escribe `krown.cl` y guarda (esto reescribe el archivo `CNAME` del repo automáticamente si lo haces desde ahí). Espera a que aparezca la casilla **"Enforce HTTPS"** y actívala — el certificado SSL lo emite GitHub solo, puede tardar de minutos a un par de horas después de que el DNS propague.
 
 ## Accesibilidad y rendimiento
 
@@ -223,3 +257,6 @@ Esta versión incorpora una revisión de experiencia de usuario sobre la primera
 23. **Video del Hero: WebM removido por incompatibilidad en PC:** una primera versión agregó también un `.webm` (VP9) como fuente preferida para aligerar peso. Eso reproducía bien en el teléfono pero se quedaba pegado en computadores — un problema conocido de decodificación VP9 por hardware en ciertos navegadores/GPUs de escritorio, que el teléfono nunca sufría porque ni siquiera intentaba esa fuente. Se resolvió dejando el Hero con **un solo formato, MP4 (H.264)**, el de soporte más parejo entre dispositivos — ver sección 2 para el detalle.
 24. **Video del Hero: versión en la URL para evitar caché vieja:** además del cambio de formato, se agregó `?v=2` a las URLs del video y el poster del Hero. Como el archivo se llama igual que antes (`hero-loop.mp4`), un navegador que ya había cargado el sitio podía seguir mostrando la copia vieja guardada en caché aunque el archivo en el servidor ya fuera otro — típico de que "en mi PC sigue sin funcionar" mientras en un dispositivo que nunca había visitado el sitio sí funcionaba. Subir el número de versión fuerza al navegador a descargar el archivo de nuevo. Ver sección 2, punto 4, para subir ese número la próxima vez que cambies el video.
 25. **Video del Hero: causa real encontrada — autoplay bloqueado por el propio código:** ni el formato ni la caché eran la causa final (el video ya se reproducía perfecto al iniciarlo manualmente). El sitio pausaba el video a propósito cuando el sistema tenía activada la preferencia de accesibilidad "reducir movimiento" — una preferencia que Windows/Edge activan solos en notebooks con Ahorro de batería, sin que el usuario la haya elegido pensando en videos. Se quitó ese auto-pausado específicamente para el video del Hero (ver sección 2 para el detalle completo); el resto de las animaciones del sitio sigue respetando esa preferencia con normalidad.
+26. **Sección Contenido (redes) y reorden:** el bloque del banco de pruebas pasó a ir entre Equipos y Quiénes somos, y su lugar tras el Hero lo ocupa la nueva sección Contenido (destacado + 3, tarjetas con miniatura que abren la red, oculta hasta cargar el primer video). Se alternaron los fondos de Proceso y Nosotros para que no se fundan al quedar contiguos.
+27. **Servicios más fáciles de recorrer:** Servicios y Paquetes pasaron a ser dos secciones (Paquetes con link propio en el menú); se agregó el selector "¿Qué necesitas hoy?" que lleva a la tarjeta correcta, y una franja con garantía de 60 días, atención a domicilio en Santiago y presupuesto previo, justo antes de los precios. El FAQ ahora responde dónde atienden y si hay garantía.
+28. **Datos reales y presentación personal:** WhatsApp, correo y redes (YouTube, Instagram, TikTok) quedaron configurados en `js/config.js` y se propagan a botones y footer. "Quiénes somos" pasó a primera persona con firma y foto opcional. La garantía se aclara como 60 días sobre la mano de obra (repuestos con garantía del fabricante/vendedor; pintura y personalización sin garantía), en la franja de Servicios y en el FAQ.

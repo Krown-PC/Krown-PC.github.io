@@ -59,7 +59,7 @@
     const precioTxt = s.esDesde ? `Desde ${s.precio}` : s.precio;
 
     return `
-      <article class="card servicio-card reveal is-visible">
+      <article class="card servicio-card reveal is-visible" id="servicio-${s.id}">
         <div class="servicio-icon">${ICONS[s.icono] || ""}</div>
         <span class="servicio-slug">${s.slug}</span>
         <h3>${s.nombre}</h3>
@@ -80,7 +80,7 @@
     const incluye = `<ul class="servicio-list">${p.incluye.map((li) => `<li>${li}</li>`).join("")}</ul>`;
 
     return `
-      <article class="card servicio-card paquete-card reveal is-visible">
+      <article class="card servicio-card paquete-card reveal is-visible" id="paquete-${p.id}">
         <div class="paquete-head">
           <div class="servicio-icon">${ICONS.paquete}</div>
           <span class="paquete-ahorro">${p.ahorro}</span>
