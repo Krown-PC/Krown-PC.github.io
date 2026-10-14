@@ -16,6 +16,7 @@
     initNosotrosFoto();
     initYear();
     initFooterLinks();
+    initNecesitas();
   });
 
   /* Header cambia de fondo al hacer scroll */
@@ -203,6 +204,30 @@
     probe.onload = mostrar;
     probe.onerror = ocultar;
     probe.src = img.getAttribute("src");
+  }
+
+  /* Selector "¿Qué necesitas hoy?": un chip puede resaltar varias tarjetas a la vez.
+   * Se declara con data-destacar="servicio-clean servicio-core" (ids separados por
+   * espacio). El href del chip sigue apuntando a la primera, por si JS no carga. */
+  function initNecesitas() {
+    document.querySelectorAll(".necesitas-chip[data-destacar]").forEach((chip) => {
+      chip.addEventListener("click", (e) => {
+        const cards = chip
+          .getAttribute("data-destacar")
+          .split(/\s+/)
+          .map((id) => document.getElementById(id))
+          .filter(Boolean);
+        if (!cards.length) return;
+        e.preventDefault();
+        cards[0].scrollIntoView({ behavior: "smooth", block: "center" });
+        cards.forEach((card) => {
+          card.classList.remove("is-highlight");
+          void card.offsetWidth; // reinicia la animación si se vuelve a tocar
+          card.classList.add("is-highlight");
+          window.setTimeout(() => card.classList.remove("is-highlight"), 2600);
+        });
+      });
+    });
   }
 
   function initYear() {

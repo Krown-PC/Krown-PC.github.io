@@ -18,6 +18,10 @@ const KROWN_CONFIG = {
   youtube: "https://www.youtube.com/@krown-cl",
   tiktok: "https://www.tiktok.com/@krown_cl",
 
+  // ID de medición de Google Analytics 4 (empieza con "G-"). Dejar "" para
+  // desactivar la analítica y el aviso de cookies.
+  gaMeasurementId: "G-2ZL73TGWSQ",
+
   // Ciudad principal de servicio (se usa en microcopy).
   ciudad: "Santiago",
 };
@@ -39,21 +43,21 @@ function krownWaLink(message) {
  */
 const KROWN_WA_MESSAGES = {
   general:
-    "Hola KROWN, me gustaría recibir más información sobre sus servicios.",
+    "Hola Krown, me gustaría recibir más información sobre sus servicios.",
   cotizarGeneral:
-    "Hola KROWN, quiero cotizar un servicio o equipo. ¿Me pueden ayudar?",
+    "Hola Krown, quiero cotizar un servicio o equipo. ¿Me pueden ayudar?",
   servicio: (nombre) =>
-    `Hola KROWN, estoy interesado en el servicio de ${nombre}. Me gustaría obtener más información y un presupuesto.`,
+    `Hola Krown, estoy interesado en el servicio de ${nombre}. Me gustaría obtener más información y un presupuesto.`,
   equipoDisponible: (nombre) =>
-    `Hola KROWN, estoy interesado en el equipo ${nombre} y quisiera consultar su disponibilidad.`,
+    `Hola Krown, estoy interesado en el equipo ${nombre} y quisiera consultar su disponibilidad.`,
   equipoSimilar: (nombre) =>
-    `Hola KROWN, vi el proyecto "${nombre}" en su portafolio. Me gustaría cotizar un equipo similar.`,
+    `Hola Krown, vi el proyecto "${nombre}" en su portafolio. Me gustaría cotizar un equipo similar.`,
   trabajoSimilar: (nombre) =>
-    `Hola KROWN, vi el trabajo "${nombre}" en su sitio. Me gustaría cotizar algo similar para mi equipo.`,
+    `Hola Krown, vi el trabajo "${nombre}" en su sitio. Me gustaría cotizar algo similar para mi equipo.`,
   paquete: (nombre) =>
-    `Hola KROWN, me interesa el paquete ${nombre}. ¿Me pueden dar más detalles y coordinar?`,
+    `Hola Krown, me interesa el paquete ${nombre}. ¿Me pueden dar más detalles y coordinar?`,
   diagnostico:
-    "Hola KROWN, mi computador está presentando problemas y me gustaría agendar un diagnóstico.",
+    "Hola Krown, mi computador está presentando problemas y me gustaría agendar un diagnóstico.",
   testing:
-    "Hola KROWN, vi cómo prueban los equipos antes de entregarlos y me gustaría cotizar un servicio.",
+    "Hola Krown, vi cómo prueban los equipos antes de entregarlos y me gustaría cotizar un servicio.",
 };
