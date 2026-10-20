@@ -13,7 +13,7 @@
    assets/fonts/*-OFL.txt. */
 @font-face {
   font-family: "Technos";
-  src: url("../assets/fonts/Technos.otf") format("opentype");
+  src: url("../assets/fonts/Technos.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: "Bebas Neue";
-  src: url("../assets/fonts/BebasNeue-Regular.ttf") format("truetype");
+  src: url("../assets/fonts/BebasNeue-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -29,7 +29,7 @@
 
 @font-face {
   font-family: "Oswald";
-  src: url("../assets/fonts/Oswald-Light.ttf") format("truetype");
+  src: url("../assets/fonts/Oswald-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -37,7 +37,7 @@
 
 @font-face {
   font-family: "Oswald";
-  src: url("../assets/fonts/Oswald-Regular.ttf") format("truetype");
+  src: url("../assets/fonts/Oswald-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -45,7 +45,7 @@
 
 @font-face {
   font-family: "Oswald";
-  src: url("../assets/fonts/Oswald-Medium.ttf") format("truetype");
+  src: url("../assets/fonts/Oswald-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -53,7 +53,7 @@
 
 @font-face {
   font-family: "Oswald";
-  src: url("../assets/fonts/Oswald-SemiBold.ttf") format("truetype");
+  src: url("../assets/fonts/Oswald-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -61,7 +61,7 @@
 
 @font-face {
   font-family: "Oswald";
-  src: url("../assets/fonts/Oswald-Bold.ttf") format("truetype");
+  src: url("../assets/fonts/Oswald-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -2265,3 +2265,231 @@ body { overflow-x: clip; }
   cursor: pointer;
 }
 .footer-cookie-link:hover { color: var(--text); }
+
+/* =====================================================================
+   REFRESH v1 (muestra): barra de anuncio, hero a pantalla completa,
+   Servicios y Trabajos con más aire. Todo está aislado en este bloque:
+   para volver al diseño anterior basta borrarlo (y el HTML de .announce
+   / .hero-hud, que quedan inertes).
+   ===================================================================== */
+body.has-bar { --bar-h: 38px; }
+
+.announce {
+  height: var(--bar-h, 0);
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  background: #160d26;
+  border-bottom: 1px solid rgba(154, 102, 224, 0.18);
+  font-family: var(--font-display);
+  font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-muted); white-space: nowrap; overflow: hidden;
+  padding: 0 16px;
+}
+.announce strong { color: var(--text); font-weight: 600; }
+.announce a { color: var(--purple-light); font-weight: 600; }
+.announce a:hover { color: #fff; }
+.announce-sep { opacity: 0.4; }
+@media (max-width: 720px) {
+  .announce span:not(:first-child), .announce-sep { display: none; }
+  .announce { gap: 14px; }
+  .announce span:first-child + .announce-sep + span + .announce-sep + a { display: inline; }
+  .announce a { display: inline; }
+  .announce span:first-child::after { content: " ·"; opacity: .4; }
+}
+.site-header.is-scrolled { border-bottom-color: transparent; }
+body.has-bar .nav-mobile { top: calc(76px + var(--bar-h)); }
+
+/* Hero a pantalla completa */
+body.has-bar .hero {
+  min-height: 100svh;
+  display: flex; align-items: center;
+  padding-top: calc(76px + var(--bar-h) + 40px);
+  padding-bottom: 72px;
+  isolation: isolate;
+}
+body.has-bar .hero > .container { display: block; width: 100%; }
+body.has-bar .hero-media {
+  position: absolute; inset: 0 0 0 auto;
+  width: min(68%, 980px); max-width: none; aspect-ratio: auto;
+  margin: 0; border: 0; border-radius: 0; background: transparent;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 55%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 55%);
+}
+body.has-bar .hero-media::after {
+  background: linear-gradient(180deg, rgba(10,10,11,.35) 0%, rgba(10,10,11,0) 30%, rgba(10,10,11,.7) 100%);
+}
+body.has-bar .hero-media video { opacity: 0.85; }
+body.has-bar .hero-media-tag { left: auto; right: 32px; bottom: 32px; }
+body.has-bar .hero-copy { max-width: 640px; }
+body.has-bar .hero h1 { font-size: clamp(52px, 12.5vw, 132px); line-height: .9; letter-spacing: 0.01em; margin-bottom: 14px; }
+body.has-bar .hero .slogan { font-size: clamp(24px, 3.4vw, 40px); letter-spacing: .02em; margin-bottom: 26px; }
+body.has-bar .hero p.lead { font-size: clamp(17px, 1.6vw, 20px); max-width: 44ch; }
+body.has-bar .hero-ctas { margin: 36px 0 28px; }
+body.has-bar .hero .btn { padding: 17px 32px; border-radius: 999px; }
+body.has-bar .bg-grid { opacity: .6; }
+
+/* Marco HUD: solo como acento del hero (esquinas de pantalla) */
+.hero-hud {
+  position: absolute; z-index: 1; pointer-events: none;
+  inset: calc(76px + var(--bar-h, 0px) + 18px) 24px 24px 24px;
+}
+@media (max-width: 720px) { .hero-hud { inset: calc(76px + var(--bar-h, 0px) + 10px) 12px 12px 12px; } }
+
+@media (max-width: 959px) {
+  body.has-bar .hero-media { width: 100%; opacity: .4; -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 100%); mask-image: linear-gradient(to bottom, #000 40%, transparent 100%); }
+  body.has-bar .hero-media-tag { display: none; }
+}
+
+/* Encabezados de sección más grandes y con aire */
+#servicios, #trabajos { padding: clamp(96px, 14vw, 200px) 0; }
+#servicios .section-head, #trabajos .section-head { max-width: 760px; margin-bottom: clamp(48px, 7vw, 88px); }
+#servicios .section-head h2, #trabajos .section-head h2 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(38px, 6vw, 72px); line-height: 1; letter-spacing: .005em; text-transform: uppercase;
+}
+#servicios .section-head p, #trabajos .section-head p { font-size: 18px; max-width: 56ch; margin-inline: auto; }
+
+/* Servicios: tarjetas sin marco duro, fondo suave */
+#servicios .card, #servicios .servicio-card {
+  background: linear-gradient(180deg, #17141e 0%, #111015 100%);
+  border-color: rgba(255,255,255,.05);
+  border-radius: 20px; padding: 32px;
+}
+#servicios .servicio-card:hover { border-color: rgba(154,102,224,.4); transform: translateY(-4px); }
+#servicios .confianza-strip li { border-color: transparent; background: rgba(255,255,255,.03); border-radius: 16px; }
+
+/* Trabajos: más separación y bordes redondeados grandes */
+#trabajos .trabajos-list { display: grid; gap: clamp(72px, 10vw, 150px); }
+#trabajos .trabajo-card { gap: clamp(24px, 4vw, 64px); }
+#trabajos .ba-slider { border-radius: 24px; }
+#trabajos .trabajo-info h3 { font-size: clamp(26px, 3vw, 38px); font-family: var(--font-display); font-weight: 500; }
+#trabajos .trabajo-info p { font-size: 18px; }
+
+/* =====================================================================
+   REFRESH v2: estructura inspirada en referencia clara, sobre base oscura.
+   Barra con redes, hero como tarjeta redondeada, secciones en "capas",
+   lema, footer completo. (Aislado: se revierte borrando v1 + v2.)
+   ===================================================================== */
+
+/* Barra superior: redes | mensaje | enlace */
+.announce { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; padding: 0 24px; }
+.announce-social { display: flex; gap: 14px; align-items: center; justify-self: start; }
+.announce-social a { color: var(--text-muted); display: inline-flex; transition: color var(--transition); }
+.announce-social a:hover { color: #fff; }
+.announce-social a[hidden] { display: none; }
+.announce-social svg { width: 17px; height: 17px; }
+.announce-msg { display: flex; gap: 12px; justify-self: center; }
+.announce-cta { justify-self: end; color: var(--purple-light); font-weight: 600; }
+.announce-cta:hover { color: #fff; }
+@media (max-width: 860px) {
+  .announce { grid-template-columns: 1fr auto; }
+  .announce-social { display: none; }
+  .announce-msg { justify-self: start; }
+  .announce-msg .announce-sep, .announce-msg span:not(:first-child) { display: none; }
+}
+@media (max-width: 400px) { .announce-msg { display: none; } .announce { grid-template-columns: 1fr; } .announce-cta { justify-self: center; } }
+
+/* Botones: píldora consistente */
+.btn { border-radius: 999px; }
+
+/* Hero como tarjeta redondeada */
+body.has-bar .hero {
+  margin: calc(76px + var(--bar-h) + 6px) 12px 0;
+  border-radius: 32px;
+  background: #0f0d14;
+  min-height: min(calc(100svh - 76px - var(--bar-h) - 24px), 800px);
+  padding: 72px 0;
+}
+body.has-bar .hero > .container { padding-left: clamp(24px, 5vw, 72px); padding-right: 24px; max-width: none; }
+body.has-bar .hero-media { width: min(62%, 900px); }
+.hero-hud { inset: 18px !important; }
+.hero-hud::before, .hero-hud::after { opacity: .6; }
+.hero-pause {
+  position: absolute; z-index: 3; right: 24px; bottom: 24px;
+  width: 44px; height: 44px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(10,10,11,.55); color: #fff;
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  transition: background var(--transition), border-color var(--transition);
+}
+.hero-pause:hover { background: rgba(105,41,178,.7); border-color: var(--purple-light); }
+.hero-pause svg { width: 18px; height: 18px; }
+.hero-pause .i-play { display: none; }
+.hero-pause.is-paused .i-play { display: block; }
+.hero-pause.is-paused .i-pause { display: none; }
+body.has-bar .hero-media-tag { right: 84px; bottom: 30px; }
+@media (max-width: 959px) {
+  body.has-bar .hero { margin-inline: 8px; border-radius: 24px; padding: 56px 0; }
+  body.has-bar .hero > .container { padding-inline: 20px; }
+  .hero-pause { right: 16px; bottom: 16px; }
+}
+
+/* Secciones como capas: base oscura + paneles redondeados alternados */
+#paquetes, #proceso, #nosotros, #equipos, #contacto {
+  margin: 12px 12px; border-radius: 32px; border: 0;
+  background: #121118;
+}
+#equipos { background: #121118; }
+#proceso { background: transparent; }
+#nosotros { background: #121118; }
+#contacto { background: radial-gradient(circle at 50% 0%, rgba(105,41,178,.28), transparent 62%), #121118; }
+#contacto .cta-box { background: transparent; border: 0; }
+#contacto .cta-box::before, #contacto .cta-box::after { display: none; }
+#paquetes .paquete-card { background: #0d0c11; border-color: rgba(255,255,255,.05); border-radius: 20px; }
+@media (max-width: 720px) { #paquetes, #equipos, #nosotros, #contacto { margin-inline: 8px; border-radius: 24px; } }
+
+/* Encabezados y aire en todas las secciones */
+main .section-head h2 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(36px, 5.6vw, 68px); line-height: 1; text-transform: uppercase; letter-spacing: .005em;
+}
+#paquetes, #equipos, #proceso, #nosotros, #faq, #contacto { padding: clamp(80px, 11vw, 160px) 0; }
+.nosotros-media, .testing-media { border-radius: 24px; overflow: hidden; }
+.card, .equipo-card, .faq-item, .paquete-card { border-radius: 20px; }
+.faq-item { border-color: rgba(255,255,255,.06); }
+
+/* Lema entre secciones */
+.statement { padding: clamp(72px, 11vw, 150px) 0; }
+.statement-text {
+  font-family: var(--font-display); text-transform: uppercase; line-height: 1;
+  font-size: clamp(34px, 6.4vw, 88px); max-width: 18ch; margin: 0 auto; text-align: center;
+  color: var(--text); letter-spacing: .005em;
+}
+.statement-text span { color: var(--purple-light); }
+
+/* Footer completo: panel redondeado */
+.site-footer {
+  margin: 12px 12px 0; border: 0; border-radius: 32px 32px 0 0;
+  background: #0f0d14; padding: clamp(56px, 7vw, 96px) 0 28px;
+}
+.footer-cta {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;
+  padding-bottom: 48px; margin-bottom: 48px; border-bottom: 1px solid var(--border);
+}
+.footer-cta h2 {
+  margin: 0; font-family: var(--font-display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(40px, 7vw, 96px); line-height: .95; color: var(--text);
+}
+@media (min-width: 720px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1.2fr; } }
+.footer-social { display: flex; gap: 12px; margin-top: 20px; }
+.footer-social a {
+  width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--border-strong);
+  display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);
+  transition: color var(--transition), border-color var(--transition);
+}
+.footer-social a:hover { color: #fff; border-color: var(--purple-light); }
+.footer-social a[hidden] { display: none; }
+.footer-social svg { width: 18px; height: 18px; }
+.footer-notes li { font-size: 15.5px; color: var(--text-muted); }
+@media (max-width: 720px) { .site-footer { margin-inline: 8px; border-radius: 24px 24px 0 0; } }
+
+/* Ajustes v2.1 */
+body.has-bar .hero > .container { padding-left: max(24px, calc((100vw - 1240px) / 2 + 12px)); }
+.hero-pause { bottom: auto; top: 22px; right: 22px; }
+body.has-bar .hero-media-tag { bottom: auto; top: 30px; right: 78px; }
+@media (max-width: 959px) {
+  .hero-pause { top: 14px; right: 14px; }
+  body.has-bar .hero-media { opacity: .6; }
+  body.has-bar .hero > .container { padding-left: 20px; }
+}

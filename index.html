@@ -24,6 +24,9 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 <link rel="manifest" href="site.webmanifest" />
 
+<link rel="preload" href="assets/fonts/Oswald-Regular.woff" as="font" type="font/woff" crossorigin />
+<link rel="preload" href="assets/fonts/BebasNeue-Regular.woff" as="font" type="font/woff" crossorigin />
+<link rel="preload" href="assets/fonts/Technos.woff" as="font" type="font/woff" crossorigin />
 <link rel="stylesheet" href="css/styles.css" />
 <script type="application/ld+json">
 {
@@ -62,12 +65,21 @@
 }
 </script>
 </head>
-<body>
+<body class="has-bar">
 
 <a href="#main" class="skip-link">Saltar al contenido</a>
 
 <!-- ============ HEADER ============ -->
 <header class="site-header">
+  <div class="announce">
+    <div class="announce-social"><a href="#" data-social="instagram" target="_blank" rel="noopener" aria-label="Instagram de KROWN" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="#" data-social="youtube" target="_blank" rel="noopener" aria-label="YouTube de KROWN" hidden><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg></a><a href="#" data-social="tiktok" target="_blank" rel="noopener" aria-label="TikTok de KROWN" hidden><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 2h-3.2v13.2a2.7 2.7 0 1 1-2.7-2.7c.3 0 .6 0 .8.1V9.3a5.9 5.9 0 1 0 5.1 5.9V8.6a7.1 7.1 0 0 0 4.1 1.3V6.7a4.2 4.2 0 0 1-4.1-4.7z"/></svg></a></div>
+    <div class="announce-msg">
+      <span><strong>60 días de garantía</strong> en mano de obra</span>
+      <span class="announce-sep" aria-hidden="true">·</span>
+      <span>Atención en todo Santiago</span>
+    </div>
+    <a href="#" class="announce-cta" data-wa="cotizarGeneral">Cotiza por WhatsApp →</a>
+  </div>
   <div class="container">
     <a href="#inicio" class="logo">
       <img src="assets/logo/krown-icon.png" alt="" class="logo-icon" width="24" height="42" />
@@ -118,6 +130,17 @@
   <!-- ============ HERO ============ -->
   <section class="hero" id="inicio">
     <div class="bg-grid" aria-hidden="true"></div>
+    <div class="hero-media">
+      <video autoplay muted loop playsinline poster="assets/video/hero-poster.jpg?v=3">
+        <source src="assets/video/hero-loop.mp4?v=3" type="video/mp4" />
+      </video>
+      <span class="hero-media-tag"><span class="dot"></span> Trabajos reales de KROWN</span>
+    </div>
+    <div class="hero-hud hud-frame" aria-hidden="true"></div>
+    <button type="button" class="hero-pause" aria-label="Pausar video" aria-pressed="false">
+      <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+      <svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    </button>
     <div class="container">
       <div class="hero-copy">
         <span class="eyebrow">Servicio técnico especializado · Santiago</span>
@@ -139,12 +162,6 @@
         </div>
       </div>
 
-      <div class="hero-media hud-frame reveal">
-        <video autoplay muted loop playsinline poster="assets/video/hero-poster.jpg?v=2">
-          <source src="assets/video/hero-loop.mp4?v=2" type="video/mp4" />
-        </video>
-        <span class="hero-media-tag"><span class="dot"></span> Trabajos reales de KROWN</span>
-      </div>
     </div>
   </section>
 
@@ -370,6 +387,13 @@
   </section>
 
   <!-- ============ EQUIPOS ============ -->
+  <!-- ============ LEMA ============ -->
+  <section class="statement" aria-label="Lema de KROWN">
+    <div class="container">
+      <p class="statement-text reveal">Del proyecto que tienes en mente al <span>equipo funcionando</span> en tu escritorio.</p>
+    </div>
+  </section>
+
   <section id="equipos">
     <div class="container">
       <div class="section-head section-head--center">
@@ -504,15 +528,18 @@
           <span class="logo-text">KROWN</span>
         </div>
         <p>Armado, mantención, diagnóstico y personalización de computadores en Santiago. Potencia tu reino.</p>
+        <div class="footer-social"><a href="#" data-social="instagram" target="_blank" rel="noopener" aria-label="Instagram de KROWN" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="#" data-social="youtube" target="_blank" rel="noopener" aria-label="YouTube de KROWN" hidden><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg></a><a href="#" data-social="tiktok" target="_blank" rel="noopener" aria-label="TikTok de KROWN" hidden><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 2h-3.2v13.2a2.7 2.7 0 1 1-2.7-2.7c.3 0 .6 0 .8.1V9.3a5.9 5.9 0 1 0 5.1 5.9V8.6a7.1 7.1 0 0 0 4.1 1.3V6.7a4.2 4.2 0 0 1-4.1-4.7z"/></svg></a></div>
       </div>
 
       <div class="footer-col">
         <h4>Sitio</h4>
         <ul>
           <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#paquetes">Paquetes</a></li>
           <li><a href="#trabajos">Trabajos</a></li>
           <li><a href="#equipos">Equipos</a></li>
           <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
           <li><a href="trabajos.html">Portafolio completo</a></li>
         </ul>
       </div>
@@ -525,6 +552,15 @@
           <li id="footer-ig-item" style="display:none;"><a href="#" id="footer-ig" target="_blank" rel="noopener">Instagram</a></li>
           <li id="footer-yt-item" style="display:none;"><a href="#" id="footer-yt" target="_blank" rel="noopener">YouTube</a></li>
           <li id="footer-tt-item" style="display:none;"><a href="#" id="footer-tt" target="_blank" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Condiciones</h4>
+        <ul class="footer-notes">
+          <li>60 días de garantía sobre la mano de obra</li>
+          <li>A domicilio en todo Santiago</li>
+          <li>Presupuesto previo a cualquier reparación</li>
         </ul>
       </div>
     </div>

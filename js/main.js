@@ -182,13 +182,25 @@
   function initHeroVideo() {
     const video = document.querySelector(".hero-media video");
     if (!video) return;
+    let userPaused = false;
     const attemptPlay = () => video.play().catch(() => {});
     attemptPlay();
     // Si el navegador igual lo bloquea al cargar, reintenta apenas la pestaña
     // vuelve a estar visible (típico de "abrir en pestaña nueva" en segundo plano).
     document.addEventListener("visibilitychange", () => {
-      if (!document.hidden && video.paused) attemptPlay();
+      if (!document.hidden && video.paused && !userPaused) attemptPlay();
     });
+    // Botón de pausa (accesibilidad: el video se mueve solo más de 5 s)
+    const btn = document.querySelector(".hero-pause");
+    if (btn) {
+      btn.addEventListener("click", () => {
+        userPaused = !video.paused;
+        if (userPaused) video.pause(); else attemptPlay();
+        btn.classList.toggle("is-paused", userPaused);
+        btn.setAttribute("aria-pressed", String(userPaused));
+        btn.setAttribute("aria-label", userPaused ? "Reproducir video" : "Pausar video");
+      });
+    }
   }
 
   /* Muestra la foto de "Quiénes somos" solo si el archivo existe; si no, el texto queda centrado */
@@ -241,6 +253,12 @@
     if (emailLink && typeof KROWN_CONFIG !== "undefined") {
       emailLink.href = "mailto:" + KROWN_CONFIG.email;
       emailLink.textContent = KROWN_CONFIG.email;
+    }
+    if (typeof KROWN_CONFIG !== "undefined") {
+      document.querySelectorAll("[data-social]").forEach((a) => {
+        const url = KROWN_CONFIG[a.dataset.social];
+        if (url) { a.href = url; a.hidden = false; }
+      });
     }
     if (typeof KROWN_CONFIG !== "undefined") {
       [["ig", "instagram"], ["yt", "youtube"], ["tt", "tiktok"]].forEach(([id, key]) => {
